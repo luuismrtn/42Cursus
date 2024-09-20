@@ -23,7 +23,7 @@ OBJS = $(SRCS:.c=.o)
 
 TARGET = libft.a
 
-BONUSSRC = 
+BONUSSRC = ft_lstadd_back.c ft_lstadd_front.c  ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
 BONUSOBJ = $(BONUSSRC:.c=.o)
 
@@ -37,8 +37,11 @@ $(TARGET): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(OBJ) $(BONUSOBJ)
+	$(AR) $(ARFLAGS) $(TARGET) $(BONUSOBJ)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUSOBJ)
 
 fclean: clean
 	rm -f $(TARGET)

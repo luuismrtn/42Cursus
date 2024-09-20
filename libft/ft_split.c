@@ -3,63 +3,109 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumartin <lumartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luis-linux <luis-linux@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 02:35:34 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/19 17:56:04 by lumartin         ###   ########.fr       */
+/*   Created: 2024/09/17 15:24:37 by irrevuel          #+#    #+#             */
+/*   Updated: 2024/09/20 15:45:54 by luis-linux       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	fill_str(const char *str, char c, char **sol)
+static int	ft_wordsize(int n, char const *s, char c)
 {
-	int	s;
 	int	i;
-	int	j;
-	int	start;
+	int	count;
+	int	len;
 
-	s = 0;
 	i = 0;
-	while (str[i] != '\0')
+	len = 0;
+	count = 0;
+	while (s[i] != '\0')
 	{
-		while (str[i] != '\0' && c == str[i])
+		while (s[i] == c)
 			i++;
-		start = i;
-		while (str[i] != '\0' && c != str[i])
-			i++;
-		if (start < i)
+		if (s[i] != c && s[i] != '\0')
 		{
-			sol[s] = malloc(sizeof(char) * (i - start + 2));
-			j = 0;
-			while (start < i)
-				sol[s][j++] = str[start++];
-			sol[s][j] = '\0';
-			s++;
+			count++;
+			while (s[i] != c && s[i] != '\0')
+			{
+				if (n + 1 == count)
+					len++;
+				i++;
+			}
 		}
-		sol[s] = 0;
 	}
+	return (len);
 }
 
-char	**ft_split(char const *str, char c)
+static int	ft_wordcount(char const *s, char c)
 {
-	char	**sol;
-	int		i;
-	int		s;
+	int	i;
+	int	count;
 
-	if (!str || !c)
-		return (NULL);
 	i = 0;
-	s = 0;
-	while (str[i] != '\0')
+	count = 0;
+	while (s[i] != '\0')
 	{
-		if (c == str[i])
-			s++;
+		while (s[i] == c)
+			i++;
+		if (s[i] != c && s[i] != '\0')
+		{
+			count++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
+		}
+	}
+	return (count);
+}
+
+static char	**ft_savespace(char const *s, char c)
+{
+	int		i;
+	int		size;
+	char	**esplit;
+
+	i = 0;
+	size = ft_wordcount(s, c);
+	esplit = malloc(sizeof(char *) * (size + 1));
+	if (!esplit)
+		return (NULL);
+	while (i <= size)
+	{
+		esplit[i] = malloc(sizeof(char) * (ft_wordsize(i, s, c) + 1));
+		if (!esplit[i])
+			return (NULL);
 		i++;
 	}
-	sol = malloc(sizeof(char *) * (s + 2));
-	if (!sol)
+	return (esplit);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+	int		i;
+	int		j;
+	int		k;
+
+	i = 0;
+	k = 0;
+	split = ft_savespace(s, c);
+	if (!split)
 		return (NULL);
-	fill_str(str, c, sol);
-	return (sol);
+	while (s[k] != '\0')
+	{
+		while (s[k] == c)
+			k++;
+		if (s[k] != c && s[k] != '\0')
+		{
+			j = 0;
+			while (s[k] != c && s[k] != '\0')
+				split[i][j++] = s[k++];
+			split[i][j] = '\0';
+			i++;
+		}
+	}
+	split[i] = NULL;
+	return (split);
 }
