@@ -6,13 +6,15 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:49:21 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/25 16:52:15 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:16:36 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dst, const void *src, unsigned int n)
+#include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	if (!dst && !src)
 		return (0);
