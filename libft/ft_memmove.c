@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumartin <lumartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 17:49:51 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/17 14:55:56 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:56:58 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	*ft_memmove(void *dst, const void *src, unsigned int len)
 {
 	unsigned int	i;
 
+	if (!dst && !src)
+		return (0);
 	i = 0;
 	if (dst < src)
 	{

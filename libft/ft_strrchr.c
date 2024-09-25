@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumartin <lumartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:01:19 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/17 14:56:09 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:37:06 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(char *str, int c)
-{
-	char	*last;
+#include "libft.h"
 
-	last = 0;
-	while (*str != '\0')
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		if (*str == c)
-			last = str;
-		str++;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i--;
 	}
-	if (c == '\0')
-		return (str);
-	return (last);
+	return (0);
 }

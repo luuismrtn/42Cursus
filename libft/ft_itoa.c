@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumartin <lumartin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:23:18 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/19 18:55:00 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:44:58 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	*ft_itoa(int n)
 		len++;
 	}
 	str_num = malloc(sizeof(char) * (len + 1));
+	if (!str_num)
+		return (0);
 	str_num[len] = 0;
 	while (len--)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luis-linux <luis-linux@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 15:24:37 by irrevuel          #+#    #+#             */
-/*   Updated: 2024/09/20 15:45:54 by luis-linux       ###   ########.fr       */
+/*   Created: 2024/09/25 16:48:56 by lumartin          #+#    #+#             */
+/*   Updated: 2024/09/25 16:49:13 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,42 @@ static int	ft_wordcount(char const *s, char c)
 	return (count);
 }
 
+static void	ft_free(char **split, int words)
+{
+	int	i;
+
+	i = 0;
+	while (i < words)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
 static char	**ft_savespace(char const *s, char c)
 {
 	int		i;
 	int		size;
-	char	**esplit;
+	char	**split;
 
 	i = 0;
 	size = ft_wordcount(s, c);
-	esplit = malloc(sizeof(char *) * (size + 1));
-	if (!esplit)
+	split = malloc(sizeof(char *) * (size + 1));
+	if (!split)
 		return (NULL);
-	while (i <= size)
+	while (i < size)
 	{
-		esplit[i] = malloc(sizeof(char) * (ft_wordsize(i, s, c) + 1));
-		if (!esplit[i])
+		split[i] = malloc(sizeof(char) * (ft_wordsize(i, s, c) + 1));
+		if (!split[i])
+		{
+			ft_free(split, i);
 			return (NULL);
+		}
 		i++;
 	}
-	return (esplit);
+	split[i] = NULL;
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
@@ -88,6 +105,8 @@ char	**ft_split(char const *s, char c)
 	int		j;
 	int		k;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	k = 0;
 	split = ft_savespace(s, c);
@@ -102,10 +121,8 @@ char	**ft_split(char const *s, char c)
 			j = 0;
 			while (s[k] != c && s[k] != '\0')
 				split[i][j++] = s[k++];
-			split[i][j] = '\0';
-			i++;
+			split[i++][j] = '\0';
 		}
 	}
-	split[i] = NULL;
 	return (split);
 }

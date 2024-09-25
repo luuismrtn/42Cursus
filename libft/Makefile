@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lumartin <lumartin@student.42.fr>          +#+  +:+       +#+         #
+#    By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 16:41:39 by lumartin          #+#    #+#              #
-#    Updated: 2024/09/19 14:33:50 by lumartin         ###   ########.fr        #
+#    Updated: 2024/09/25 17:30:37 by lumartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -21,29 +23,27 @@ ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c f
 ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
 OBJS = $(SRCS:.c=.o)
 
-TARGET = libft.a
-
-BONUSSRC = ft_lstadd_back.c ft_lstadd_front.c  ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+BONUSSRC = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c  ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
 
 BONUSOBJ = $(BONUSSRC:.c=.o)
 
 .PHONY: all clean fclean re bonus
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(OBJS)
-	$(AR) $(ARFLAGS) $(TARGET) $(OBJS)
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(OBJ) $(BONUSOBJ)
-	$(AR) $(ARFLAGS) $(TARGET) $(BONUSOBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(BONUSOBJ)
 
 clean:
 	rm -f $(OBJS) $(BONUSOBJ)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
 re: fclean all
