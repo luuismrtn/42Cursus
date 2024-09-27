@@ -12,53 +12,95 @@
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*initialize_buffers(char **buffer)
 {
-    char *line;
-    char c;
-    int i;
+	char	*read_buffer;
 
-    line = malloc(1000);
-    if (!line)
-        return (NULL);
-    i = 0;
-    if (!read(fd, &c, 1))
-    {
-        free(line);
-        return (NULL);
-    }
-    else
-    {
-        line[i] = c;
-        i++;
-    }
-    while (read(fd, &c, 1) && c != '\n')
-    {
-        line[i] = c;
-        i++;
-    }
-    line[i] = '\0';
-    return (line);
+	read_buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!read_buffer)
+		return (NULL);
+	if (!(*buffer))
+	{
+		*buffer = (char *)malloc(1);
+		if (!(*buffer))
+		{
+			free(read_buffer);
+			return (NULL);
+		}
+		(*buffer)[0] = '\0';
+	}
+	return (read_buffer);
 }
 
-//cc -Wall -Werror -Wextra -D BUFFER_SIZE=42 <archivos>.c.
-/*
-#include <fcntl.h>
-int main(int argc, char **argv)
+char	*read_line_from_buffer(char **buffer, char *read_buffer)
 {
-    int fd;
-    char *line;
+	void	*line;
+	char	*temp;
+	int		i;
 
-    if (argc == 2)
-    {
-        fd = open(argv[1], O_RDONLY);
-        if (fd == -1)
-            return (1);
-        line = get_next_line(fd);
-        printf("%s\n", line);
-        free(line);
-        close(fd);
-    }
-    return (0);
+	i = 0;
+	line = NULL;
+	while ((*buffer)[i])
+	{
+		if ((*buffer)[i] == '\n')
+		{
+			line = ft_strjoin_gnl(line, *buffer, i + 1);
+			temp = *buffer;
+			*buffer = ft_strjoin_gnl(NULL, *buffer + i + 1, ft_strlen(*buffer
+						+ i + 1));
+			free(temp);
+			free(read_buffer);
+			return (line);
+		}
+		i++;
+	}
+	return (NULL);
 }
-*/
+
+char	*handle_end_of_file(char **buffer, char *read_buffer)
+{
+	void	*line;
+
+	line = NULL;
+	if (ft_strlen(*buffer) > 0)
+	{
+		line = ft_strjoin_gnl(line, *buffer, ft_strlen(*buffer));
+		free(*buffer);
+		*buffer = NULL;
+		free(read_buffer);
+		return (line);
+	}
+	free(*buffer);
+	*buffer = NULL;
+	free(read_buffer);
+	return (NULL);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	*buffer = NULL;
+	void		*line;
+	char		*read_buffer;
+	int			bytes_read;
+
+	line = NULL;
+	read_buffer = initialize_buffers(&buffer);
+	while (1)
+	{
+		line = read_line_from_buffer(&buffer, read_buffer);
+		if (line)
+			return (line);
+		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free(buffer);
+			buffer = NULL;
+			free(read_buffer);
+			return (NULL);
+		}
+		if (bytes_read == 0)
+			return (handle_end_of_file(&buffer, read_buffer));
+		read_buffer[bytes_read] = '\0';
+		buffer = ft_strjoin_gnl(buffer, read_buffer, bytes_read);
+	}
+}
