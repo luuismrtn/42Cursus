@@ -12,10 +12,6 @@
 
 #include "get_next_line_bonus.h"
 
-#ifndef MAX_FD
-# define MAX_FD 1024 // Definimos el número máximo de file descriptors
-#endif
-
 static char	*initialize_buffers(char **buffer)
 {
 	char	*read_buffer;
