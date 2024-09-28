@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*initialize_buffers(char **buffer)
+static char	*initialize_buffers(char **buffer)
 {
 	char	*read_buffer;
 
@@ -32,7 +32,7 @@ char	*initialize_buffers(char **buffer)
 	return (read_buffer);
 }
 
-char	*read_line_from_buffer(char **buffer, char *read_buffer)
+static char	*read_line_from_buffer(char **buffer, char *read_buffer)
 {
 	void	*line;
 	char	*temp;
@@ -57,7 +57,7 @@ char	*read_line_from_buffer(char **buffer, char *read_buffer)
 	return (NULL);
 }
 
-char	*handle_end_of_file(char **buffer, char *read_buffer)
+static char	*handle_end_of_file(char **buffer, char *read_buffer)
 {
 	void	*line;
 
