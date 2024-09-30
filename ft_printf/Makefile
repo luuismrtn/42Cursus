@@ -6,7 +6,7 @@
 #    By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 11:23:39 by lumartin          #+#    #+#              #
-#    Updated: 2024/09/30 16:59:04 by lumartin         ###   ########.fr        #
+#    Updated: 2024/09/30 21:46:52 by lumartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =	ft_printf.c \
 
 OBJS = $(SRCS:.c=.o)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
