@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:02:14 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/30 17:25:43 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:07:02 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	ft_putchar_fd(char c, int fd)
 
 int	ft_putnbr_fd(int n, int fd, int is_unsigned)
 {
-	int	count;
-	unsigned int un;
+	int				count;
+	unsigned int	un;
 
 	count = 0;
 	if (!is_unsigned && n == -2147483648)
@@ -33,7 +33,7 @@ int	ft_putnbr_fd(int n, int fd, int is_unsigned)
 	}
 	if (is_unsigned)
 	{
-		unsigned int un = (unsigned int)n;
+		un = (unsigned int)n;
 		if (un > 9)
 			count += ft_putnbr_fd(un / 10, fd, 1);
 		count += ft_putchar_fd(un % 10 + '0', fd);
@@ -84,12 +84,9 @@ int	ft_putptr_fd(void *ptr, int fd)
 
 	if (!ptr)
 		return (ft_putstr_fd("(nil)", fd));
-
 	count = 0;
 	ptr_value = (unsigned long)ptr;
 	count += ft_putstr_fd("0x", fd);
 	count += ft_puthex_fd(ptr_value, fd, 0);
 	return (count);
 }
-
-
