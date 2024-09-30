@@ -6,15 +6,15 @@
 #    By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/28 11:23:39 by lumartin          #+#    #+#              #
-#    Updated: 2024/09/30 01:31:02 by lumartin         ###   ########.fr        #
+#    Updated: 2024/09/30 16:59:04 by lumartin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-LIBFTNAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -gdwarf-4
+CFLAGS = -Wall -Werror -Wextra
 LIBFTDIR = ./libft
+LIBFTNAME = libft.a
 
 SRCS = 	ft_printf.c
 OBJS = $(SRCS:.c=.o)

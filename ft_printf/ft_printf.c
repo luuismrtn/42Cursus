@@ -9,70 +9,71 @@ static char	ft_check_char(char c)
 	return (0);
 }
 
-static void	ft_puthex_fd(unsigned int n, int fd, int upper)
-{
-	char	*base;
-
-	if (upper == 0)
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
-	if (n >= 16)
-		ft_puthex_fd(n / 16, fd, upper);
-	ft_putchar_fd(base[n % 16], fd);
-}
-
-static void	ft_putptr_fd(void *ptr, int fd)
-{
-	ft_putstr_fd("0x", fd);
-	ft_puthex_fd((unsigned long)ptr, fd, 0);
-}
-
 static int	ft_print(char c, va_list args)
 {
+	int	count;
+
+	count = 0;
 	if (c == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		count += ft_putchar_fd(va_arg(args, int), 1);
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+		count += ft_putstr_fd(va_arg(args, char *), 1);
 	else if (c == 'p')
-		ft_putptr_fd(va_arg(args, void *), 1);
+		count += ft_putptr_fd(va_arg(args, void *), 1);
 	else if (c == 'd' || c == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		count += ft_putnbr_fd(va_arg(args, int), 1);
 	else if (c == 'u')
-		ft_putnbr_fd(va_arg(args, unsigned int), 1);
+		count += ft_putnbr_fd(va_arg(args, unsigned int), 1);
 	else if (c == 'x')
-		ft_puthex_fd(va_arg(args, unsigned int), 1, 0);
+		count += ft_puthex_fd(va_arg(args, unsigned int), 1, 0);
 	else if (c == 'X')
-		ft_puthex_fd(va_arg(args, unsigned int), 1, 1);
+		count += ft_puthex_fd(va_arg(args, unsigned int), 1, 1);
 	else if (c == '%')
-		ft_putchar_fd('%', 1);
-	else
-		return (0);
-	return (1);
+		count += ft_putchar_fd('%', 1);
+	return (count);
 }
 
 int	ft_printf(char const *format, ...)
 {
 	va_list	args;
 	int		i;
+	int		count;
 
 	va_start(args, format);
 	i = 0;
+	count = 0;
 	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && ft_check_char(format[i + 1]) != 0)
 		{
 			i++;
-			if (ft_print(format[i], args) == 0)
-				return (0);
+			count += ft_print(format[i], args);
 		}
 		else
-		{
-			ft_putchar_fd(format[i], 1);
-		}
+			count += ft_putchar_fd(format[i], 1);
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }
 
+//int	ft_putnbr_fd(int n, int fd)
+{
+	int	count;
+
+	count = 0;
+	if (n == -2147483648)
+	{
+		count += ft_putstr_fd("-2147483648", fd);
+		return (count);
+	}
+	if (n < 0)
+	{
+		count += ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+		count += ft_putnbr_fd(n / 10, fd);
+	count += ft_putchar_fd(n % 10 + '0', fd);
+	return (count);
+}
