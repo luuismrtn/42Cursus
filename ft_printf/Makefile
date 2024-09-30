@@ -11,30 +11,31 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
-LIBFTDIR = ./libft
-LIBFTNAME = libft.a
 
-SRCS = 	ft_printf.c
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcs
+
+SRCS =	ft_printf.c \
+		ft_printf_utils.c
+
 OBJS = $(SRCS:.c=.o)
+
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
-makelibft:
-	@make -C $(LIBFTDIR)
-	@cp $(LIBFTDIR)/$(LIBFTNAME) .
-	@mv $(LIBFTNAME) $(NAME)
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-$(NAME): makelibft $(OBJS)
-	@ar -r $(NAME) $(OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
-	@cd $(LIBFTDIR) && make clean
-	
+	rm -f $(OBJS)
+
 fclean: clean
-	@rm -f $(NAME)
-	@cd $(LIBFTDIR) && make fclean
-	
+	rm -f $(NAME)
+
 re: fclean all

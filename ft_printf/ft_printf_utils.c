@@ -18,33 +18,42 @@ int	ft_putchar_fd(char c, int fd)
 	return (1);
 }
 
-int	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd, int is_unsigned)
 {
 	int	count;
+	unsigned int un;
 
 	count = 0;
-	if (n == -2147483648)
-	{
-		count += ft_putstr_fd("-2147483648", fd);
-		return (count);
-	}
-	if (n < 0)
+	if (!is_unsigned && n == -2147483648)
+		return (count += ft_putstr_fd("-2147483648", fd));
+	if (!is_unsigned && n < 0)
 	{
 		count += ft_putchar_fd('-', fd);
 		n = -n;
 	}
-	if (n > 9)
-		count += ft_putnbr_fd(n / 10, fd);
-	count += ft_putchar_fd(n % 10 + '0', fd);
+	if (is_unsigned)
+	{
+		unsigned int un = (unsigned int)n;
+		if (un > 9)
+			count += ft_putnbr_fd(un / 10, fd, 1);
+		count += ft_putchar_fd(un % 10 + '0', fd);
+	}
+	else
+	{
+		if (n > 9)
+			count += ft_putnbr_fd(n / 10, fd, 0);
+		count += ft_putchar_fd(n % 10 + '0', fd);
+	}
 	return (count);
 }
-
 
 int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 	int	count;
 
+	if (!s)
+		return (ft_putstr_fd("(null)", fd));
 	i = 0;
 	count = 0;
 	while (s[i])
@@ -52,7 +61,7 @@ int	ft_putstr_fd(char *s, int fd)
 	return (count);
 }
 
-int	ft_puthex_fd(unsigned int n, int fd, int upper)
+int	ft_puthex_fd(unsigned long n, int fd, int upper)
 {
 	char	*base;
 	int		count;
@@ -72,6 +81,9 @@ int	ft_putptr_fd(void *ptr, int fd)
 {
 	int				count;
 	unsigned long	ptr_value;
+
+	if (!ptr)
+		return (ft_putstr_fd("(nil)", fd));
 
 	count = 0;
 	ptr_value = (unsigned long)ptr;

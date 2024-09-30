@@ -21,9 +21,9 @@ static int	ft_print(char c, va_list args)
 	else if (c == 'p')
 		count += ft_putptr_fd(va_arg(args, void *), 1);
 	else if (c == 'd' || c == 'i')
-		count += ft_putnbr_fd(va_arg(args, int), 1);
+		count += ft_putnbr_fd(va_arg(args, int), 1, 0);
 	else if (c == 'u')
-		count += ft_putnbr_fd(va_arg(args, unsigned int), 1);
+		count += ft_putnbr_fd(va_arg(args, unsigned int), 1, 1);
 	else if (c == 'x')
 		count += ft_puthex_fd(va_arg(args, unsigned int), 1, 0);
 	else if (c == 'X')
@@ -56,5 +56,3 @@ int	ft_printf(char const *format, ...)
 	va_end(args);
 	return (count);
 }
-
-//cc ft_printf.c ft_printf_utils.c testsprintf.c && ./a.out
