@@ -67,9 +67,6 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-int					ft_putnbru_fd(int n, int fd, int is_unsigned);
-int					ft_puthex_fd(unsigned long n, int fd, int upper);
-int					ft_putptr_fd(void *ptr, int fd);
 int					ft_printf(char const *format, ...);
 
 #endif

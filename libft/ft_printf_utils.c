@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:02:14 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/30 21:42:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:07:02 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_putchar_fd(char c, int fd)
 	return (1);
 }
 
-int	ft_putnbru_fd(int n, int fd, int is_unsigned)
+int	ft_putnbr_fd(int n, int fd, int is_unsigned)
 {
 	int				count;
 	unsigned int	un;

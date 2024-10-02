@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:06:14 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/30 21:43:03 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:06:38 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static int	ft_print(char c, va_list args)
 	else if (c == 'p')
 		count += ft_putptr_fd(va_arg(args, void *), 1);
 	else if (c == 'd' || c == 'i')
-		count += ft_putnbru_fd(va_arg(args, int), 1, 0);
+		count += ft_putnbr_fd(va_arg(args, int), 1, 0);
 	else if (c == 'u')
-		count += ft_putnbru_fd(va_arg(args, unsigned int), 1, 1);
+		count += ft_putnbr_fd(va_arg(args, unsigned int), 1, 1);
 	else if (c == 'x')
 		count += ft_puthex_fd(va_arg(args, unsigned int), 1, 0);
 	else if (c == 'X')
