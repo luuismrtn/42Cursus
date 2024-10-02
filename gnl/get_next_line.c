@@ -63,17 +63,11 @@ static char	*handle_end_of_file(char **buffer, char *read_buffer)
 
 	line = NULL;
 	if (ft_strlen(*buffer) > 0)
-	{
 		line = ft_strjoin_gnl(line, *buffer, ft_strlen(*buffer));
-		free(*buffer);
-		*buffer = NULL;
-		free(read_buffer);
-		return (line);
-	}
 	free(*buffer);
 	*buffer = NULL;
 	free(read_buffer);
-	return (NULL);
+	return (line);
 }
 
 char	*get_next_line(int fd)
