@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:23:33 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/30 18:23:33 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:28:42 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (str[len])
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strjoin_gnl(char *s1, const char *s2, int len)
 {
-	char *str;
+	char	*str;
 
 	if (!s1)
 	{
@@ -47,9 +47,9 @@ char	*ft_free(char *str)
 
 char	*ft_fill_join(char *s1, const char *s2, int len)
 {
-	char *str;
-	int i;
-	int j;
+	char	*str;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;

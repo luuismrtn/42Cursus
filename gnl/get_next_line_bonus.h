@@ -6,21 +6,20 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 13:34:11 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/28 19:18:41 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:36:42 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H_BONUS
-
-# define GET_NEXT_LINE_H_BONUS
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
 
-#ifndef MAX_FD
-# define MAX_FD 1024
-#endif
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
 
 # include <stdio.h>
 # include <stdlib.h>
