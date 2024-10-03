@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:34:11 by lumartin          #+#    #+#             */
-/*   Updated: 2024/09/30 21:43:11 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:38:24 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,5 @@ char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
-
-int					ft_printf(char const *format, ...);
 
 #endif
