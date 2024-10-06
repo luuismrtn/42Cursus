@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:39:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/06 13:08:06 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/06 14:26:04 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,13 @@ void	swap(t_stack *stack, char c)
 	ft_printf("s%c\n", c);
 }
 
+void ss(t_stack *stackA, t_stack *stackB)
+{
+    swap(stackA, 'a');
+    swap(stackB, 'b');
+    ft_printf("ss\n");
+}
+
 void	rotate(t_stack *stack, char c)
 {
 	int	tmp;
@@ -115,6 +122,13 @@ void	rotate(t_stack *stack, char c)
 	ft_printf("r%c\n", c);
 }
 
+void rr(t_stack *stackA, t_stack *stackB)
+{
+    rotate(stackA, 'a');
+    rotate(stackB, 'b');
+    ft_printf("rr\n");
+}
+
 void	reverse_rotate(t_stack *stack, char c)
 {
 	long	tmp;
@@ -131,6 +145,13 @@ void	reverse_rotate(t_stack *stack, char c)
 	}
 	stack->array[i] = tmp;
 	ft_printf("rr%c\n", c);
+}
+
+void rrr(t_stack *stackA, t_stack *stackB)
+{
+    reverse_rotate(stackA, 'a');
+    reverse_rotate(stackB, 'b');
+    ft_printf("rrr\n");
 }
 
 void	sort(t_stack *stackA, t_stack *stackB)
