@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 13:34:11 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/05 22:30:51 by lumartin         ###   ########.fr       */
+/*   Created: 2024/10/05 21:37:16 by lumartin          #+#    #+#             */
+/*   Updated: 2024/10/06 12:39:05 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
+#ifndef PUSH_SWAP_H
 
-# ifndef MAX_FD
-#  define MAX_FD 1024
-# endif
+#define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "./libft/libft.h"
 
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-char	*ft_strjoin_gnl(char *s1, const char *s2, int len);
+typedef struct s_stack
+{
+    int     *array;
+    size_t     size;
+}           t_stack;
 
 #endif

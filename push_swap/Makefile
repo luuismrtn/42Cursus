@@ -1,41 +1,36 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/28 11:23:39 by lumartin          #+#    #+#              #
-#    Updated: 2024/09/30 21:46:52 by lumartin         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = push_swap
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rcs
+LIBFT_DIR = ./libft
 
-SRCS =	ft_printf.c \
-		ft_printf_utils.c
+LIBFT = $(LIBFT_DIR)/libft.a
+
+SRCS = main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-.PHONY: all clean fclean re
+CC = cc
+CFLAGS = -Wall -Wextra #-Werror
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
 
-%.o: %.c
+%.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
+	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -38,7 +38,7 @@ char	*ft_strjoin_gnl(char *s1, const char *s2, int len)
 	return (str);
 }
 
-char	*ft_free(char *str)
+static char	*ft_free(char *str)
 {
 	if (str)
 		free(str);
