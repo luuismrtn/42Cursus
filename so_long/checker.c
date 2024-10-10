@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:25 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 23:54:58 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 00:07:10 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,13 @@ int	checker(t_game *game, int height, int width)
 			width));
 }
 
-int	error(void)
+int	error(char *message)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error\n", 1);
+	if (message)
+	{
+		ft_putstr_fd(message, 1);
+		ft_putstr_fd("\n", 1);
+	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:46:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 19:46:28 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 00:09:16 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 			game->collectible_count--;
 		if (game->map[new_y][new_x] == 'E' && game->collectible_count == 0)
 		{
-			printf("¡Has ganado!\n");
+			ft_putstr_fd("¡Has ganado!\n", 1);
 			close_game(game);
 		}
 		game->map[game->player_y][game->player_x] = '0';

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:51:35 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 23:33:01 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 00:12:04 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	load_images(t_game *game)
 			&width, &height);
 	if (!game->img_player || !game->img_wall || !game->img_collectible
 		|| !game->img_exit || !game->img_empty)
-		exit(error());
+		exit(error("Failed to load images"));
 }
 
 int	handle_input(int keycode, t_game *game)
@@ -69,12 +69,12 @@ int	main(int argc, char **argv)
 	int		*map_size;
 
 	if (argc != 2)
-		return (error());
+		return (error("Wrong number of arguments"));
 	map_size = load_map(&game, argv[1]);
     if (map_size[0] == map_size[1])
-        return (error());
+        return (error("No rectangular"));
     if (!checker(&game, map_size[0], map_size[1]))
-        return (error());
+        return (error("Invalid map"));
 	init_game(&game, map_size[0], map_size[1]);
 	mlx_key_hook(game.win, handle_input, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);

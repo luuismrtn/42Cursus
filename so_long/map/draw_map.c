@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:40:54 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 19:44:43 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 00:42:14 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	draw_tile(t_game *game, char tile, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, game->img_empty, x
 			* tile_size, y * tile_size);
 	else
-		error();
+		error("Invalid map");
 }
 
 static void	draw_map_line(t_game *game, int y)
@@ -55,7 +55,7 @@ void	draw_map(t_game *game)
 	y = 0;
 	if (!game || !game->map)
 	{
-		error();
+		error("Invalid game");
 		return ;
 	}
 	while (game->map[y] != NULL)

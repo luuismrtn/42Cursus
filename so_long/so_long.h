@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:18:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 19:46:53 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 00:07:58 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			handle_input(int keycode, t_game *game);
 int			close_game(t_game *game);
 void		move_player(t_game *game, int x, int y);
 int			*load_map(t_game *game, char *file_path);
-int			error(void);
+int			error(char *message);
 void		draw_map(t_game *game);
 void		move_player(t_game *game, int y_offset, int x_offset);
 
