@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:03:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 19:39:43 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/10 23:34:48 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static void	check(char *line, t_game *game, int i)
 		if (line[j] == 'P')
 			check_players(game, i, j);
 		else if (line[j] == 'C')
-			game->collectible_count++;
+			game->collectible_count = game->collectible_count + 1;
+			
 	}
 }
 
@@ -89,6 +90,7 @@ int	*load_map(t_game *game, char *file_path)
 	char	*line;
 	int		line_count;
 
+	game->collectible_count = 0;
 	map_size = (int *)malloc(sizeof(int) * 2);
 	if (!map_size)
 		exit(error());
@@ -101,5 +103,6 @@ int	*load_map(t_game *game, char *file_path)
 	check_map(game, file_path);
 	map_size[0] = line_count;
 	map_size[1] = ft_strlen(game->map[0]) - 1;
+
 	return (map_size);
 }
