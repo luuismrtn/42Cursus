@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:51:35 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/10 19:55:08 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:25:19 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (error());
 	map_size = load_map(&game, argv[1]);
+    if (map_size[0] == map_size[1])
+        return (error());
+    if (!checker(&game, map_size[0], map_size[1]))
+        return (error());
 	init_game(&game, map_size[0], map_size[1]);
 	mlx_key_hook(game.win, handle_input, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);

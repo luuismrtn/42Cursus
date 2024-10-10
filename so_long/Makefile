@@ -9,7 +9,7 @@ MAP_DIR = ./map
 SRCS = main.c \
 		$(PLAYER_DIR)/move_player.c \
 		$(MAP_DIR)/load_map.c $(MAP_DIR)/draw_map.c \
-		error.c
+		checker.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -36,7 +36,6 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 %.o: %.c so_long.h
-	# Incluimos los headers de minilibx y so_long al compilar los archivos .o
 	$(CC) $(CFLAGS) $(MLX_HEADERS) -c $< -o $@
 
 clean:
