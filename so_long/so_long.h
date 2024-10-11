@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:18:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 12:12:00 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:59:48 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void		draw_map(t_game *game);
 void		check_map(t_game *game, char *file_path);
 void		move_player(t_game *game, int y_offset, int x_offset);
 int			check_connectivity(t_game *game, int height, int width);
+void		load_images(t_game *game);
 
 #endif

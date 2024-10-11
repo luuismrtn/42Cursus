@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 11:46:42 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 13:00:22 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:20:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	dfs(t_game *game, int x, int y, int **visited, int width,
 		exit[0]++;
 		visited[y][x] = 1;
 	}
-	height = ft_strlen(game->map) + 1;
+	height = ft_strlen(game->map[0]) + 1;
 	if (x < 0 || x >= width || y < 0 || y >= height || visited[y][x]
 		|| game->map[y][x] == '1')
 		return ;
@@ -91,7 +91,7 @@ int	check_connectivity(t_game *game, int height, int width)
 	visited = allocate_visited(height, width);
 	if (!visited)
 		return (0);
-	dfs(game, game->player_x, game->player_y, visited, width, c_count, exit);   
+	dfs(game, game->player_x, game->player_y, visited, width, c_count, exit);
 	result = (c_count[0] == game->collectible_count && exit[0] > 0);
 	free_visited(visited, height);
 	return (result);

@@ -6,11 +6,23 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:46:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 00:09:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 19:32:04 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int count_lines(t_game *game)
+{
+	int count;
+	
+	count = 0;
+	while (game->map[count])
+	{
+		count++;
+	}
+	return (count);
+}
 
 void	move_player(t_game *game, int y_offset, int x_offset)
 {
@@ -19,8 +31,8 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 
 	new_x = game->player_x + x_offset;
 	new_y = game->player_y + y_offset;
-	if (new_y < 0 || new_y >= ft_strlen(game->map) || new_x < 0
-		|| new_x >= ft_strlen(game->map[new_y]))
+	if (new_y < 0 || new_y >= count_lines(game) || new_x < 0
+		|| new_x >= ft_strlen(game->map[0]))
 		return ;
 	if (game->map[new_y][new_x] != '1')
 	{
