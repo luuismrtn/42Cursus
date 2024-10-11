@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:51:35 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 00:12:04 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:03:54 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (error("Wrong number of arguments"));
 	map_size = load_map(&game, argv[1]);
-    if (map_size[0] == map_size[1])
-        return (error("No rectangular"));
     if (!checker(&game, map_size[0], map_size[1]))
-        return (error("Invalid map"));
+        return (1);
 	init_game(&game, map_size[0], map_size[1]);
 	mlx_key_hook(game.win, handle_input, &game);
 	mlx_hook(game.win, 17, 0, close_game, &game);
