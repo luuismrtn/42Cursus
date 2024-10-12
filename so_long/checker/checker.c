@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:25 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 12:51:08 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:09:37 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,15 @@ void	check_map(t_game *game, char *file_path)
 	char	*line;
 	int		i;
 	char	*ext;
+	char	*file_name;
 
-	ext = ft_strrchr(file_path, '.');
-	if (ext == NULL || ft_strncmp(ext, ".ber", 4) != 0)
+	file_name = ft_strrchr(file_path, '/');
+	if (file_name)
+		file_name++;
+	else
+		file_name = file_path;
+	ext = ft_strrchr(file_name, '.');
+	if (ext == NULL || ft_strncmp(ext, ".ber", 4) != 0 || ext == file_name)
 		exit(error("Bad extension"));
 	i = 0;
 	fd = open(file_path, O_RDONLY);
@@ -133,6 +139,7 @@ void	check_map(t_game *game, char *file_path)
 	close(fd);
 	check_number(game);
 }
+
 
 int	checker(t_game *game, int height, int width)
 {
