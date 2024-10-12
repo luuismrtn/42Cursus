@@ -6,80 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:51:35 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 13:14:38 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:59:06 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	load_images(t_game *game)
-{
-	int	width;
-	int	height;
-
-	game->img_player[0] = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/player_00.xpm", &width, &height);
-	game->img_player[1] = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/player_01.xpm", &width, &height);
-	game->img_player[2] = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/player_02.xpm", &width, &height);
-	game->img_wall = mlx_xpm_file_to_image(game->mlx, "./tiles/wall.xpm",
-			&width, &height);
-	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/collectible.xpm", &width, &height);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx, "./tiles/exit.xpm",
-			&width, &height);
-	game->img_empty = mlx_xpm_file_to_image(game->mlx, "./tiles/empty.xpm",
-			&width, &height);
-	game->img_enemy = mlx_xpm_file_to_image(game->mlx, "./tiles/enemy.xpm",
-			&width, &height);
-	if (!game->img_player[0] || !game->img_wall || !game->img_collectible
-		|| !game->img_exit || !game->img_empty || !game->img_enemy)
-		exit(error("Failed to load images"));
-}
-
-void	draw_enemy(t_game *game, int x, int y)
-{
-	mlx_put_image_to_window(game->mlx, game->win, game->img_enemy, x * 64, y
-		* 64);
-}
-
-static void draw_move_counter(t_game *game)
-{
-    char move_str[20];
-    sprintf(move_str, "Movimientos: %d", game->moves);
-
-    mlx_string_put(game->mlx, game->win, 30, 30, 0xFFFFFF, move_str);
-}
-
-static void animate_sprites(t_game *game)
-{
-    int y;
-    int x;
-	int fps;
-
-	fps = 144 * 50;
-    if (game->current_frame++ % fps == 0)
-    {
-        mlx_put_image_to_window(game->mlx, game->win,
-            game->img_player[(game->current_frame / fps) % 3],
-            game->player_x * 64, game->player_y * 64);
-        y = 0;
-        while (game->map[y] != NULL)
-        {
-            x = 0;
-            while (game->map[y][x] != '\0')
-            {
-                if (game->map[y][x] == 'M')
-                    draw_enemy(game, x, y);
-                x++;
-            }
-            y++;
-        }
-    }
-    if (game->current_frame >= fps * 3)
-        game->current_frame = 0;
-}
 
 int	handle_input(int keycode, t_game *game)
 {

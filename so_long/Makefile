@@ -10,7 +10,7 @@ CHECKER_DIR = ./checker
 SRCS = main.c \
 		$(PLAYER_DIR)/move_player.c \
 		$(MAP_DIR)/load_map.c $(MAP_DIR)/draw_map.c \
-		$(CHECKER_DIR)/checker.c $(CHECKER_DIR)/dfs.c \
+		$(CHECKER_DIR)/checker.c $(CHECKER_DIR)/checker_extra.c $(CHECKER_DIR)/dfs.c \
 
 OBJS = $(SRCS:.c=.o)
 

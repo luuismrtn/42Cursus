@@ -6,10 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 11:46:42 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 13:03:23 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:34:56 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "checker.h"
 #include "so_long.h"
 
 static void	free_visited(int **visited, int height)
@@ -54,37 +55,37 @@ static int	**allocate_visited(int height, int width)
 	return (visited);
 }
 
-static void	dfs(t_game *game, int x, int y, int **visited, int width,
-		int *c_count, int *exit)
+static void	dfs(t_game *game, int x, int y, t_dfs_params *params)
 {
 	int	height;
 
 	if (game->map[y][x] == 'E')
 	{
-		exit[0]++;
-		visited[y][x] = 1;
+		params->exit[0]++;
+		params->visited[y][x] = 1;
 	}
 	else if (game->map[y][x] == 'M')
-		visited[y][x] = 1;
+		params->visited[y][x] = 1;
 	height = ft_strlen(game->map[0]) + 1;
-	if (x < 0 || x >= width || y < 0 || y >= height || visited[y][x]
-		|| game->map[y][x] == '1')
+	if (x < 0 || x >= params->width || y < 0 || y >= height
+		|| params->visited[y][x] || game->map[y][x] == '1')
 		return ;
-	visited[y][x] = 1;
+	params->visited[y][x] = 1;
 	if (game->map[y][x] == 'C')
-		c_count[0]++;
-	dfs(game, x, y - 1, visited, width, c_count, exit);
-	dfs(game, x, y + 1, visited, width, c_count, exit);
-	dfs(game, x - 1, y, visited, width, c_count, exit);
-	dfs(game, x + 1, y, visited, width, c_count, exit);
+		params->c_count[0]++;
+	dfs(game, x, y - 1, params);
+	dfs(game, x, y + 1, params);
+	dfs(game, x - 1, y, params);
+	dfs(game, x + 1, y, params);
 }
 
 int	check_connectivity(t_game *game, int height, int width)
 {
-	int	**visited;
-	int	result;
-	int	*exit;
-	int	*c_count;
+	int				**visited;
+	int				result;
+	int				*exit;
+	int				*c_count;
+	t_dfs_params	params;
 
 	exit = (int *)malloc(sizeof(int));
 	c_count = (int *)malloc(sizeof(int));
@@ -93,8 +94,14 @@ int	check_connectivity(t_game *game, int height, int width)
 	visited = allocate_visited(height, width);
 	if (!visited)
 		return (0);
-	dfs(game, game->player_x, game->player_y, visited, width, c_count, exit);
+	params.visited = visited;
+	params.width = width;
+	params.c_count = c_count;
+	params.exit = exit;
+	dfs(game, game->player_x, game->player_y, &params);
 	result = (c_count[0] == game->collectible_count && exit[0] > 0);
 	free_visited(visited, height);
+	free(exit);
+	free(c_count);
 	return (result);
 }
