@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:25 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 13:55:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:13:21 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static int	check_rectangular(t_game *game, int width)
 
 static void	check_number(t_game *game)
 {
-	int	i;
-	int	j;
 	int	*counts;
 
 	counts = (int *)malloc(sizeof(int) * 3);
@@ -110,4 +108,5 @@ int	checker(t_game *game, int height, int width)
 		exit(error("Not surrounded by walls"));
 	if (!check_connectivity(game, height, width))
 		exit(error("Not connected"));
+	return (1);
 }

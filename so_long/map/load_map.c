@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:03:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 13:59:21 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:12:40 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	count_lines(char *file_path)
 	int		fd;
 	char	*line;
 	int		line_count;
-	int		len;
 
 	line_count = 0;
 	fd = open(file_path, O_RDONLY);
@@ -76,10 +75,8 @@ void	load_images(t_game *game)
 
 int	*load_map(t_game *game, char *file_path)
 {
-	int		*map_size;
-	int		fd;
-	char	*line;
-	int		line_count;
+	int	*map_size;
+	int	line_count;
 
 	game->collectible_count = 0;
 	map_size = (int *)malloc(sizeof(int) * 2);

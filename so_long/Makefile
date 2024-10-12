@@ -15,7 +15,7 @@ SRCS = main.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MINILIBX := ./minilibx-linux
 
@@ -27,26 +27,26 @@ all: $(NAME)
 
 
 $(MINILIBX)/libmlx.a:
-	@make -C $(MINILIBX)
+	make -C $(MINILIBX)
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)/libmlx.a
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(LIBRARY) -o $(NAME)
 
 
 $(LIBFT):
-	@make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 
 %.o: %.c so_long.h
 	$(CC) $(CFLAGS) $(MLX_HEADERS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
-	@make clean -C $(LIBFT_DIR)
-	@make clean -C $(MINILIBX)
+	make clean -C $(LIBFT_DIR)
+	make clean -C $(MINILIBX)
 
 fclean: clean
 	rm -f $(NAME)
-	@make fclean -C $(LIBFT_DIR)
+	make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 

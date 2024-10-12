@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:18:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 13:59:30 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 14:11:30 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void		load_images(t_game *game);
 void		animate_sprites(t_game *game);
 void		draw_enemy(t_game *game, int x, int y);
 void		draw_move_counter(t_game *game);
+int			checker(t_game *game, int height, int width);
 
 #endif
