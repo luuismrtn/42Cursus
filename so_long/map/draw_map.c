@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:40:54 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 13:03:24 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:35:28 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	draw_tile(t_game *game, char tile, int x, int y)
 		mlx_put_image_to_window(game->mlx, game->win, game->img_wall, x
 			* tile_size, y * tile_size);
 	else if (tile == 'P')
-		mlx_put_image_to_window(game->mlx, game->win, game->img_player, x
+		mlx_put_image_to_window(game->mlx, game->win, game->img_player[0], x
 			* tile_size, y * tile_size);
 	else if (tile == 'C')
 		mlx_put_image_to_window(game->mlx, game->win, game->img_collectible, x
@@ -31,6 +31,9 @@ static void	draw_tile(t_game *game, char tile, int x, int y)
 			* tile_size, y * tile_size);
 	else if (tile == '0')
 		mlx_put_image_to_window(game->mlx, game->win, game->img_empty, x
+			* tile_size, y * tile_size);
+	else if (tile == 'M')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_enemy, x
 			* tile_size, y * tile_size);
 	else
 		exit(error("Invalid map"));

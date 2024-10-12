@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:18:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 17:59:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:57:02 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ typedef struct s_game
 	int		player_y;
 	int		collectible_count;
 	int		moves;
-	void	*img_player;
+	int		current_frame;
+	void	*img_player[3];
 	void	*img_wall;
 	void	*img_collectible;
 	void	*img_exit;
 	void	*img_empty;
+	void	*img_enemy;
 }			t_game;
 
 void		init_game(t_game *game, int height, int width);

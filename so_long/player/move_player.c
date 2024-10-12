@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:46:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/11 19:32:04 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 13:05:34 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ static int count_lines(t_game *game)
 	return (count);
 }
 
+static void check_enemy_collision(t_game *game, int new_x, int new_y)
+{
+    if (game->map[new_y][new_x] == 'M')
+    {
+        ft_printf("¡Has perdido! Tocaste un enemigo.\n");
+        close_game(game);
+    }
+}
+
 void	move_player(t_game *game, int y_offset, int x_offset)
 {
 	int	new_x;
@@ -36,6 +45,7 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 		return ;
 	if (game->map[new_y][new_x] != '1')
 	{
+		check_enemy_collision(game, new_x, new_y);
 		if (game->map[new_y][new_x] == 'C')
 			game->collectible_count--;
 		if (game->map[new_y][new_x] == 'E' && game->collectible_count == 0)
@@ -48,7 +58,6 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 		game->player_x = new_x;
 		game->player_y = new_y;
 		game->moves++;
-		printf("Movimientos: %d\n", game->moves);
 		draw_map(game);
 	}
 }

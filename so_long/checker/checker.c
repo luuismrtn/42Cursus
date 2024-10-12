@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:25 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 12:09:37 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/12 12:36:19 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int line_length(char *line)
 	sol = 0;
 	while (line[i])
 	{
-		if (line[i] == '1' || line[i] == '0' || line[i] == 'E' || line[i] == 'P' || line[i] == 'C')
+		if (line[i] == '1' || line[i] == '0' || line[i] == 'E' || line[i] == 'P' || line[i] == 'C' || line[i] == 'M')
 			sol++;
 		i++;
 	}
