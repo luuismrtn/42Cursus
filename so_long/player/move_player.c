@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:46:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 14:15:03 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/13 18:05:30 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ void	animate_sprites(t_game *game)
 		game->current_frame = 0;
 }
 
+static void	update_map(t_game *game, int y, int x)
+{
+	game->map[game->player_y][game->player_x] = '0';
+	game->map[y][x] = 'P';
+	game->player_x = x;
+	game->player_y = y;
+	game->moves++;
+	ft_printf("Movimientos: %d\n", game->moves);
+}
+
 void	move_player(t_game *game, int y_offset, int x_offset)
 {
 	int	new_x;
@@ -80,11 +90,7 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 			ft_putstr_fd("¡Has ganado!\n", 1);
 			close_game(game);
 		}
-		game->map[game->player_y][game->player_x] = '0';
-		game->map[new_y][new_x] = 'P';
-		game->player_x = new_x;
-		game->player_y = new_y;
-		game->moves++;
+		update_map(game, new_y, new_x);
 		draw_map(game);
 	}
 }
