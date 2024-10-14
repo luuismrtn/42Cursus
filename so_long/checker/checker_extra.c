@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:15:59 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/13 17:43:40 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/14 01:57:16 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,32 @@ int	error(char *message)
 		ft_putstr_fd("\n", 1);
 	}
 	return (1);
+}
+
+char	**duplicate(char **map)
+{
+	int		i;
+	char	**new_map;
+
+	i = 0;
+	while (map[i])
+		i++;
+	new_map = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!new_map)
+		return (NULL);
+	i = 0;
+	while (map[i])
+	{
+		new_map[i] = ft_strdup(map[i]);
+		if (!new_map[i])
+		{
+			while (i > 0)
+				free(new_map[--i]);
+			free(new_map);
+			return (NULL);
+		}
+		i++;
+	}
+	new_map[i] = NULL;
+	return (new_map);
 }

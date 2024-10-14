@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:51:35 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/12 14:11:11 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/14 02:17:34 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static int	update_frame(t_game *game)
 
 int	close_game(t_game *game)
 {
+	game->moves++;
+	ft_printf("Tus movimientos finales: %d\n", game->moves);
 	mlx_destroy_window(game->mlx, game->win);
 	free(game->map);
 	exit(0);

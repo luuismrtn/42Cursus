@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:46:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/13 18:05:30 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/14 02:16:08 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ void	move_player(t_game *game, int y_offset, int x_offset)
 			game->collectible_count--;
 		if (game->map[new_y][new_x] == 'E' && game->collectible_count == 0)
 		{
-			ft_putstr_fd("¡Has ganado!\n", 1);
+			if (game->moves <= game->perfect_moves)
+				ft_putstr_fd("¡Has ganado!\n", 1);
+			else
+				ft_putstr_fd("¡Has perdido! Intenta buscar un camino mejor\n", 1);
 			close_game(game);
 		}
 		update_map(game, new_y, new_x);
