@@ -5,105 +5,119 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/11 11:46:42 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 02:13:29 by lumartin         ###   ########.fr       */
+/*   Created: 2024/10/14 00:29:52 by lumartin          #+#    #+#             */
+/*   Updated: 2024/10/14 02:35:02 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "so_long.h"
 
-static void	free_visited(int **visited, int height)
+void	dfs_op(char **map, int x, int y, t_dfs_params *params)
 {
-	int	i;
-
-	i = 0;
-	while (i < height)
-	{
-		free(visited[i]);
-		i++;
-	}
-	free(visited);
-}
-
-int	**allocate_visited(int height, int width)
-{
-	int	**visited;
-	int	i;
-	int	j;
-
-	visited = (int **)malloc(sizeof(int *) * height);
-	if (!visited)
-		return (NULL);
-	i = 0;
-	while (i < height)
-	{
-		visited[i] = (int *)malloc(sizeof(int) * width);
-		if (!visited[i])
-		{
-			free_visited(visited, i);
-			return (NULL);
-		}
-		j = 0;
-		while (j < width)
-		{
-			visited[i][j] = 0;
-			j++;
-		}
-		i++;
-	}
-	return (visited);
-}
-
-void	dfs(t_game *game, int x, int y, t_dfs_params *params)
-{
-	int	height;
-
-	if (game->map[y][x] == 'E')
-	{
-		params->exit++;
-		params->visited[y][x] = 1;
-	}
-	else if (game->map[y][x] == 'M')
-		params->visited[y][x] = 1;
-	height = ft_strlen(game->map[0]) + 1;
-	if (x < 0 || x >= params->width || y < 0 || y >= height
-		|| params->visited[y][x] || game->map[y][x] == '1')
+	if (map[y][x] == 'E' || map[y][x] == 'M' || map[y][x] == '1')
 		return ;
+	if (x < 0 || x >= params->width || y < 0 || y >= params->height
+		|| params->visited[y][x])
+		return ;
+	params->steps++;
 	params->visited[y][x] = 1;
-	if (game->map[y][x] == 'C')
+	if (map[y][x] == 'C')
+	{
 		params->c_count++;
-	dfs(game, x, y - 1, params);
-	dfs(game, x, y + 1, params);
-	dfs(game, x - 1, y, params);
-	dfs(game, x + 1, y, params);
+		if (params->perfect == -1 || params->steps < params->perfect)
+		{
+			params->coin_x = x;
+			params->coin_y = y;
+			params->perfect = params->steps;
+		}
+	}
+	dfs_op(map, x - 1, y, params);
+	dfs_op(map, x, y - 1, params);
+	dfs_op(map, x + 1, y, params);
+	dfs_op(map, x, y + 1, params);
+	params->steps--;
+	params->visited[y][x] = 0;
+	if (map[y][x] == 'C')
+		params->c_count--;
 }
 
-int init_struct(t_dfs_params *params, int height, int width)
+void	dfs_op_exit(char **map, int x, int y, t_dfs_params *params)
 {
-	params->visited = allocate_visited(height, width);
-	if (!params->visited)
-		return (0);
-	params->height = height;
-	params->width = width;
-	params->c_count = 0;
-	params->exit = 0;
-	params->steps = 0;
+	if (map[y][x] == 'M' || map[y][x] == '1')
+		return ;
+	if (x < 0 || x >= params->width || y < 0 || y >= params->height
+		|| params->visited[y][x])
+		return ;
+	params->steps++;
+	params->visited[y][x] = 1;
+	if (map[y][x] == 'E')
+	{
+		if (params->perfect == -1 || params->steps < params->perfect)
+			params->perfect = params->steps;
+	}
+	dfs_op_exit(map, x - 1, y, params);
+	dfs_op_exit(map, x, y - 1, params);
+	dfs_op_exit(map, x + 1, y, params);
+	dfs_op_exit(map, x, y + 1, params);
+	params->steps--;
+	params->visited[y][x] = 0;
+}
+
+static int	find_closest_coin(char **map, int *player_x, int *player_y,
+		t_dfs_params *params)
+{
 	params->perfect = -1;
-	return (1);
+	params->steps = 0;
+	dfs_op(map, *player_x, *player_y, params);
+	if (params->perfect == -1)
+		return (0);
+	*player_x = params->coin_x;
+	*player_y = params->coin_y;
+	map[params->coin_y][params->coin_x] = '0';
+	return (params->perfect - 1);
 }
 
-int	check_connectivity(t_game *game, int height, int width)
+int	collect_all_coins(char **map, int *c_player, int coins,
+		t_dfs_params *params_opt)
 {
-	int				result;
-	t_dfs_params	params;
+	int	total_steps;
+	int	steps;
 
-	if (!init_struct(&params, height, width))
+	total_steps = 0;
+	while (coins > 0)
+	{
+		allocate_visited(params_opt->height, params_opt->width);
+		steps = find_closest_coin(map, &c_player[0], &c_player[1], params_opt);
+		if (steps == 0)
+			return (-1);
+		total_steps += steps;
+		coins--;
+	}
+	return (total_steps);
+}
+
+int	find_optimal_path(t_game *game, int height, int width)
+{
+	int				total_steps;
+	t_dfs_params	params_opt;
+	char			**map;
+	int				c_player[2];
+	int				coins;
+
+	coins = game->collectible_count;
+	c_player[0] = game->player_x;
+	c_player[1] = game->player_y;
+	map = duplicate(game->map);
+	if (!init_struct(&params_opt, height, width))
 		return (0);
-	dfs(game, game->player_x, game->player_y, &params);
-	result = (params.c_count == game->collectible_count && params.exit > 0);
-	game->perfect_moves = find_optimal_path(game, height, width);
-	ft_printf("Movimientos perfectos: %d\n", game->perfect_moves);
-	free_visited(params.visited, height);
-	return (result);
+	total_steps = collect_all_coins(map, c_player, coins, &params_opt);
+	if (total_steps == -1)
+		return (0);
+	params_opt.perfect = -1;
+	params_opt.steps = 0;
+	dfs_op_exit(map, params_opt.coin_x, params_opt.coin_y, &params_opt);
+	if (params_opt.perfect == -1)
+		return (0);
+	return (total_steps + params_opt.perfect - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:17:41 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 01:57:23 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/14 02:26:22 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	dfs_op(char **map, int x, int y, t_dfs_params *params);
 int		line_length(char *line);
 int		error(char *message);
 int		*counts_items(t_game *game, int *counts);
-void	dfs(t_game *game, int x, int y, t_dfs_params *params);
 int		init_struct(t_dfs_params *params, int height, int width);
 int		find_optimal_path(t_game *game, int height, int width);
 int		**allocate_visited(int height, int width);
