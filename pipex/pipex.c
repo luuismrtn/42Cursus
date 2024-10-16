@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:23:39 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/16 21:47:17 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/16 22:07:55 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,9 @@ void	execute_command(char *cmd, char **environ)
 	path = get_path(s_cmd[0], environ);
 	if (execve(path, s_cmd, environ) == -1)
 	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(s_cmd[0], 2);
+		ft_putstr_fd("PIPEX: command not found: ", 2);
+		ft_putstr_fd(s_cmd[0], 2);
+		ft_putstr_fd("\n", 2);
 		ft_free_tab(s_cmd);
 		exit(0);
 	}
@@ -84,7 +85,7 @@ static void	pipex(char **argv, char **environ)
 		exit(-1);
 	if (pid == 0)
 		first_command(argv[1], argv[2], fd, environ);
-	second_command(argv[3], argv[4], fd, environ);
+	second_command(argv[4], argv[3], fd, environ);
 }
 
 int	main(int argc, char **argv, char **environ)
