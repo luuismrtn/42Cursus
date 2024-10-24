@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 13:17:41 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 03:34:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:12:12 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ typedef struct s_dfs_params
 	int	coin_y;
 }		t_dfs_params;
 
-void	dfs_op(char **map, int x, int y, t_dfs_params *params);
-int		line_length(char *line);
-int		error(char *message);
-int		*counts_items(t_game *game, int *counts);
-int		init_struct(t_dfs_params *params, int height, int width);
-int		find_optimal_path(t_game *game, int height, int width);
-int		**allocate_visited(int height, int width);
 char	**duplicate(char **map);
+int		line_length(char *line);
+int		*counts_items(t_game *game, int *counts);
+int		**allocate_visited(int height, int width);
+void	dfs_c_e(char **map, int x, int y, t_dfs_params *params);
+int		collect_all_coins(char **map, int *c_player, int coins,
+			t_dfs_params *params_opt);
+void	dfs_op_exit(char **map, int x, int y, t_dfs_params *params);
 
 #endif

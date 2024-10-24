@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 17:18:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 03:05:38 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:13:45 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_game
 	int		collectible_count;
 	int		moves;
 	int		perfect_moves;
-	int		current_frame;
 	void	*img_player;
 	void	*img_wall;
 	void	*img_collectible;
@@ -37,13 +36,10 @@ typedef struct s_game
 	void	*img_empty;
 }			t_game;
 
-void		init_game(t_game *game, int height, int width);
-void		draw_map(t_game *game);
-int			handle_input(int keycode, t_game *game);
 int			close_game(t_game *game);
+void		draw_map(t_game *game);
 void		move_player(t_game *game, int x, int y);
 int			*load_map(t_game *game, char *file_path);
-void		load_images(t_game *game);
 int			count_lines(char *file_path);
 int			error(char *message);
 void		draw_map(t_game *game);

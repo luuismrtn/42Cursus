@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:29:25 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 02:51:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:00:23 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ static int	check_rectangular(t_game *game, int width)
 	int	i;
 
 	i = 0;
+	if (line_length(game->map[i]) != width)
+		exit(error("No rectangular"));
 	while (game->map[i])
 	{
 		if (line_length(game->map[i]) != width)
-			exit(error("No rectangular"));
+			return (0);
 		i++;
 	}
 	return (1);

@@ -6,14 +6,14 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 00:29:52 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 02:51:22 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:59:31 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker_bonus.h"
 #include "so_long_bonus.h"
 
-void	dfs_op(char **map, int x, int y, t_dfs_params *params)
+static void	dfs_op(char **map, int x, int y, t_dfs_params *params)
 {
 	if (map[y][x] == 'E' || map[y][x] == 'M' || map[y][x] == '1')
 		return ;
@@ -64,6 +64,26 @@ void	dfs_op_exit(char **map, int x, int y, t_dfs_params *params)
 	params->visited[y][x] = 0;
 }
 
+void	dfs_c_e(char **map, int x, int y, t_dfs_params *params)
+{
+	if (x < 0 || x >= params->width || y < 0 || y >= params->height)
+		return ;
+	if (params->visited[y][x] || map[y][x] == '1')
+		return ;
+	params->visited[y][x] = 1;
+	if (map[y][x] == 'E')
+	{
+		params->exit++;
+		return ;
+	}
+	if (map[y][x] == 'C')
+		params->c_count++;
+	dfs_c_e(map, x, y - 1, params);
+	dfs_c_e(map, x, y + 1, params);
+	dfs_c_e(map, x - 1, y, params);
+	dfs_c_e(map, x + 1, y, params);
+}
+
 static int	find_closest_coin(char **map, int *player_x, int *player_y,
 		t_dfs_params *params)
 {
@@ -95,29 +115,4 @@ int	collect_all_coins(char **map, int *c_player, int coins,
 		coins--;
 	}
 	return (total_steps);
-}
-
-int	find_optimal_path(t_game *game, int height, int width)
-{
-	int				total_steps;
-	t_dfs_params	params_opt;
-	char			**map;
-	int				c_player[2];
-	int				coins;
-
-	coins = game->collectible_count;
-	c_player[0] = game->player_x;
-	c_player[1] = game->player_y;
-	map = duplicate(game->map);
-	if (!init_struct(&params_opt, height, width))
-		return (0);
-	total_steps = collect_all_coins(map, c_player, coins, &params_opt);
-	if (total_steps == -1)
-		return (0);
-	params_opt.perfect = -1;
-	params_opt.steps = 0;
-	dfs_op_exit(map, params_opt.coin_x, params_opt.coin_y, &params_opt);
-	if (params_opt.perfect == -1)
-		return (0);
-	return (total_steps + params_opt.perfect - 1);
 }
