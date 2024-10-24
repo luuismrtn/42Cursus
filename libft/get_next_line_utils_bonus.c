@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:03:43 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/03 14:27:51 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/05 22:31:51 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_strjoin_gnl(char *s1, const char *s2, int len)
 	return (str);
 }
 
-char	*ft_free(char *str)
+static char	*ft_free(char *str)
 {
 	if (str)
 		free(str);
