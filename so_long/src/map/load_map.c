@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 19:03:08 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/14 03:30:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:31:04 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	load_images(t_game *game)
 	int	height;
 
 	game->img_player = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/player_00.xpm", &width, &height);
-	game->img_wall = mlx_xpm_file_to_image(game->mlx, "./tiles/wall.xpm",
+			"./textures/player_00.xpm", &width, &height);
+	game->img_wall = mlx_xpm_file_to_image(game->mlx, "./textures/wall.xpm",
 			&width, &height);
 	game->img_collectible = mlx_xpm_file_to_image(game->mlx,
-			"./tiles/collectible.xpm", &width, &height);
-	game->img_exit = mlx_xpm_file_to_image(game->mlx, "./tiles/exit.xpm",
+			"./textures/collectible.xpm", &width, &height);
+	game->img_exit = mlx_xpm_file_to_image(game->mlx, "./textures/exit.xpm",
 			&width, &height);
-	game->img_empty = mlx_xpm_file_to_image(game->mlx, "./tiles/empty.xpm",
+	game->img_empty = mlx_xpm_file_to_image(game->mlx, "./textures/empty.xpm",
 			&width, &height);
 	if (!game->img_player || !game->img_wall || !game->img_collectible
 		|| !game->img_exit || !game->img_empty)
