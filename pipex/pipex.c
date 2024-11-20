@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 19:23:39 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/16 22:07:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:13:36 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ static char	*get_path(char *cmd, char **env)
 
 	i = 0;
 	all_path = ft_split(get_env(env), ':');
+	if (!all_path)
+		exit(1);
 	s_cmd = ft_split(cmd, ' ');
 	while (all_path[i])
 	{
@@ -44,10 +46,7 @@ static char	*get_path(char *cmd, char **env)
 		exec = ft_strjoin(path_part, s_cmd[0]);
 		free(path_part);
 		if (access(exec, F_OK | X_OK) == 0)
-		{
-			ft_free_tab(s_cmd);
-			return (exec);
-		}
+			return (ft_free_tab(s_cmd), exec);
 		free(exec);
 		i++;
 	}
@@ -85,7 +84,8 @@ static void	pipex(char **argv, char **environ)
 		exit(-1);
 	if (pid == 0)
 		first_command(argv[1], argv[2], fd, environ);
-	second_command(argv[4], argv[3], fd, environ);
+	else
+		second_command(argv[4], argv[3], fd, environ);
 }
 
 int	main(int argc, char **argv, char **environ)
