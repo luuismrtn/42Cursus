@@ -5,248 +5,111 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 21:39:53 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/06 14:26:04 by lumartin         ###   ########.fr       */
+/*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
+/*   Updated: 2024/11/23 22:59:59 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*stack_init(int argc, char **argv)
+void	error_message(t_stacks *s, char *msg)
 {
-	t_stack	*stack;
-	size_t	i;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->size = argc - 1;
-	stack->array = (long *)malloc(sizeof(long) * stack->size);
-	if (!stack->array)
-		return (NULL);
-	i = 0;
-	while (i < stack->size)
+	if (msg)
+		ft_putstr_fd(msg, 2);
+	if (s != NULL)
 	{
-		stack->array[i] = ft_atoi(argv[i + 1]);
-		i++;
+		if (s->a != NULL)
+			free(s->a);
+		if (s->b != NULL)
+			free(s->b);
+		if (s->join_args != NULL)
+			free(s->join_args);
+		if (s != NULL)
+			free(s);
 	}
-	return (stack);
+	exit(1);
 }
 
-void print_stack(t_stack *stack)
+static void	check_arguments(int argc, char **argv)
 {
-    size_t	i;
+	int	i;
+	int	j;
 
-    i = 0;
-    printf("[");
-    while (i < stack->size)
-    {
-        printf("%i, ", stack->array[i]);
-        i++;
-    }
-    printf("]\n");
-}
-
-int	check_sorted(t_stack *stack)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < stack->size - 1)
+	i = 1;
+	if (argc < 2)
+		error_message(NULL, "");
+	while (i < argc)
 	{
-		if (stack->array[i] > stack->array[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	push(t_stack *stackA, t_stack *stackB, char c)
-{
-	int	tmp;
-	size_t	i;
-
-	if (stackB->size < 1)
-		return ;
-	i = stackA->size;
-	while (i > 0)
-	{
-		stackA->array[i] = stackA->array[i - 1];
-		i--;
-	}
-	stackA->array[0] = stackB->array[0];
-	i = 0;
-	while (i < stackB->size - 1)
-	{
-		stackB->array[i] = stackB->array[i + 1];
-		i++;
-	}
-	stackB->size--;
-	ft_printf("p%c\n", c);
-}
-
-void	swap(t_stack *stack, char c)
-{
-	int	tmp;
-
-	if (stack->size < 2)
-		return ;
-	tmp = stack->array[0];
-	stack->array[0] = stack->array[1];
-	stack->array[1] = tmp;
-	ft_printf("s%c\n", c);
-}
-
-void ss(t_stack *stackA, t_stack *stackB)
-{
-    swap(stackA, 'a');
-    swap(stackB, 'b');
-    ft_printf("ss\n");
-}
-
-void	rotate(t_stack *stack, char c)
-{
-	int	tmp;
-	size_t	i;
-
-	if (stack->size < 2)
-		return ;
-	i = 0;
-	tmp = stack->array[0];
-	while (i < stack->size - 1)
-	{
-		stack->array[i] = stack->array[i + 1];
-		i++;
-	}
-	stack->array[i] = tmp;
-	ft_printf("r%c\n", c);
-}
-
-void rr(t_stack *stackA, t_stack *stackB)
-{
-    rotate(stackA, 'a');
-    rotate(stackB, 'b');
-    ft_printf("rr\n");
-}
-
-void	reverse_rotate(t_stack *stack, char c)
-{
-	long	tmp;
-	size_t	i;
-
-	if (stack->size < 2)
-		return ;
-	i = stack->size - 1;
-	tmp = stack->array[i];
-	while (i > 0)
-	{
-		stack->array[i] = stack->array[i - 1];
-		i--;
-	}
-	stack->array[i] = tmp;
-	ft_printf("rr%c\n", c);
-}
-
-void rrr(t_stack *stackA, t_stack *stackB)
-{
-    reverse_rotate(stackA, 'a');
-    reverse_rotate(stackB, 'b');
-    ft_printf("rrr\n");
-}
-
-void	sort(t_stack *stackA, t_stack *stackB)
-{
-	size_t	i;
-    int min;
-    int max;
-
-    i = 0;
-    while (i < stackA->size)
-    {
-        if (stackA->array[i] < min)
-            min = stackA->array[i];
-        if (stackA->array[i] > max)
-            max = stackA->array[i];
-        i++;
-    }
-	i = 0;
-	while (i < stackA->size && !check_sorted(stackA))
-	{
-		while (i < stackA->size && !check_sorted(stackA))
+		j = 0;
+		if (!argv[i][0] || (argv[i][0] && argv[i][0] == ' '))
+			error_message(NULL, "Error\n");
+		while (argv[i][j] != '\0')
 		{
-			if (stackA->array[0] < stackA->array[1] || (stackA->array[1] == min && stackA->array[0] == max))
-                rotate(stackA, 'a');
-            else
-                swap(stackA, 'a');
-			i++;
+			if ((!(ft_isdigit(argv[i][j])) && (argv[i][j] != ' ')
+					&& (argv[i][j] != '-' && argv[i][j] != '+'
+						&& argv[i][j] != ' ')) || (argv[i][j] == '-'
+					&& argv[i][j + 1] == '\0') || (argv[i][j] == '+'
+					&& argv[i][j + 1] == '\0') || (argv[i][j] == '-'
+					&& argv[i][j + 1] == ' ') || (argv[i][j] == '+' && argv[i][j
+					+ 1] == ' '))
+				error_message(NULL, "Error\n");
+			j++;
 		}
-		i = 0;
+		++i;
 	}
 }
 
-int check_duplicated(t_stack *stack)
+void	join_args(int argc, char **argv, t_stacks *s)
 {
-    size_t i;
-    size_t j;
+	int		i;
+	char	*tmp;
+	char	*tmp2;
 
-    i = 0;
-    while (i < stack->size)
-    {
-        j = i + 1;
-        while (j < stack->size)
-        {
-            if (stack->array[i] == stack->array[j])
-                return (1);
-            j++;
-        }
-        i++;
-    }
-    return (0);
+	i = 0;
+	tmp2 = ft_strdup("");
+	while (++i < argc && argv[i] != NULL)
+	{
+		tmp = ft_strjoin(tmp2, argv[i]);
+		if (tmp2)
+			free(tmp2);
+		if (i != argc - 1)
+		{
+			tmp2 = ft_strjoin(tmp, " ");
+			if (tmp)
+				free(tmp);
+			tmp = tmp2;
+		}
+	}
+	s->join_args = ft_strdup(tmp);
+	if (s->join_args == NULL)
+		error_message(s, "Error JOIN_ARGS = NULL\n");
+	if (tmp)
+		free(tmp);
+	parse_numbers(s);
 }
-int print_error(void)
+
+static void	choose_sort(t_stacks *s)
 {
-    ft_printf("Error\n");
-    return (0);
+	if (s->a_size == 2)
+		swap("sa", s->a, s->a_size);
+	else if (s->a_size == 3)
+		sort_three_elements(s);
+	else
+		turkish_sort(s);
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stacks	*s;
 
-	if (argc < 2)
-		return (0);
-	stack_a = stack_init(argc, argv);
-	stack_b = stack_init(argc, argv);
-	if (!stack_a || !stack_b)
-		return (0);
-	if (stack_a->size == 1)
-		return (print_error());
-    if (check_duplicated(stack_a))
-        return (0);
-	sort(stack_a, stack_b);
+	check_arguments(argc, argv);
+	s = malloc(sizeof *s);
+	if (s == NULL)
+		exit(1);
+	initialize_stacks(argc, argv, s);
+	join_args(argc, argv, s);
+	choose_sort(s);
+	exit_if_sorted_or_has_duplicate(s, 1);
+	error_message(s, "Error NO SORTED\n");
 	return (0);
 }
-
-/*
-
-ARG="2 1 3 6 5 8"; ./push_swap $ARG | ./checker_linux $ARG
-
-- sa swap a: Intercambia los dos primeros elementos del stack a. No hace nada si hay uno o menos elementos.
-- sb swap b: Intercambia los dos primeros elementos del stack b. No hace nada si hay uno o menos elementos.
-- ss swap a y swap b a la vez.
-- pa push a: Toma el primer elemento del stack b y lo pone el primero en el stack a. No hace nada si b está vacío.
-- pb push b: Toma el primer elemento del stack a y lo pone el primero en el stack b. No hace nada si a está vacío.
-- ra rotate a: Desplaza hacia arriba todos los elementos del stack a una posición, de forma que el primer elemento se convierte en el último.
-- rb rotate b: Desplaza hacia arriba todos los elementos del stack b una posición,
-	de forma que el primer elemento se convierte en el último.
-- rr ra y rb al mismo tiempo.
-- rra reverse rotate a: Desplaza hacia abajo todos los elementos del stack a una posición,
-	de forma que el último elemento se convierte en el primero.
-- rrb reverse rotate b: Desplaza hacia abajo todos los elementos del stack b una posición,
-	de forma que el último elemento se convierte en el primero.
-- rrr rra y rrb al mismo tiempo.
-
-
-
-*/

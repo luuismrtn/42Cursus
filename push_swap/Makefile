@@ -6,6 +6,9 @@ LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = main.c \
+		move.c \
+		sort.c \
+		utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
