@@ -6,23 +6,38 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/23 22:46:45 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:00:09 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three_elements(t_stacks *s)
+void	sort_three_elements(t_stacks *st)
 {
-	if (s->a[2] != 2)
+	int f;
+	int s;
+	int t;
+	
+	f = st->a[0];
+	s = st->a[1];
+	t = st->a[2];
+	
+	if (f > s && f > t && s < t)
+		rotate(st->a, st->a_size, "up", "a");
+	else if (f > s && f > t && s > t)
 	{
-		if (s->a[0] == 2)
-			rotate(s->a, s->a_size, "up", "a");
-		else
-			rotate(s->a, s->a_size, "down", "a");
+		rotate(st->a, st->a_size, "up", "a");
+		swap("sa", st->a, st->a_size);
 	}
-	if (s->a[0] > s->a[1])
-		swap("sa", s->a, s->a_size);
+	else if (f < s && f > t)
+		rotate(st->a, st->a_size, "down", "a");
+	else if (f > s && f < t)
+		swap("sa", st->a, st->a_size);
+	else if (f < s && f < t && s > t)
+	{
+		rotate(st->a, st->a_size, "down", "a");
+		swap("sa", st->a, st->a_size);
+	}
 }
 
 int	is_array_sorted(t_stacks *s)
