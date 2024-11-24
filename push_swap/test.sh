@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generar n números
-n=100
+n=500
 ARG=$(seq -1000 1000 | shuf -n $n | tr '\n' ' ')
 
 # Mostrar los números generados

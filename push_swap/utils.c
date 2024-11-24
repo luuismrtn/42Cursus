@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/23 23:00:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:53:13 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,15 +147,13 @@ int	turkish_sort(t_stacks *s)
 	push("pb", s);
 	moves = 0;
 	dir = ft_strdup("aaaa");
-	best_moves = 10000;
-	best_pos = 0;
 	while (s->a_size != 0)
 	{
 		i = 0;
 		best_moves = 10000;
 		best_pos = 0;
 		temp_moves = 10000;
-		while (i < 10 && i < s->a_size)
+		while (i < 1000 && i < s->a_size)
 		{
 			str = count_moves_to_b(s, i);
 			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
@@ -171,15 +169,36 @@ int	turkish_sort(t_stacks *s)
 			}
 			i++;
 		}
-		move_a(dirA, s, moves_a);
+		moves_b = move_a(dirA, s, moves_a, dir, moves_b);
 		moves_to_b(dir, moves_b, s);
 	}
 	order_stack_b(s);
 	moves_to_a(s);
 	return (moves);
 }
-void	move_a(char *dir, t_stacks *s, int moves)
+int	move_a(char *dir, t_stacks *s, int moves, int *dirB, int moves_b)
 {
+	if (ft_strnstr(dir, dirB, 2))
+	{
+		if (ft_strnstr(dir, "up", 2))
+		{
+			while (moves > 0 && moves_b > 0)
+			{
+				rotate_both_up(s, s->a_size, "ab");
+				moves--;
+				moves_b--;
+			}
+		}
+		if (ft_strnstr(dir, "down", 2))
+		{
+			while (moves > 0 && moves_b > 0)
+			{
+				rotate_both_down(s, s->a_size, "ab");
+				moves--;
+				moves_b--;
+			}
+		}
+	}
 	if (ft_strnstr(dir, "up", 2))
 	{
 		while (moves > 0)
@@ -196,6 +215,7 @@ void	move_a(char *dir, t_stacks *s, int moves)
 			moves--;
 		}
 	}
+	return (moves_b);
 }
 
 void	moves_to_b(char *dir, int moves, t_stacks *s)

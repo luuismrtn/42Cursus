@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/23 22:46:37 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:28:41 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,42 @@ void	rotate(int *array, int size, char *direction, char *list)
 		write(1, "rr", 2);
 	}
 	ft_putendl_fd(list, 1);
+}
+
+void	rotate_both_up(t_stacks *s, int size, char *list)
+{
+	int	tmp;
+	int *array_a;
+	int *array_b;
+
+	array_a = s->a;
+	array_b = s->b;
+	if (s->a_size < 0 || s->b_size < 0)
+		return ;
+	tmp = array_a[0];
+	ft_memmove(array_a, array_a + 1, sizeof(int) * (s->a_size - 1));
+	array_a[s->a_size - 1] = tmp;
+	tmp = array_b[0];
+	ft_memmove(array_b, array_b + 1, sizeof(int) * (s->b_size - 1));
+	array_b[s->b_size - 1] = tmp;
+	ft_putendl_fd("rr", 1);
+}
+
+void rotate_both_down(t_stacks *s, int size, char *list)
+{
+	int	tmp;
+	int *array_a;
+	int *array_b;
+
+	array_a = s->a;
+	array_b = s->b;
+	if (s->a_size < 0 || s->b_size < 0)
+		return ;
+	tmp = array_a[s->a_size - 1];
+	ft_memmove(array_a + 1, array_a, sizeof(int) * (s->a_size - 1));
+	array_a[0] = tmp;
+	tmp = array_b[s->b_size - 1];
+	ft_memmove(array_b + 1, array_b, sizeof(int) * (s->b_size - 1));
+	array_b[0] = tmp;
+	ft_putendl_fd("rrr", 1);
 }
