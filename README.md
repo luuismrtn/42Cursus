@@ -4,10 +4,18 @@
 
 Este repositorio contiene todos los proyectos completados y en proceso en el programa **42Cursus**, el cual es una serie de proyectos prácticos que abarcan diferentes conceptos fundamentales en la programación. A través de estos proyectos, he aprendido y perfeccionado mis habilidades en áreas como algoritmos, estructuras de datos, gestión de memoria y más.
 
-### Curso 42 Madrid - **Progreso: 60%**  
-<div style="width: 100%; background-color: #e0e0e0; border-radius: 5px;">
-  <div style="width: 20%; background-color: #4caf50; height: 20px; border-radius: 5px;"></div>
-</div>
+## Proceso
+
+- Horas totales de trabajo: 1870 horas
+- Horas trabajadas: 360 horas
+
+<img src="https://github.com/user-attachments/assets/3ab3d299-cb26-4c4f-b628-d981db1bdecc" width="600"/>
+
+
+
+
+
+
 
 ## Proyectos Completados
 
