@@ -40,12 +40,12 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Descripción**: Configuración de un entorno Linux, incluyendo particiones, instalación de un sistema operativo, redes, gestión de usuarios y permisos. Un proyecto introductorio para comprender cómo funcionan los sistemas operativos y herramientas básicas de administración.
 
 ### 5. **so_long** (60 horas) ✅
-- **Progreso**: 120%  
+- **Progreso**: 125%  
 - **Fecha de finalización**: 25/10/2024  
 - **Descripción**: Creación de un juego 2D similar a "Pac-Man" utilizando la biblioteca gráfica MiniLibX. Aprendí sobre manipulación de gráficos en C y el desarrollo de lógica de juegos sencilla.
 
 ### 6. **pipex** (50 horas) ✅
-- **Progreso**: 120%  
+- **Progreso**: 100%  
 - **Fecha de finalización**: 20/11/2024  
 - **Descripción**: Simulación del comportamiento de las tuberías (pipes) en Unix. El proyecto involucra tomar varios comandos de la línea de comandos y redirigir la salida de uno como entrada de otro. Es fundamental para aprender sobre creación y comunicación de procesos en Unix.
 
