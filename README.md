@@ -117,7 +117,7 @@ Aquí estarán los proyectos que estoy trabajando actualmente:
 
 ## Exámenes
 
-- **Exam Rank 02** 🟡
+- **Exam Rank 02** ✅ (28/11/2024)
 - **Exam Rank 03** ❌
 - **Exam Rank 04** ❌
 - **Exam Rank 05** ❌
