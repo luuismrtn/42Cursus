@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Generar n números
-n=100
+n=500
 
-ARG=$(seq -100 100 | shuf -n $n | tr '\n' ' ')
+ARG=$(seq -1000 1000 | shuf -n $n | tr '\n' ' ')
 
 # Mostrar los números generados
 echo "Números generados: $ARG"

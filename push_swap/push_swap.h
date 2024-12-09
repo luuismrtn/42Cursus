@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/09 03:13:01 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:34:34 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ void		move_to_stack(char *dir, int moves, t_stacks *s, char stack);
 int			move_stack(t_stacks *s, char *dirA, int moves_a, char *dirB,
 				int moves_b, char stack);
 char		**count_moves_to_stack(t_stacks *s, int pos, char stack);
-void		rotate_both_up(t_stacks *s, int size, char *list);
-void		rotate_both_down(t_stacks *s, int size, char *list);
-int			check_stack(t_stacks *s, char stack);
+void		rotate_both_up(t_stacks *s);
+void		rotate_both_down(t_stacks *s);
 int			real_moves(char **str);
 
 #endif

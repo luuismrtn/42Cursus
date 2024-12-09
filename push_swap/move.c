@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/24 16:28:41 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:34:22 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	rotate(int *array, int size, char *direction, char *list)
 	ft_putendl_fd(list, 1);
 }
 
-void	rotate_both_up(t_stacks *s, int size, char *list)
+void	rotate_both_up(t_stacks *s)
 {
 	int	tmp;
 	int *array_a;
@@ -95,7 +95,7 @@ void	rotate_both_up(t_stacks *s, int size, char *list)
 	ft_putendl_fd("rr", 1);
 }
 
-void rotate_both_down(t_stacks *s, int size, char *list)
+void rotate_both_down(t_stacks *s)
 {
 	int	tmp;
 	int *array_a;
