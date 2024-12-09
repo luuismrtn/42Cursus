@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/24 19:16:17 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/09 01:49:15 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,172 +133,145 @@ int	find_min(int *st, int size)
 
 int	turkish_sort(t_stacks *s)
 {
-	int		moves;
-	int		i;
 	int		best_moves;
-	char	**str;
-	int		best_pos;
 	int		temp_moves;
-	char	*dir;
-	char	*dirA;
+	int		i;
 	int		moves_a;
 	int		moves_b;
+	char	*dir;
+	char	*dirA;
+	char	**str;
 
 	push("pb", s);
-	moves = 0;
-	dir = ft_strdup("aaaa");
-	while (s->a_size != 3)
+	while (s->a_size > 3)
 	{
-		i = 0;
 		best_moves = 10000;
-		best_pos = 0;
-		temp_moves = 10000;
-		while (i < 1000 && i < s->a_size)
+		i = 0;
+		while (i < s->a_size)
 		{
-			str = count_moves_to_b(s, i);
+			str = count_moves_to_stack(s, i, 'b');
 			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
 			if (temp_moves < best_moves)
 			{
 				best_moves = temp_moves;
-				best_pos = i;
-				moves_b = ft_atoi(str[1]);
-				dir = ft_strdup(str[0]);
-				dirA = ft_strdup(str[2]);
 				moves_a = ft_atoi(str[3]);
+				moves_b = ft_atoi(str[1]);
+				dirA = ft_strdup(str[2]);
+				dir = ft_strdup(str[0]);
 			}
 			i++;
 		}
-		moves_b = move_a(dirA, s, moves_a, dir, moves_b);
-		moves_to_b(dir, moves_b, s);
+		moves_b = move_stack(s, dirA, moves_a, dir, moves_b, 'a');
+		move_to_stack(dir, moves_b, s, 'b');
 	}
 	order_stack_b(s);
 	go_a(s);
-	return (moves);
+	return (0);
 }
-int	move_a(char *dir, t_stacks *s, int moves, int *dirB, int moves_b)
+
+void	go_a(t_stacks *s)
 {
-	if (ft_strnstr(dir, dirB, 2))
+	char	**str;
+	int		i;
+	int		best_moves;
+	int		temp_moves;
+	char	*dir;
+	char	*dirB;
+	int		moves_a;
+	int		moves_b;
+
+	sort_three_elements(s);
+	while (s->b_size != 0)
+	{
+		i = 0;
+		best_moves = 10000;
+		temp_moves = 10000;
+		while (i < 1000 && i < s->b_size)
+		{
+			str = count_moves_to_stack(s, i, 'a');
+			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
+			if (temp_moves < best_moves)
+			{
+				best_moves = temp_moves;
+				moves_a = ft_atoi(str[1]);
+				dir = ft_strdup(str[0]);
+				dirB = ft_strdup(str[2]);
+				moves_b = ft_atoi(str[3]);
+			}
+			i++;
+		}
+		moves_b = move_stack(s, dir, moves_a, dirB, moves_b, 'b');
+		move_to_stack(dir, moves_a, s, 'a');
+	}
+	order_stack_a(s);
+}
+
+void move_stack_lett(char *dir, t_stacks *s, int moves, char letter)
+{
+	if (letter == 'a')
 	{
 		if (ft_strnstr(dir, "up", 2))
-		{
-			while (moves > 0 && moves_b > 0)
-			{
-				rotate_both_up(s, s->a_size, "ab");
-				moves--;
-				moves_b--;
-			}
-		}
-		if (ft_strnstr(dir, "down", 2))
-		{
-			while (moves > 0 && moves_b > 0)
-			{
-				rotate_both_down(s, s->a_size, "ab");
-				moves--;
-				moves_b--;
-			}
-		}
-	}
-	if (ft_strnstr(dir, "up", 2))
-	{
-		while (moves > 0)
-		{
-			rotate(s->a, s->a_size, "up", "a");
-			moves--;
-		}
+			while (moves-- > 0)
+				rotate(s->a, s->a_size, "up", "a");
+		else
+			while (moves-- > 0)
+				rotate(s->a, s->a_size, "down", "a");
 	}
 	else
-	{
-		while (moves > 0)
-		{
-			rotate(s->a, s->a_size, "down", "a");
-			moves--;
-		}
-	}
-	return (moves_b);
-}
-
-int	move_b(char *dir, t_stacks *s, int moves, int *dirA, int moves_a)
-{
-	if (ft_strnstr(dir, dirA, 2))
 	{
 		if (ft_strnstr(dir, "up", 2))
-		{
-			while (moves > 0 && moves_a > 0)
-			{
-				rotate_both_up(s, s->b_size, "ab");
-				moves--;
-				moves_a--;
-			}
-		}
-		if (ft_strnstr(dir, "down", 2))
-		{
-			while (moves > 0 && moves_a > 0)
-			{
-				rotate_both_down(s, s->b_size, "ab");
-				moves--;
-				moves_a--;
-			}
-		}
+			while (moves-- > 0)
+				rotate(s->b, s->b_size, "up", "b");
+		else
+			while (moves-- > 0)
+				rotate(s->b, s->b_size, "down", "b");
 	}
-	if (ft_strnstr(dir, "up", 2))
-	{
-		while (moves > 0)
-		{
-			rotate(s->b, s->b_size, "up", "b");
-			moves--;
-		}
-	}
-	else
-	{
-		while (moves > 0)
-		{
-			rotate(s->b, s->b_size, "down", "b");
-			moves--;
-		}
-	}
-	return (moves_a);
 }
 
-void	moves_to_b(char *dir, int moves, t_stacks *s)
+int	move_stack(t_stacks *s, char *dirA, int moves_a, char *dirB, int moves_b,
+		char stack)
 {
-	if (ft_strnstr(dir, "up", 2))
+	while (moves_a > 0 && moves_b > 0)
 	{
-		while (moves > 0)
+		if (ft_strnstr(dirA, "up", 2) && ft_strnstr(dirB, "up", 2))
 		{
-			rotate(s->b, s->b_size, "up", "b");
-			moves--;
+			rotate_both_up(s, s->a_size, "ab");
 		}
+		else if (ft_strnstr(dirA, "down", 2) && ft_strnstr(dirB, "down", 2))
+		{
+			rotate_both_down(s, s->a_size, "ab");
+		}
+		else
+			break ;
+		moves_a--;
+		moves_b--;
+	}
+	if (stack == 'a')
+	{
+		move_stack_lett(dirA, s, moves_a, 'a');
+		return (moves_b);
 	}
 	else
 	{
-		while (moves > 0)
-		{
-			rotate(s->b, s->b_size, "down", "b");
-			moves--;
-		}
+		move_stack_lett(dirB, s, moves_b, 'b');
+		return (moves_a);
 	}
-	push("pb", s);
 }
 
-void	moves_to_a(char *dir, int moves, t_stacks *s)
+void	move_to_stack(char *dir, int moves, t_stacks *s, char stack)
 {
-	if (ft_strnstr(dir, "up", 2))
+	if (stack == 'a')
 	{
-		while (moves > 0)
-		{
-			rotate(s->a, s->a_size, "up", "a");
-			moves--;
-		}
+		while (moves-- > 0)
+			rotate(s->a, s->a_size, dir, "a");
+		push("pa", s);
 	}
 	else
 	{
-		while (moves > 0)
-		{
-			rotate(s->a, s->a_size, "down", "a");
-			moves--;
-		}
+		while (moves-- > 0)
+			rotate(s->b, s->b_size, dir, "b");
+		push("pb", s);
 	}
-	push("pa", s);
 }
 
 void	order_stack_b(t_stacks *s)
@@ -306,23 +279,19 @@ void	order_stack_b(t_stacks *s)
 	int	i;
 	int	moves_up;
 	int	moves_down;
-	int	max;
-	int	min;
 
 	if (check_stack(s, 'b'))
 		return ;
 	moves_up = 0;
 	moves_down = 0;
-	max = find_max(s->b, s->b_size);
-	min = find_min(s->b, s->b_size);
 	i = 0;
-	while (max != s->b[i] && i < s->b_size - 1)
+	while (find_max(s->b, s->b_size) != s->b[i] && i < s->b_size - 1)
 	{
 		moves_up++;
 		i++;
 	}
 	i = s->b_size - 1;
-	while (min != s->b[i] && i > 0)
+	while (find_min(s->b, s->b_size) != s->b[i] && i > 0)
 	{
 		moves_down++;
 		i--;
@@ -347,45 +316,39 @@ void	order_stack_b(t_stacks *s)
 
 void	order_stack_a(t_stacks *s)
 {
-	int	i;
 	int	moves_up;
 	int	moves_down;
-	int	max;
-	int	min;
+	int	i;
 
-	if (check_stack(s, 'a'))
-		return ;
 	moves_up = 0;
 	moves_down = 0;
-	max = find_max(s->a, s->a_size);
-	min = find_min(s->a, s->a_size);
+	if (check_stack(s, 'a'))
+		return ;
 	i = s->a_size - 1;
-	while (max != s->a[i] && i > 0)
+	while (i >= 0)
 	{
+		if (s->a[i] == find_max(s->a, s->a_size))
+			break ;
 		moves_down++;
 		i--;
 	}
 	i = 0;
-	while (min != s->a[i] && i < s->a_size - 1)
+	while (i < s->a_size)
 	{
+		if (s->a[i] == find_min(s->a, s->a_size))
+			break ;
 		moves_up++;
 		i++;
 	}
-	if (moves_up < moves_down)
+	if (moves_up <= moves_down)
 	{
-		while (moves_up > 0)
-		{
+		while (moves_up-- > 0)
 			rotate(s->a, s->a_size, "up", "a");
-			moves_up--;
-		}
 	}
 	else
 	{
-		while (moves_down > 0)
-		{
+		while (moves_down-- > 0)
 			rotate(s->a, s->a_size, "down", "a");
-			moves_down--;
-		}
 	}
 }
 
@@ -415,29 +378,39 @@ int	check_stack(t_stacks *s, char stack)
 	return (1);
 }
 
-char	**count_moves_to_b(t_stacks *s, int pos)
+char	**count_moves_to_stack(t_stacks *s, int pos, char stack)
 {
-	int	num;
-	int	moves_up;
-	int	moves_down;
+	char	**str;
+	int		num;
+	int		moves_up;
+	int		moves_down;
+	int		size;
 
-	char **str; // [0] = dirB, [1] = movesB, [2] = dirA, [3] = movesA
+	if (stack == 'b')
+	{
+		num = s->a[pos];
+		moves_up = count_moves_dir(s->b, num, "up", s->b_size);
+		moves_down = count_moves_dir(s->b, num, "down", s->b_size);
+		size = s->a_size;
+	}
+	else
+	{
+		num = s->b[pos];
+		moves_up = count_moves_dir_to_a(s->a, num, "up", s->a_size);
+		moves_down = count_moves_dir_to_a(s->a, num, "down", s->a_size);
+		size = s->b_size;
+	}
 	str = malloc(4 * sizeof(char *));
-	if (pos > s->a_size)
-		error_message(s, "Error (No existe número en el stack A)\n");
-	num = s->a[pos];
-	if (pos < s->a_size - pos)
+	if (pos < size - pos)
 	{
 		str[3] = ft_itoa(pos);
 		str[2] = ft_strdup("up");
 	}
 	else
 	{
-		str[3] = ft_itoa(s->a_size - pos);
+		str[3] = ft_itoa(size - pos);
 		str[2] = ft_strdup("down");
 	}
-	moves_up = count_moves_dir(s->b, num, "up", s->b_size);
-	moves_down = count_moves_dir(s->b, num, "down", s->b_size);
 	if (moves_up < moves_down)
 	{
 		str[0] = ft_strdup("up");
@@ -453,64 +426,54 @@ char	**count_moves_to_b(t_stacks *s, int pos)
 
 int	count_moves_dir(int *stack, int num, char *dir, int size)
 {
-	int	max;
-	int	min;
 	int	moves;
 	int	i;
 
-	max = find_max(stack, size);
-	min = find_min(stack, size);
 	moves = 0;
+	i = 0;
 	if (ft_strnstr(dir, "up", 2))
 	{
-		i = 0;
-		if (num > max || num < min)
+		if (num > find_max(stack, size) || num < find_min(stack, size))
 		{
-			while (i < size && stack[i] != max)
+			while (i < size && stack[i] != find_max(stack, size))
 			{
 				moves++;
 				i++;
 			}
 			return (moves);
 		}
-		if (i == 0 && num > stack[i] && num < stack[size - 1])
+		if (num > stack[i] && num < stack[size - 1])
 			return (moves);
-		else
+		moves++;
+		while (i < size - 1)
 		{
+			if (num > stack[i + 1] && num < stack[i])
+				return (moves);
 			moves++;
-			while (i < size - 1)
-			{
-				if (num > stack[i + 1] && num < stack[i])
-					return (moves);
-				moves++;
-				i++;
-			}
+			i++;
 		}
 	}
 	else
 	{
 		i = size - 1;
-		if (num > max || num < min)
+		if (num > find_max(stack, size) || num < find_min(stack, size))
 		{
-			while (i > 0 && stack[i] != min)
+			while (i > 0 && stack[i] != find_min(stack, size))
 			{
 				moves++;
 				i--;
 			}
 			return (moves);
 		}
-		if (i == size - 1 && num < stack[i] && num > stack[0])
+		if (num < stack[i] && num > stack[0])
 			return (moves);
-		else
+		moves++;
+		while (i > 0)
 		{
+			if (num < stack[i - 1] && num > stack[i])
+				return (moves);
 			moves++;
-			while (i > 0)
-			{
-				if (num < stack[i - 1] && num > stack[i])
-					return (moves);
-				moves++;
-				i--;
-			}
+			i--;
 		}
 	}
 	return (moves);
@@ -518,141 +481,55 @@ int	count_moves_dir(int *stack, int num, char *dir, int size)
 
 int	count_moves_dir_to_a(int *stack, int num, char *dir, int size)
 {
-	int	max;
-	int	min;
 	int	moves;
 	int	i;
 
-	max = find_max(stack, size);
-	min = find_min(stack, size);
 	moves = 0;
+	i = 0;
 	if (ft_strnstr(dir, "up", 2))
 	{
-		i = 0;
-		if (num > max || num < min)
+		if (num > find_max(stack, size) || num < find_min(stack, size))
 		{
-			while (i < size && stack[i] != min)
+			while (i < size && stack[i] != find_min(stack, size))
 			{
 				moves++;
 				i++;
 			}
 			return (moves);
 		}
-		if (i == 0 && num < stack[i] && num > stack[size - 1])
+		if (num < stack[i] && num > stack[size - 1])
 			return (moves);
-		else
+		moves++;
+		while (i < size - 1)
 		{
+			if (num < stack[i + 1] && num > stack[i])
+				return (moves);
 			moves++;
-			while (i < size - 1)
-			{
-				if (num < stack[i + 1] && num > stack[i])
-					return (moves);
-				moves++;
-				i++;
-			}
+			i++;
 		}
 	}
 	else
 	{
 		i = size - 1;
-		if (num > max || num < min)
+		if (num > find_max(stack, size) || num < find_min(stack, size))
 		{
-			while (i > 0 && stack[i] != max)
+			while (i > 0 && stack[i] != find_max(stack, size))
 			{
 				moves++;
 				i--;
 			}
 			return (moves);
 		}
-		if (i == size - 1 && num > stack[i] && num < stack[0])
+		if (num > stack[i] && num < stack[0])
 			return (moves);
-		else
+		moves++;
+		while (i > 0)
 		{
+			if (num > stack[i - 1] && num < stack[i])
+				return (moves);
 			moves++;
-			while (i > 0)
-			{
-				if (num > stack[i - 1] && num < stack[i])
-					return (moves);
-				moves++;
-				i--;
-			}
+			i--;
 		}
 	}
 	return (moves);
-}
-
-void	go_a(t_stacks *s)
-{
-	char	**str;
-	int		i;
-	int		best_moves;
-	int		best_pos;
-	int		temp_moves;
-	char	*dir;
-	char	*dirB;
-	int		moves_a;
-	int		moves_b;
-
-	sort_three_elements(s);
-	while (s->b_size != 0)
-	{
-		i = 0;
-		best_moves = 10000;
-		best_pos = 0;
-		temp_moves = 10000;
-		while (i < 1000 && i < s->b_size)
-		{
-			str = count_moves_to_a(s, i);
-			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
-			if (temp_moves < best_moves)
-			{
-				best_moves = temp_moves;
-				best_pos = i;
-				moves_a = ft_atoi(str[1]);
-				dir = ft_strdup(str[0]);
-				dirB = ft_strdup(str[2]);
-				moves_b = ft_atoi(str[3]);
-			}
-			i++;
-		}
-		moves_b = move_b(dirB, s, moves_b, dir, moves_a);
-		moves_to_a(dir, moves_a, s);
-	}
-	order_stack_a(s);
-}
-
-char	**count_moves_to_a(t_stacks *s, int pos)
-{
-	int	num;
-	int	moves_up;
-	int	moves_down;
-
-	char **str; // [0] = dirB, [1] = movesB, [2] = dirA, [3] = movesA
-	str = malloc(4 * sizeof(char *));
-	if (pos > s->b_size)
-		error_message(s, "Error (No existe número en el stack A)\n");
-	num = s->b[pos];
-	if (pos < s->b_size - pos)
-	{
-		str[3] = ft_itoa(pos);
-		str[2] = ft_strdup("up");
-	}
-	else
-	{
-		str[3] = ft_itoa(s->b_size - pos);
-		str[2] = ft_strdup("down");
-	}
-	moves_up = count_moves_dir_to_a(s->a, num, "up", s->a_size);
-	moves_down = count_moves_dir_to_a(s->a, num, "down", s->a_size);
-	if (moves_up < moves_down)
-	{
-		str[0] = ft_strdup("up");
-		str[1] = ft_itoa(moves_up);
-	}
-	else
-	{
-		str[0] = ft_strdup("down");
-		str[1] = ft_itoa(moves_down);
-	}
-	return (str);
 }

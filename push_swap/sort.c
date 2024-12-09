@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/11/24 19:00:09 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:55:54 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 void	sort_three_elements(t_stacks *st)
 {
-	int f;
-	int s;
-	int t;
-	
+	int	f;
+	int	s;
+	int	t;
+
 	f = st->a[0];
 	s = st->a[1];
 	t = st->a[2];
-	
 	if (f > s && f > t && s < t)
 		rotate(st->a, st->a_size, "up", "a");
 	else if (f > s && f > t && s > t)
@@ -38,6 +37,38 @@ void	sort_three_elements(t_stacks *st)
 		rotate(st->a, st->a_size, "down", "a");
 		swap("sa", st->a, st->a_size);
 	}
+}
+
+void	sort_four_elements(t_stacks *st)
+{
+	if (st->a_size == 4)
+	{
+		if (st->a[0] < st->a[1] && st->a[0] < st->a[2] && st->a[0] < st->a[3]
+			&& st->a_size == 4)
+			push("pb", st);
+		if (st->a[0] > st->a[1] && st->a[1] < st->a[2] && st->a[1] < st->a[3]
+			&& st->a_size == 4)
+		{
+			swap("sa", st->a, st->a_size);
+			push("pb", st);
+		}
+		if (st->a[0] > st->a[2] && st->a[1] > st->a[2] && st->a[2] < st->a[3]
+			&& st->a_size == 4)
+		{
+			rotate(st->a, st->a_size, "up", "a");
+			swap("sa", st->a, st->a_size);
+			push("pb", st);
+		}
+		if (st->a[0] > st->a[3] && st->a[1] > st->a[3] && st->a[2] > st->a[3]
+			&& st->a_size == 4)
+		{
+			rotate(st->a, st->a_size, "down", "a");
+			push("pb", st);
+		}
+	}
+	if (st->a_size == 3)
+		sort_three_elements(st);
+	push("pa", st);
 }
 
 int	is_array_sorted(t_stacks *s)
@@ -91,4 +122,3 @@ void	print_stack(t_stacks *stack, char letter)
 	}
 	ft_printf("]\n");
 }
-
