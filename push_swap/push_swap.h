@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/09 01:45:36 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:04:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ char		**count_moves_to_stack(t_stacks *s, int pos, char stack);
 void		rotate_both_up(t_stacks *s, int size, char *list);
 void		rotate_both_down(t_stacks *s, int size, char *list);
 int			check_stack(t_stacks *s, char stack);
+int			real_moves(char **str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/09 01:49:15 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/09 02:46:04 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ int	turkish_sort(t_stacks *s)
 		while (i < s->a_size)
 		{
 			str = count_moves_to_stack(s, i, 'b');
-			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
+			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]) - real_moves(str);
 			if (temp_moves < best_moves)
 			{
 				best_moves = temp_moves;
@@ -164,7 +164,7 @@ int	turkish_sort(t_stacks *s)
 		moves_b = move_stack(s, dirA, moves_a, dir, moves_b, 'a');
 		move_to_stack(dir, moves_b, s, 'b');
 	}
-	order_stack_b(s);
+	order_stack(s, s->b, s->b_size, "b");
 	go_a(s);
 	return (0);
 }
@@ -189,7 +189,7 @@ void	go_a(t_stacks *s)
 		while (i < 1000 && i < s->b_size)
 		{
 			str = count_moves_to_stack(s, i, 'a');
-			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]);
+			temp_moves = ft_atoi(str[1]) + ft_atoi(str[3]) - real_moves(str);
 			if (temp_moves < best_moves)
 			{
 				best_moves = temp_moves;
@@ -203,10 +203,10 @@ void	go_a(t_stacks *s)
 		moves_b = move_stack(s, dir, moves_a, dirB, moves_b, 'b');
 		move_to_stack(dir, moves_a, s, 'a');
 	}
-	order_stack_a(s);
+	order_stack(s, s->a, s->a_size, "a");
 }
 
-void move_stack_lett(char *dir, t_stacks *s, int moves, char letter)
+void	move_stack_lett(char *dir, t_stacks *s, int moves, char letter)
 {
 	if (letter == 'a')
 	{
@@ -274,82 +274,45 @@ void	move_to_stack(char *dir, int moves, t_stacks *s, char stack)
 	}
 }
 
-void	order_stack_b(t_stacks *s)
+void	order_stack(t_stacks *s, int *st, int size, char *stack)
 {
 	int	i;
 	int	moves_up;
 	int	moves_down;
+	int max;
+	int min;
 
-	if (check_stack(s, 'b'))
-		return ;
+	if (stack == "a")
+		max = find_max(st, size);
+	else
+		max = find_min(st, size);
+	if (stack == "a")
+		min = find_min(st, size);
+	else
+		min = find_max(st, size);
+
 	moves_up = 0;
 	moves_down = 0;
-	i = 0;
-	while (find_max(s->b, s->b_size) != s->b[i] && i < s->b_size - 1)
-	{
-		moves_up++;
-		i++;
-	}
-	i = s->b_size - 1;
-	while (find_min(s->b, s->b_size) != s->b[i] && i > 0)
+	if (check_stack(s, stack[0]) || size == 0)
+		return ;
+	i = size - 1;
+	while (i > 0 && st[i] != max)
 	{
 		moves_down++;
 		i--;
+	}
+	i = 0;
+	while (i < size - 1 && st[i] != min)
+	{
+		moves_up++;
+		i++;
 	}
 	if (moves_up < moves_down)
-	{
-		while (moves_up > 0)
-		{
-			rotate(s->b, s->b_size, "up", "b");
-			moves_up--;
-		}
-	}
-	else
-	{
-		while (moves_down > 0)
-		{
-			rotate(s->b, s->b_size, "down", "b");
-			moves_down--;
-		}
-	}
-}
-
-void	order_stack_a(t_stacks *s)
-{
-	int	moves_up;
-	int	moves_down;
-	int	i;
-
-	moves_up = 0;
-	moves_down = 0;
-	if (check_stack(s, 'a'))
-		return ;
-	i = s->a_size - 1;
-	while (i >= 0)
-	{
-		if (s->a[i] == find_max(s->a, s->a_size))
-			break ;
-		moves_down++;
-		i--;
-	}
-	i = 0;
-	while (i < s->a_size)
-	{
-		if (s->a[i] == find_min(s->a, s->a_size))
-			break ;
-		moves_up++;
-		i++;
-	}
-	if (moves_up <= moves_down)
-	{
-		while (moves_up-- > 0)
-			rotate(s->a, s->a_size, "up", "a");
-	}
-	else
-	{
-		while (moves_down-- > 0)
-			rotate(s->a, s->a_size, "down", "a");
-	}
+			while (moves_up-- > 0)
+				rotate(st, size, "up", stack);
+		else
+			while (moves_down-- > 0)
+				rotate(st, size, "down", stack);
 }
 
 int	check_stack(t_stacks *s, char stack)
@@ -532,4 +495,21 @@ int	count_moves_dir_to_a(int *stack, int num, char *dir, int size)
 		}
 	}
 	return (moves);
+}
+
+int	real_moves(char **str)
+{
+	int	moves_a;
+	int	moves_b;
+
+	moves_a = ft_atoi(str[1]);
+	moves_b = ft_atoi(str[3]);
+	if (ft_strnstr(str[0], "up", 2) && ft_strnstr(str[2], "up", 2)
+		|| (ft_strnstr(str[0], "down", 2) && ft_strnstr(str[2], "down", 2)))
+	{
+		if (moves_a < moves_b)
+			return (moves_a);
+		else
+			return (moves_b);
+	}
 }
