@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/09 21:33:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:06:07 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ int	turkish_sort(t_stacks *s)
 		moves_b = move_stack(s, dirA, moves_a, dir, moves_b, 'a');
 		move_to_stack(dir, moves_b, s, 'b');
 	}
+	order_stack(s, s->b, s->b_size, "b");
 	go_a(s);
 	return (0);
 }
@@ -202,7 +203,7 @@ void	go_a(t_stacks *s)
 		moves_b = move_stack(s, dir, moves_a, dirB, moves_b, 'b');
 		move_to_stack(dir, moves_a, s, 'a');
 	}
-	order_stack(s, s->a, s->a_size);
+	order_stack(s, s->a, s->a_size, "a");
 }
 
 void	move_stack_letter(char *dir, t_stacks *s, int moves, char letter)
@@ -273,32 +274,31 @@ void	move_to_stack(char *dir, int moves, t_stacks *s, char stack)
 	}
 }
 
-void	order_stack(t_stacks *s, int *st, int size)
+void	order_stack(t_stacks *s, int *st, int size, char *stack)
 {
 	int	i;
 	int	moves_up;
 	int	moves_down;
 
-	moves_up = 0;
-	moves_down = 0;
-	i = size - 1;
-	while (i > 0 && st[i] != find_max(st, size))
-	{
-		moves_down++;
-		i--;
-	}
 	i = 0;
-	while (i < size - 1 && st[i] != find_min(st, size))
-	{
-		moves_up++;
+	while (st[i] != find_min(st, size))
 		i++;
+	if (ft_strncmp(stack, "a", 1))
+	{
+		moves_up = i + 1;
+		moves_down = size - i - 1;
+	}
+	else
+	{
+		moves_up = i;
+		moves_down = size - i;
 	}
 	if (moves_up < moves_down)
 		while (moves_up-- > 0)
-			rotate(st, size, "up", "a");
+			rotate(st, size, "up", stack);
 	else
 		while (moves_down-- > 0)
-			rotate(st, size, "down", "a");
+			rotate(st, size, "down", stack);
 }
 
 char	**count_moves_to_stack(t_stacks *s, int pos, char stack)
