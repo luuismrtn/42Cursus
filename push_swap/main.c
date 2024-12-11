@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/02 14:41:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:41:11 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ static void	choose_sort(t_stacks *s)
 		swap("sa", s->a, s->a_size);
 	else if (s->a_size == 3)
 		sort_three_elements(s);
-	else if (s->a_size == 4)
-		sort_four_elements(s);
 	else
 		turkish_sort(s);
 }

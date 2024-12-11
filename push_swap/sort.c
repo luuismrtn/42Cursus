@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/02 14:55:54 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/10 00:41:05 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,6 @@ void	sort_three_elements(t_stacks *st)
 	}
 }
 
-void	sort_four_elements(t_stacks *st)
-{
-	if (st->a_size == 4)
-	{
-		if (st->a[0] < st->a[1] && st->a[0] < st->a[2] && st->a[0] < st->a[3]
-			&& st->a_size == 4)
-			push("pb", st);
-		if (st->a[0] > st->a[1] && st->a[1] < st->a[2] && st->a[1] < st->a[3]
-			&& st->a_size == 4)
-		{
-			swap("sa", st->a, st->a_size);
-			push("pb", st);
-		}
-		if (st->a[0] > st->a[2] && st->a[1] > st->a[2] && st->a[2] < st->a[3]
-			&& st->a_size == 4)
-		{
-			rotate(st->a, st->a_size, "up", "a");
-			swap("sa", st->a, st->a_size);
-			push("pb", st);
-		}
-		if (st->a[0] > st->a[3] && st->a[1] > st->a[3] && st->a[2] > st->a[3]
-			&& st->a_size == 4)
-		{
-			rotate(st->a, st->a_size, "down", "a");
-			push("pb", st);
-		}
-	}
-	if (st->a_size == 3)
-		sort_three_elements(st);
-	push("pa", st);
-}
-
 int	is_array_sorted(t_stacks *s)
 {
 	int	i;
@@ -83,42 +51,4 @@ int	is_array_sorted(t_stacks *s)
 		i++;
 	}
 	return (1);
-}
-
-void	print_stack(t_stacks *stack, char letter)
-{
-	size_t	i;
-
-	i = 0;
-	ft_printf("%c: ", letter);
-	ft_printf("[");
-	if (letter == 'a')
-	{
-		if (stack->a_size == 0)
-		{
-			ft_printf("]\n");
-			return ;
-		}
-		while (i < stack->a_size - 1)
-		{
-			ft_printf("%i, ", stack->a[i]);
-			i++;
-		}
-		ft_printf("%i", stack->a[i]);
-	}
-	else
-	{
-		if (stack->b_size == 0)
-		{
-			ft_printf("]\n");
-			return ;
-		}
-		while (i < stack->b_size - 1)
-		{
-			ft_printf("%i, ", stack->b[i]);
-			i++;
-		}
-		ft_printf("%i", stack->b[i]);
-	}
-	ft_printf("]\n");
 }
