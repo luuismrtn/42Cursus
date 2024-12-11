@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/10 00:41:11 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 20:10:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	t_stacks	*s;
 
 	check_arguments(argc, argv);
-	s = malloc(sizeof *s);
+	s = malloc(sizeof * s);
 	if (s == NULL)
 		exit(1);
 	initialize_stacks(argc, argv, s);

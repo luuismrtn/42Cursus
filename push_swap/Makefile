@@ -9,6 +9,10 @@ SRCS = main.c \
 		move.c \
 		sort.c \
 		utils.c \
+		utils2.c \
+		turkish_sort.c \
+		moves_a.c \
+		count_moves_dir.c
 
 OBJS = $(SRCS:.c=.o)
 

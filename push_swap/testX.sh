@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Número de veces que se realizarán las pruebas
-repeticiones=10
+repeticiones=2
 
 # Cantidad de números a generar en cada prueba
 n=500
