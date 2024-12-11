@@ -6,11 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 20:34:28 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 20:38:06 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:17:41 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static int	count_moves_up(int *stack, int num, int size)
 {

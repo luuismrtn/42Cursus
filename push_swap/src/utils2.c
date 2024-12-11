@@ -6,11 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 20:06:30 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 20:10:08 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:58:44 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 int	find_max(int *st, int size)
 {
@@ -74,4 +74,19 @@ int	real_moves(char **str)
 			return (moves_b);
 	}
 	return (moves_a + moves_b);
+}
+
+void	free_str(char **str)
+{
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (i < 4)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

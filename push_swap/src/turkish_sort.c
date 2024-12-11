@@ -6,18 +6,15 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 20:03:39 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 20:17:46 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:17:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	turkish_sort(t_stacks *s)
 {
-	int	i;
 	int	pivot;
-	int	moves_up;
-	int	moves_down;
 
 	pivot = (find_min(s->a, s->a_size) + (find_max(s->a, s->a_size))) / 2;
 	while (s->a_size != 3)
@@ -93,7 +90,7 @@ void	move_to_stack(char *dir, int moves, t_stacks *s, char stack)
 	}
 }
 
-void	order_stack(t_stacks *s, int *st, int size, char *stack)
+void	order_stack(int *st, int size, char *stack)
 {
 	int	i;
 	int	moves_up;

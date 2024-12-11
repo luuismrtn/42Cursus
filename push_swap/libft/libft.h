@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:34:11 by lumartin          #+#    #+#             */
-/*   Updated: 2024/10/05 21:45:51 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:06:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 # define LIBFT_H
 
-# include <stdlib.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include "get_next_line_bonus.h"
+# include <stdlib.h>
 
 typedef struct s_list
 {
@@ -26,6 +26,7 @@ typedef struct s_list
 }					t_list;
 
 int					ft_atoi(const char *str);
+long				ft_atol(char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalnum(int c);

@@ -6,11 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 20:37:42 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 22:12:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	exit_if_sorted_or_has_duplicate(t_stacks *s, int i)
 {
@@ -46,6 +46,10 @@ void	parse_numbers(t_stacks *s)
 	i = 0;
 	while (tmp[i] != NULL && tmp[i][0] != '\0')
 	{
+		if (valid_number(tmp[i]) == 0)
+			error_message(s, "Error\n");
+		if (is_integer(tmp[i]) == 0)
+			error_message(s, "Error\n");
 		s->a[z++] = ft_atoi(tmp[i++]);
 		free(tmp[i - 1]);
 	}
@@ -89,19 +93,27 @@ void	initialize_stacks(int argc, char **argv, t_stacks *s)
 			s->a_size++;
 		i++;
 	}
-	s->a = malloc(s->a_size * sizeof * s->a);
+	s->a = malloc(s->a_size * sizeof *s->a);
 	if (s->a == NULL)
 		error_message(s, "Error\n");
-	s->b = malloc(s->a_size * sizeof * s->b);
+	s->b = malloc(s->a_size * sizeof *s->b);
 	if (s->b == NULL)
 		error_message(s, "Error\n");
 }
 
 int	set_moves(char **str, char **dirs, int *moves, int temp_moves)
 {
-	moves[0] = ft_atoi(str[1]);
-	moves[1] = ft_atoi(str[3]);
+	free(dirs[0]);
+	free(dirs[1]);
 	dirs[0] = ft_strdup(str[0]);
 	dirs[1] = ft_strdup(str[2]);
+	if (!dirs[0] || !dirs[1])
+	{
+		free(dirs[0]);
+		free(dirs[1]);
+		return (temp_moves);
+	}
+	moves[0] = ft_atoi(str[1]);
+	moves[1] = ft_atoi(str[3]);
 	return (temp_moves);
 }
