@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/10 00:34:39 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:52:27 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,61 +129,76 @@ int	find_min(int *st, int size)
 	return (min);
 }
 
+int greater_than_pivot(int *stack, int size, int pivot)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (stack[i] < pivot)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 /* TURCO */
 
-int	turkish_sort(t_stacks *s)
+void	turkish_sort(t_stacks *s)
+{
+	int	i;
+	int pivot;
+	int	moves_up;
+	int	moves_down;
+
+	pivot = (find_min(s->a, s->a_size) + (find_max(s->a, s->a_size))) / 2;
+	while (s->a_size != 3)
+	{
+		while (greater_than_pivot(s->a, s->a_size, pivot) && s->a_size != 4)
+		{
+			if (s->a[0] <= pivot)
+				push("pb", s);
+			else
+				rotate(s->a, s->a_size, "up", "a");
+		}
+		push("pb", s);
+	}
+	sort_three_elements(s);
+	go_a(s);
+}
+
+void	go_a(t_stacks *s)
 {
 	int		best_moves;
 	int		temp_moves;
 	int		i;
 	int		moves_a;
 	int		moves_b;
-	char	*dir;
 	char	*dirA;
+	char	*dirB;
 	char	**str;
 
-	push("pb", s);
-	while (s->a_size > 3)
+	while (s->b_size != 0)
 	{
 		best_moves = 10000;
 		i = 0;
-		while (i < s->a_size)
+		while (i < s->b_size)
 		{
-			str = count_moves_to_stack(s, i, 'b');
+			str = count_moves_to_stack(s, i, 'a');
 			temp_moves = real_moves(str);
 			if (temp_moves < best_moves)
 			{
 				best_moves = temp_moves;
-				moves_a = ft_atoi(str[3]);
-				moves_b = ft_atoi(str[1]);
-				dirA = ft_strdup(str[2]);
-				dir = ft_strdup(str[0]);
+				moves_a = ft_atoi(str[1]);
+				moves_b = ft_atoi(str[3]);
+				dirA = ft_strdup(str[0]);
+				dirB = ft_strdup(str[2]);
 			}
 			i++;
 		}
-		moves_b = move_stack(s, dirA, moves_a, dir, moves_b, 'a');
-		move_to_stack(dir, moves_b, s, 'b');
-	}
-	order_stack(s, s->b, s->b_size, "b");
-	go_a(s);
-	return (0);
-}
-
-void	go_a(t_stacks *s)
-{
-	int	i;
-	int	moves_up;
-	int	moves_down;
-
-	sort_three_elements(s);
-	while (s->b_size != 0)
-	{
-		moves_up = count_moves_dir_to_a(s->a, s->b[0], "up", s->a_size);
-		moves_down = count_moves_dir_to_a(s->a, s->b[0], "down", s->a_size);
-		if (moves_up <= moves_down)
-			move_to_stack("up", moves_up, s, 'a');
-		else
-			move_to_stack("down", moves_down, s, 'a');
+		moves_a = move_stack(s, dirA, moves_a, dirB, moves_b, 'b');
+		move_to_stack(dirA, moves_a, s, 'a');
 	}
 	order_stack(s, s->a, s->a_size, "a");
 }
