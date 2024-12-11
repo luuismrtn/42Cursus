@@ -21,9 +21,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
 
 char	*get_next_line(int fd);
+size_t	ft_strlen(const char *str);
 char	*ft_strjoin_gnl(char *s1, const char *s2, int len);
 char	*ft_fill_join(char *s1, const char *s2, int len);
 
