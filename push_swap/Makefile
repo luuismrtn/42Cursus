@@ -1,5 +1,6 @@
-
 NAME = push_swap
+
+NAME_BONUS = checker
 
 LIBFT_DIR = ./libft
 
@@ -19,6 +20,15 @@ SRCS = src/main.c \
 
 OBJS = $(SRCS:.c=.o)
 
+BONUSSRC = bonus/main.c \
+			bonus/move.c \
+			bonus/utils.c \
+			bonus/utils2.c \
+			bonus/error.c \
+			bonus/read.c
+
+BONUSOBJS = $(BONUSSRC:.c=.o)
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -33,14 +43,20 @@ $(NAME): $(OBJS)
 %.o: %.c $(INC_DIR)/push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus/%.o: bonus/%.c $(INC_DIR)/push_swap_bonus.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(OBJS) $(BONUSOBJS)
+	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(BONUSOBJS) $(LIBFT)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUSOBJS)
 	@make clean -C $(LIBFT_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME_BONUS)
 	@make fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

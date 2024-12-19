@@ -6,11 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 18:37:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/19 19:14:01 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../inc/push_swap_bonus.h"
 
 void	error_message(t_stacks *s, char *msg)
 {
@@ -88,16 +88,6 @@ void	join_args(int argc, char **argv, t_stacks *s)
 	parse_numbers(s);
 }
 
-static void	choose_sort(t_stacks *s)
-{
-	if (s->a_size == 2)
-		swap("sa", s->a, s->a_size);
-	else if (s->a_size == 3)
-		sort_three_elements(s);
-	else
-		turkish_sort(s);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stacks	*s;
@@ -108,8 +98,10 @@ int	main(int argc, char **argv)
 		exit(1);
 	initialize_stacks(argc, argv, s);
 	join_args(argc, argv, s);
-	choose_sort(s);
-	exit_if_sorted_or_has_duplicate(s, 1);
-	error_message(s, "Error NO SORTED\n");
+	read_instructions(s);
+	if (is_array_sorted(s))
+		ft_putstr_fd("OK\n", 1);
+	else
+		ft_putstr_fd("KO\n", 1);
 	return (0);
 }
