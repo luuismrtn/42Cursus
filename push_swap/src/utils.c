@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 22:12:50 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:24:06 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ void	initialize_stacks(int argc, char **argv, t_stacks *s)
 			s->a_size++;
 		i++;
 	}
-	s->a = malloc(s->a_size * sizeof *s->a);
+	s->a = malloc(s->a_size * sizeof(int));
 	if (s->a == NULL)
 		error_message(s, "Error\n");
-	s->b = malloc(s->a_size * sizeof *s->b);
+	s->b = malloc(s->a_size * sizeof(int));
 	if (s->b == NULL)
 		error_message(s, "Error\n");
 }
