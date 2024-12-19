@@ -12,16 +12,6 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
-
 char	*ft_strjoin_gnl(char *s1, const char *s2, int len)
 {
 	char	*str;
