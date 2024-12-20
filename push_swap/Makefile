@@ -20,11 +20,11 @@ SRCS = src/main.c \
 
 OBJS = $(SRCS:.c=.o)
 
-BONUSSRC = bonus/main.c \
-			bonus/move.c \
-			bonus/utils.c \
-			bonus/error.c \
-			bonus/read.c
+BONUSSRC = bonus/main_bonus.c \
+			bonus/move_bonus.c \
+			bonus/utils_bonus.c \
+			bonus/error_bonus.c \
+			bonus/read_bonus.c
 
 BONUSOBJS = $(BONUSSRC:.c=.o)
 
@@ -37,16 +37,15 @@ $(LIBFT):
 	@make -C $(LIBFT_DIR)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-%.o: %.c $(INC_DIR)/push_swap.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus/%.o: bonus/%.c $(INC_DIR)/push_swap_bonus.h
-	$(CC) $(CFLAGS) -c $< -o $@
+bonus: $(LIBFT) $(NAME_BONUS)
 
-bonus: $(OBJS) $(BONUSOBJS)
-	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(BONUSOBJS) $(LIBFT)
+$(NAME_BONUS): $(BONUSOBJS)
+	$(CC) $(CFLAGS) $(BONUSOBJS) $(LIBFT) -o $(NAME_BONUS)
 
 clean:
 	rm -f $(OBJS) $(BONUSOBJS)
