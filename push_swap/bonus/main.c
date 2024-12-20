@@ -6,28 +6,25 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 19:14:01 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:59:26 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap_bonus.h"
 
-void	error_message(t_stacks *s, char *msg)
+void	free_str(char **str)
 {
-	if (msg)
-		ft_putstr_fd(msg, 2);
-	if (s != NULL)
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (i < 4)
 	{
-		if (s->a != NULL)
-			free(s->a);
-		if (s->b != NULL)
-			free(s->b);
-		if (s->join_args != NULL)
-			free(s->join_args);
-		if (s != NULL)
-			free(s);
+		free(str[i]);
+		i++;
 	}
-	exit(1);
+	free(str);
 }
 
 static void	check_arguments(int argc, char **argv)
@@ -59,7 +56,7 @@ static void	check_arguments(int argc, char **argv)
 	}
 }
 
-void	join_args(int argc, char **argv, t_stacks *s)
+static void	join_args(int argc, char **argv, t_stacks *s)
 {
 	int		i;
 	char	*tmp;

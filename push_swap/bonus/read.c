@@ -6,13 +6,13 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:42:58 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 20:12:42 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:00:16 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap_bonus.h"
 
-int	valid_instruction_a(t_stacks *s, char *line)
+static int	valid_instruction_a(t_stacks *s, char *line)
 {
 	if (!line || !s || s->a_size <= 0)
 		return (0);
@@ -27,7 +27,7 @@ int	valid_instruction_a(t_stacks *s, char *line)
 	return (2);
 }
 
-int	valid_instruction_b(t_stacks *s, char *line)
+static int	valid_instruction_b(t_stacks *s, char *line)
 {
 	if (!line || !s || s->b_size <= 0)
 		return (0);
@@ -42,7 +42,7 @@ int	valid_instruction_b(t_stacks *s, char *line)
 	return (2);
 }
 
-int	valid_instruction_both(t_stacks *s, char *line)
+static int	valid_instruction_both(t_stacks *s, char *line)
 {
 	if (!line || !s || s->a_size <= 1 || s->b_size <= 1)
 		return (0);
@@ -55,7 +55,7 @@ int	valid_instruction_both(t_stacks *s, char *line)
 	return (2);
 }
 
-void	execute_instructions(t_stacks *s, char **instructions)
+static void	execute_instructions(t_stacks *s, char **instructions)
 {
 	int	i;
 	int	valid_a;

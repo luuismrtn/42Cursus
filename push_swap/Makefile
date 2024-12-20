@@ -23,7 +23,6 @@ OBJS = $(SRCS:.c=.o)
 BONUSSRC = bonus/main.c \
 			bonus/move.c \
 			bonus/utils.c \
-			bonus/utils2.c \
 			bonus/error.c \
 			bonus/read.c
 

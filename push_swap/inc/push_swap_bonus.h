@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 19:09:41 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:02:09 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,13 @@ void		rotate_both_up(t_stacks *s);
 void		rotate_both_down(t_stacks *s);
 
 // UTILS
-void		error_message(t_stacks *s, char *msg);
 int			is_array_sorted(t_stacks *s);
-void		exit_if_sorted_or_has_duplicate(t_stacks *s, int i);
 void		parse_numbers(t_stacks *s);
 void		initialize_stacks(int argc, char **argv, t_stacks *s);
 void		free_str(char **str);
-void		init_pointers(int **moves, char ***dirs, int **count_moves);
-void		free_pointers(int *moves, char **dirs, int *count_moves);
 
 // ERROR
+void		error_message(t_stacks *s, char *msg);
 int			valid_number(char *str);
 int			is_integer(char *str);
 

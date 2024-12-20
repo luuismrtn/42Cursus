@@ -6,11 +6,29 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 20:52:22 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 16:35:12 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/20 14:55:19 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap_bonus.h"
+
+void	error_message(t_stacks *s, char *msg)
+{
+	if (msg)
+		ft_putstr_fd(msg, 2);
+	if (s != NULL)
+	{
+		if (s->a != NULL)
+			free(s->a);
+		if (s->b != NULL)
+			free(s->b);
+		if (s->join_args != NULL)
+			free(s->join_args);
+		if (s != NULL)
+			free(s);
+	}
+	exit(1);
+}
 
 int	valid_number(char *str)
 {

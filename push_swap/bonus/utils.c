@@ -6,13 +6,13 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/19 19:13:51 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:01:51 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap_bonus.h"
 
-void	exit_if_sorted_or_has_duplicate(t_stacks *s, int i)
+static void	has_duplicate(t_stacks *s, int i)
 {
 	int	j;
 
@@ -30,11 +30,6 @@ void	exit_if_sorted_or_has_duplicate(t_stacks *s, int i)
 			}
 			i++;
 		}
-	}
-	if (is_array_sorted(s))
-	{
-		ft_putstr_fd("OK\n", 1);
-		exit(0);
 	}
 }
 
@@ -57,7 +52,7 @@ void	parse_numbers(t_stacks *s)
 		free(tmp[i - 1]);
 	}
 	free(tmp);
-	exit_if_sorted_or_has_duplicate(s, 0);
+	has_duplicate(s, 0);
 }
 
 static int	count_words(char const *s, char c)
