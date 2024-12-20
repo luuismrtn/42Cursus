@@ -22,37 +22,37 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ### 1. **Libft** (70 horas) ✅
 - **Progreso**: 125%  
 - **Fecha de finalización**: 26/09/2024  
-- **Descripción**: Implementación de las funciones básicas de la biblioteca estándar de C. Incluye manejo de cadenas, memoria dinámica, conversión de números y más.
+- **Descripción**: En este proyecto creas tu primera librería en C, esta librería incluye de las funciones básicas de la biblioteca estándar de C replicadas por tí mismo. Este proyecto tiene una gran similitud con los ejercicios y proyectos de la piscina. Además, también incluí la parte bonus, que está relacionada con el manejo de listas anidadas.
 
 ### 2. **ft_printf** (70 horas) ✅
 - **Progreso**: 100%  
 - **Fecha de finalización**: 30/09/2024  
-- **Descripción**: Reimplementación de la función `printf` de C con soporte para varios especificadores y formatos. Este proyecto me permitió profundizar en el manejo de cadenas y memoria variable.
+- **Descripción**: Reccreación de la función printf de C desde cero, con soporte para varios especificadores de formato como %d, %s, %c, %x, %X, %p, entre otros. Este proyecto incluye la gestión de argumentos variables usando va_list y profundiza en el manejo de cadenas y memoria dinámica. 
 
 ### 3. **get_next_line** (70 horas) ✅
 - **Progreso**: 125%  
 - **Fecha de finalización**: 03/10/2024  
-- **Descripción**: Implementación de una función que lee una línea completa desde un archivo. Este proyecto me ayudó a mejorar mi comprensión sobre la gestión de archivos y el manejo eficiente de memoria.
+- **Descripción**: Implementación de una función que permite leer una línea completa desde un archivo o entrada estándar. Este proyecto se centra en la lectura controlada de buffers y en la gestión precisa de la memoria dinámica, asegurando que no haya fugas. Además, permite manejar archivos de gran tamaño y flujos de datos continuos, mejorando la comprensión de operaciones de E/S en bajo nivel en C. En este proyecto incluí la parte bonus, en la que es posible tratar con varios archivos o entradas estándar a la vez.
 
 ### 4. **Born2beroot** (40 horas) ✅
 - **Progreso**: 100%  
 - **Fecha de finalización**: 11/10/2024  
-- **Descripción**: Configuración de un entorno Linux, incluyendo particiones, instalación de un sistema operativo, redes, gestión de usuarios y permisos. Un proyecto introductorio para comprender cómo funcionan los sistemas operativos y herramientas básicas de administración.
+- **Descripción**: Configuración de un servidor Linux (Debian en este caso) desde cero, incluyendo la creación de particiones, configuración de redes y gestión de usuarios con sus respectivos permisos. Este proyecto es una introducción a la administración de sistemas, cubriendo conceptos esenciales como firewalls, servicios básicos y herramientas de monitorización.
 
 ### 5. **so_long** (60 horas) ✅
 - **Progreso**: 125%  
 - **Fecha de finalización**: 25/10/2024  
-- **Descripción**: Creación de un juego 2D similar a "Pac-Man" utilizando la biblioteca gráfica MiniLibX. Aprendí sobre manipulación de gráficos en C y el desarrollo de lógica de juegos sencilla.
+- **Descripción**: Desarrollo de un juego 2D utilizando la biblioteca MiniLibX para manejar gráficos. En este proyecto aprendí cómo utilizar la biblioteca MiniLibX, gestionar eventos de teclado y diseñar la lógica del juego, cómo detectar colisiones, contar movimientos y gestionar el estado de victoria o derrota. Este proyecto en particular se basaba en buscar la salida en el menor número de movimientos posibles recogiendo todas las monedas del mapa. Además, también incluí la parte bonus del proyecto, en el que se añadian los enemigos y un contador en la pantalla del videojuego que indicaba los movimientos que llevabas.
 
 ### 6. **pipex** (50 horas) ✅
 - **Progreso**: 100%  
 - **Fecha de finalización**: 20/11/2024  
-- **Descripción**: Simulación del comportamiento de las tuberías (pipes) en Unix. El proyecto involucra tomar varios comandos de la línea de comandos y redirigir la salida de uno como entrada de otro. Es fundamental para aprender sobre creación y comunicación de procesos en Unix.
+- **Descripción**: Implementación de una simulación del comportamiento de las tuberías en Unix, donde se redirige la salida de un comando como entrada de otro. Este proyecto se centra en la creación de procesos con fork, comunicación interprocesos con pipe y manejo de descriptores de archivo, fortaleciendo el conocimiento en sistemas operativos y programación en bajo nivel.
 
 ### 7. **push_swap** (60 horas) 🟡
 - **Progreso**: -  
 - **Fecha de finalización**: -  
-- **Descripción**: Desarrollo de un algoritmo para ordenar una serie de números utilizando operaciones de pila. El reto es hacerlo con el menor número de movimientos posible, profundizando en estructuras de datos y algoritmos.
+- **Descripción**: Desarrollo de un algoritmo para ordenar una lista de números utilizando dos pilas y un conjunto limitado de operaciones. Para este proyecto, implementé el algoritmo Turkish Sort, que se centra en encontrar el movimiento óptimo jugando con las rotaciones de las pilas para reducir el número total de operaciones. Además, completé la parte bonus, que consiste en crear un checker personalizado. Este programa recibe una pila inicial y una lista de instrucciones, verificando si al aplicar dichas instrucciones la pila queda correctamente ordenada. Este proyecto me permitió profundizar en estructuras de datos como pilas, optimización algorítmica y diseño de herramientas de validación.
 
 ### 8. **Philosophers** (70 horas) ❌
 - **Progreso**: -  
