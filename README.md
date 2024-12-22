@@ -54,7 +54,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Desarrollo de un algoritmo para ordenar una lista de números utilizando dos pilas y un conjunto limitado de operaciones. Para este proyecto, implementé el algoritmo Turkish Sort, que se centra en encontrar el movimiento óptimo jugando con las rotaciones de las pilas para reducir el número total de operaciones. Además, completé la parte bonus, que consiste en crear un checker personalizado. Este programa recibe una pila inicial y una lista de instrucciones, verificando si al aplicar dichas instrucciones la pila queda correctamente ordenada. Este proyecto me permitió profundizar en estructuras de datos como pilas, optimización algorítmica y diseño de herramientas de validación.
 
-### 8. **Philosophers** (70 horas) ❌
+### 8. **Philosophers** (70 horas) 🟡
 - **Progreso**: -  
 - **Fecha de finalización**: -  
 - **Descripción**: Resolución del clásico problema de los filósofos, en el que varios procesos (filósofos) compiten por recursos limitados. Este proyecto me permitió aprender sobre programación multihilo y sincronización.
@@ -114,6 +114,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 Aquí estarán los proyectos que estoy trabajando actualmente:
 
 - **push_swap**
+- **Philosophers**
 
 ## Exámenes
 
