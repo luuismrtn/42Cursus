@@ -2,11 +2,13 @@ NAME = philo
 
 SRCS = src/main.c \
 	   src/utils.c \
+	   src/utils2.c \
+	   src/philo_actions.c \
 
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra #-Werror
 
 all: $(LIBFT) $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/22 20:43:49 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:14:05 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <string.h>
 # include <sys/time.h>
 # include <unistd.h>
 
@@ -26,9 +27,10 @@ typedef struct s_philo
 	int				time_to_sleep;
 	int				time_to_die;
 	int				meals;
-	int				time_without_eating;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	meal_mutex;
+	long			last_meal_time;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	struct s_data	*data;
 }					t_philo;
 
@@ -37,8 +39,31 @@ typedef struct s_data
 	pthread_mutex_t	death_mutex;
 	int				dead;
 	long			start_time;
+	int				num_philosophers;
+
 }					t_data;
 
+void				test(void);
+
 int					ft_atoi(const char *str);
+void				cleanup_philosophers(t_philo **philosophers,
+						int num_philosophers);
+int					check_death(t_philo *philo);
+int					get_time(void);
+int					check_arguments(int argc, char **argv, int *args);
+
+void				p_sleep(t_philo *philo, int time);
+int					p_eat(t_philo *philo);
+void				p_think(t_philo *philo);
+int					p_takes_forks(t_philo *philo);
+
+void				init_forks(pthread_mutex_t *forks, int num_philosophers);
+void				thread_create_and_join(pthread_t *threads,
+						t_philo **philosophers, int num_philosophers);
+void				free_all(t_philo **philosophers, pthread_mutex_t *forks,
+						pthread_t *threads, int *args);
+void				init_data(t_data *data, int num_philosophers);
+
+void				*philosopher(void *arg);
 
 #endif
