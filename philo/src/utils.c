@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:22:41 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:21:37 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:26:09 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	get_time(void)
 	return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }
 
-void	print_message(char *str, t_philo *philosopher)
+void	print_message(const char *str, t_philo *philosopher)
 {
 	if (!check_death(philosopher))
 	{

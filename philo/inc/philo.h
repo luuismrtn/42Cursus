@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:14:05 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:28:09 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void				cleanup_philosophers(t_philo **philosophers,
 int					check_death(t_philo *philo);
 int					get_time(void);
 int					check_arguments(int argc, char **argv, int *args);
+void				print_message(const char *str, t_philo *philosopher);
 
 void				p_sleep(t_philo *philo, int time);
 int					p_eat(t_philo *philo);

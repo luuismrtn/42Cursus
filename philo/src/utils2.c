@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 18:12:58 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:23:33 by lumartin         ###   ########.fr       */
+/*   Updated: 2024/12/27 18:25:11 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	cleanup_philosophers(t_philo **philosophers, int num_philosophers)
 	i = 0;
 	while (i < num_philosophers)
 	{
-		pthread_mutex_destroy(&philosophers[i]->left_fork);
+		pthread_mutex_destroy(philosophers[i]->left_fork);
 		pthread_mutex_destroy(&philosophers[i]->meal_mutex);
 		free(philosophers[i]);
 		i++;
