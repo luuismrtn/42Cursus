@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:28:09 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:25:25 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,24 @@ typedef struct s_data
 	int				dead;
 	long			start_time;
 	int				num_philosophers;
+	pthread_mutex_t	forks_mutex;
+	int				*s_forks;
 
 }					t_data;
 
-void				test(void);
+// PHILO_ACTIONS
+void				p_sleep(t_philo *philo);
+int					p_eat(t_philo *philo);
+void				p_think(t_philo *philo);
+int					p_takes_forks(t_philo *philo);
 
+// UTILS
+void				init_forks(pthread_mutex_t *forks, int num_philosophers);
+void				thread_create_and_join(pthread_t *threads,
+						t_philo **philosophers, int num_philosophers);
+void				free_all(t_philo **philosophers, pthread_mutex_t *forks,
+						pthread_t *threads, int *args);
+void				init_data(t_data *data, int num_philosophers);
 int					ft_atoi(const char *str);
 void				cleanup_philosophers(t_philo **philosophers,
 						int num_philosophers);
@@ -53,18 +66,19 @@ int					get_time(void);
 int					check_arguments(int argc, char **argv, int *args);
 void				print_message(const char *str, t_philo *philosopher);
 
-void				p_sleep(t_philo *philo, int time);
-int					p_eat(t_philo *philo);
-void				p_think(t_philo *philo);
-int					p_takes_forks(t_philo *philo);
+int					get_fork_index(int philosopher_id, int total_philosophers,
+						int is_right);
+void				release_forks(t_philo *philo, int right_idx, int left_idx);
+int					take_fork(t_philo *philo, pthread_mutex_t *fork,
+						int fork_idx);
+void				release_fork(t_philo *philo, pthread_mutex_t *fork,
+						int fork_idx);
+void				assign_forks(t_philo *philo, pthread_mutex_t **first_fork,
+						pthread_mutex_t **second_fork);
+void				assign_indices(t_philo *philo, int *first_idx,
+						int *second_idx);
 
-void				init_forks(pthread_mutex_t *forks, int num_philosophers);
-void				thread_create_and_join(pthread_t *threads,
-						t_philo **philosophers, int num_philosophers);
-void				free_all(t_philo **philosophers, pthread_mutex_t *forks,
-						pthread_t *threads, int *args);
-void				init_data(t_data *data, int num_philosophers);
-
+// MAIN
 void				*philosopher(void *arg);
 
 #endif

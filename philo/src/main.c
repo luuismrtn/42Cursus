@@ -6,14 +6,14 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 18:38:04 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:20:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:25:33 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	initialize_philosophers(t_philo **philosophers, pthread_mutex_t *forks,
-		int *args, t_data *data)
+static void	initialize_philosophers(t_philo **philosophers,
+		pthread_mutex_t *forks, int *args, t_data *data)
 {
 	int	i;
 
@@ -29,7 +29,6 @@ void	initialize_philosophers(t_philo **philosophers, pthread_mutex_t *forks,
 		philosophers[i]->time_to_eat = args[2];
 		philosophers[i]->time_to_sleep = args[3];
 		philosophers[i]->meals = args[4];
-		philosophers[i]->last_meal_time = get_time();
 		philosophers[i]->data = data;
 		philosophers[i]->left_fork = &forks[i];
 		if (i == data->num_philosophers - 1)
@@ -48,6 +47,9 @@ void	*philosopher(void *arg)
 
 	philo = (t_philo *)arg;
 	meals = 0;
+	pthread_mutex_lock(&philo->meal_mutex);
+	philo->last_meal_time = get_time();
+	pthread_mutex_unlock(&philo->meal_mutex);
 	while (!check_death(philo))
 	{
 		p_think(philo);
@@ -56,12 +58,12 @@ void	*philosopher(void *arg)
 		meals += p_eat(philo);
 		if (philo->meals != -1 && meals >= philo->meals)
 			return (NULL);
-		p_sleep(philo, philo->time_to_sleep);
+		p_sleep(philo);
 	}
 	return (NULL);
 }
 
-void	destroy_forks(pthread_mutex_t *forks, int num_philosophers)
+static void	destroy_forks(pthread_mutex_t *forks, int num_philosophers)
 {
 	int	i;
 

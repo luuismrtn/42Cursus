@@ -6,16 +6,11 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:22:41 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/27 18:26:09 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:29:24 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-void	test(void)
-{
-	write(1, "HOLAA\n", 6);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -46,28 +41,31 @@ int	ft_atoi(const char *str)
 
 int	check_death(t_philo *philo)
 {
+	int	is_dead;
+
+	is_dead = 0;
 	pthread_mutex_lock(&philo->data->death_mutex);
 	if (philo->data->dead)
 	{
 		pthread_mutex_unlock(&philo->data->death_mutex);
 		return (1);
 	}
+	pthread_mutex_unlock(&philo->data->death_mutex);
 	pthread_mutex_lock(&philo->meal_mutex);
 	if (get_time() - philo->last_meal_time >= philo->time_to_die)
 	{
+		pthread_mutex_lock(&philo->data->death_mutex);
 		if (!philo->data->dead)
 		{
 			printf("%ld %d died\n", get_time() - philo->data->start_time,
 				philo->id);
 			philo->data->dead = 1;
+			is_dead = 1;
 		}
-		pthread_mutex_unlock(&philo->meal_mutex);
 		pthread_mutex_unlock(&philo->data->death_mutex);
-		return (1);
 	}
 	pthread_mutex_unlock(&philo->meal_mutex);
-	pthread_mutex_unlock(&philo->data->death_mutex);
-	return (0);
+	return (is_dead);
 }
 
 int	get_time(void)
@@ -95,7 +93,7 @@ int	check_arguments(int argc, char **argv, int *args)
 	{
 		printf("Error: Wrong number of arguments\n");
 		printf("Usage: ./philo [number_of_philosophers] [time_to_die] [time_to_eat] \
-		[time_to_sleep] [number_of_times_each_philosopher_must_eat]\n");
+[time_to_sleep] [number_of_times_each_philosopher_must_eat]\n");
 		return (0);
 	}
 	if (ft_atoi(argv[1]) <= 0 || ft_atoi(argv[2]) <= 0 || ft_atoi(argv[3]) <= 0
