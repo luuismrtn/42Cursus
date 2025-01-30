@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 03:33:00 by lumartin          #+#    #+#             */
-/*   Updated: 2025/01/03 02:26:17 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:44:46 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ int	p_eat(t_philo *philo)
 		}
 		usleep(100);
 	}
-	pthread_mutex_lock(&philo->meal_mutex);
-	philo->last_meal_time = get_time();
-	pthread_mutex_unlock(&philo->meal_mutex);
 	release_forks(philo, right_idx, left_idx);
 	return (1);
 }
