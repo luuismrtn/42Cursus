@@ -7,7 +7,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 360 horas
+- Horas trabajadas: 420 horas
 
 <img src="https://github.com/user-attachments/assets/3ab3d299-cb26-4c4f-b628-d981db1bdecc" width="600"/>
 
@@ -49,9 +49,9 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 20/11/2024  
 - **Descripción**: Implementación de una simulación del comportamiento de las tuberías en Unix, donde se redirige la salida de un comando como entrada de otro. Este proyecto se centra en la creación de procesos con fork, comunicación interprocesos con pipe y manejo de descriptores de archivo, fortaleciendo el conocimiento en sistemas operativos y programación en bajo nivel.
 
-### 7. **push_swap** (60 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
+### 7. **push_swap** (60 horas) ✅
+- **Progreso**: 121%  
+- **Fecha de finalización**: 30/01/2025  
 - **Descripción**: Desarrollo de un algoritmo para ordenar una lista de números utilizando dos pilas y un conjunto limitado de operaciones. Para este proyecto, implementé el algoritmo Turkish Sort, que se centra en encontrar el movimiento óptimo jugando con las rotaciones de las pilas para reducir el número total de operaciones. Además, completé la parte bonus, que consiste en crear un checker personalizado. Este programa recibe una pila inicial y una lista de instrucciones, verificando si al aplicar dichas instrucciones la pila queda correctamente ordenada. Este proyecto me permitió profundizar en estructuras de datos como pilas, optimización algorítmica y diseño de herramientas de validación.
 
 ### 8. **Philosophers** (70 horas) 🟡
@@ -60,7 +60,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Descripción**: Resolución del clásico problema de los filósofos, en el que varios procesos (filósofos) compiten por recursos limitados. Este proyecto me permitió aprender sobre programación multihilo y sincronización.
 
 ### 9. **minishell** (210 horas) ❌
-- **Pareja**: -  
+- **Pareja**: @aldferna 
 - **Progreso**: -  
 - **Fecha de finalización**: -  
 - **Descripción**: Creación de un "mini shell", similar a la terminal de un sistema operativo, con soporte para ejecutar comandos, gestionar variables de entorno y redirigir entradas/salidas. Un proyecto clave para aprender sobre procesos y la interacción con el sistema operativo.
