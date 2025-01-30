@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 22:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/20 15:54:55 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:22 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int			valid_number(char *str);
 int			is_integer(char *str);
 
 void		read_instructions(t_stacks *s);
+int			valid_instruction(char *line);
 
 #endif

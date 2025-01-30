@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 20:45:40 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/20 14:59:26 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:25 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap_bonus.h"
+
+int	valid_instruction(char *line)
+{
+	if (!line)
+		return (0);
+	if (ft_strncmp(line, "sa\n", 3) == 0 || ft_strncmp(line, "sb\n", 3) == 0
+		|| ft_strncmp(line, "ss\n", 3) == 0 || ft_strncmp(line, "pa\n", 3) == 0
+		|| ft_strncmp(line, "pb\n", 3) == 0 || ft_strncmp(line, "ra\n", 3) == 0
+		|| ft_strncmp(line, "rb\n", 3) == 0 || ft_strncmp(line, "rr\n", 3) == 0
+		|| ft_strncmp(line, "rra\n", 4) == 0 || ft_strncmp(line, "rrb\n",
+			4) == 0 || ft_strncmp(line, "rrr\n", 4) == 0)
+		return (1);
+	return (0);
+}
 
 void	free_str(char **str)
 {

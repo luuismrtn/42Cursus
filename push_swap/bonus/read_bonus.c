@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read.c                                             :+:      :+:    :+:   */
+/*   read_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 16:42:58 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/20 15:00:16 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:43:09 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,6 @@ static void	execute_instructions(t_stacks *s, char **instructions)
 			ft_putstr_fd("KO\n", 1);
 			exit(0);
 		}
-		if (valid_a == 2 && valid_b == 2 && valid_both == 2)
-		{
-			free_str(instructions);
-			error_message(s, "Error\n");
-		}
 		i++;
 	}
 }
@@ -89,16 +84,14 @@ void	read_instructions(t_stacks *s)
 	char	**instructions;
 	int		i;
 
-	if (!s)
-		return ;
 	i = 0;
 	instructions = ft_calloc(10000, sizeof(char *));
-	if (!instructions)
+	if (!instructions || !s)
 		error_message(s, "Error\n");
 	line = get_next_line(0);
 	while (line)
 	{
-		if (i >= 9999)
+		if (i >= 9999 || valid_instruction(line) == 0)
 		{
 			free_str(instructions);
 			free(line);
