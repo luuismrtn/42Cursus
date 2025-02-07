@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 18:12:58 by lumartin          #+#    #+#             */
-/*   Updated: 2025/01/03 01:15:59 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:17:52 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	init_data(t_data *data, int num_philosophers)
 	pthread_mutex_init(&data->death_mutex, NULL);
 	data->start_time = get_time();
 	data->num_philosophers = num_philosophers;
-	data->s_forks = malloc(sizeof(int) * num_philosophers);
 }
 
 void	thread_create_and_join(pthread_t *threads, t_philo **philosophers,

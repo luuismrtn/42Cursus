@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 18:38:04 by lumartin          #+#    #+#             */
-/*   Updated: 2025/01/03 02:25:33 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:21:54 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ void	*philosopher(void *arg)
 	while (!check_death(philo))
 	{
 		p_think(philo);
-		if (p_takes_forks(philo) == 2)
-			usleep(philo->time_to_die * 1000);
-		meals += p_eat(philo);
+		p_eat(philo);
+		meals++;
 		if (philo->meals != -1 && meals >= philo->meals)
 			return (NULL);
 		p_sleep(philo);

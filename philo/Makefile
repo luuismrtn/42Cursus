@@ -4,7 +4,6 @@ SRCS = src/main.c \
 	   src/utils.c \
 	   src/utils2.c \
 	   src/philo_actions.c \
-	   src/philo_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
