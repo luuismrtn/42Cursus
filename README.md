@@ -115,11 +115,12 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 Aquí estarán los proyectos que estoy trabajando actualmente:
 
 - **Philosophers**
+- **Minishell**
 
 ## Exámenes
 
 - **Exam Rank 02** ✅ (28/11/2024)
-- **Exam Rank 03** ❌
+- **Exam Rank 03** ✅ (13/02/2025)
 - **Exam Rank 04** ❌
 - **Exam Rank 05** ❌
 - **Exam Rank 06** ❌
