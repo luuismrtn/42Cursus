@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/07 18:18:40 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:45:13 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_data
 void				p_sleep(t_philo *philo);
 int					p_eat(t_philo *philo);
 void				p_think(t_philo *philo);
+void				smart_sleep(int time, t_philo *philo);
+int					death_checker(t_philo **philosophers, int num_philosophers);
 
 // UTILS
 void				init_forks(pthread_mutex_t *forks, int num_philosophers);

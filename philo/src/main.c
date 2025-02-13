@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 18:38:04 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/07 18:21:54 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:27:11 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ void	*philosopher(void *arg)
 	pthread_mutex_unlock(&philo->meal_mutex);
 	while (!check_death(philo))
 	{
-		p_think(philo);
-		p_eat(philo);
+		print_message("is thinking", philo);
+		if (p_eat(philo) == 2)
+			return (NULL);
 		meals++;
 		if (philo->meals != -1 && meals >= philo->meals)
-			return (NULL);
+		{
+			philo->data->dead = 1;
+			break ;
+		}
 		p_sleep(philo);
 	}
 	return (NULL);

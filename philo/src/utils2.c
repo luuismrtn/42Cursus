@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 18:12:58 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/07 18:17:52 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/13 16:44:13 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	thread_create_and_join(pthread_t *threads, t_philo **philosophers,
 	i = -1;
 	while (++i < num_philosophers)
 		pthread_create(&threads[i], NULL, philosopher, philosophers[i]);
+	death_checker(philosophers, num_philosophers);
 	i = -1;
 	while (++i < num_philosophers)
 		pthread_join(threads[i], NULL);
