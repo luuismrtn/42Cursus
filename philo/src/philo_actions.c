@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 03:33:00 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/13 16:46:07 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/02/14 11:49:45 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ static void	only_one_philo(t_philo *philo)
 
 void	p_sleep(t_philo *philo)
 {
-	long	start_time;
-
-	start_time = get_time();
 	print_message("is sleeping", philo);
 	smart_sleep(philo->time_to_sleep, philo);
 }
@@ -64,9 +61,10 @@ int	death_checker(t_philo **p, int num_philosophers)
 	int	i;
 
 	i = 0;
+	usleep(50);
 	while (1)
 	{
-		i = i % num_philosophers;
+		i = (i + 1) % num_philosophers;
 		pthread_mutex_lock(&p[i]->data->death_mutex);
 		if (p[i]->data->dead)
 			return (pthread_mutex_unlock(&p[i]->data->death_mutex), 0);
@@ -83,7 +81,6 @@ int	death_checker(t_philo **p, int num_philosophers)
 		pthread_mutex_unlock(&p[i]->meal_mutex);
 		pthread_mutex_unlock(&p[i]->data->death_mutex);
 		smart_sleep(50, p[i]);
-		i++;
 	}
 	return (0);
 }
