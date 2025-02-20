@@ -7,9 +7,9 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 420 horas
+- Horas trabajadas: 490 horas
 
-<img src="https://github.com/user-attachments/assets/ae470e2b-b6a4-402a-bf81-f0e72b5b5eea" width="600"/>
+<img src="https://github.com/user-attachments/assets/9253be02-a781-44fb-aa3d-34d12cfcfa9a" width="600"/>
 
 
 
@@ -55,12 +55,12 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 30/01/2025  
 - **Descripción**: Desarrollo de un algoritmo para ordenar una lista de números utilizando dos pilas y un conjunto limitado de operaciones. Para este proyecto, implementé el algoritmo Turkish Sort, que se centra en encontrar el movimiento óptimo jugando con las rotaciones de las pilas para reducir el número total de operaciones. Además, completé la parte bonus, que consiste en crear un checker personalizado. Este programa recibe una pila inicial y una lista de instrucciones, verificando si al aplicar dichas instrucciones la pila queda correctamente ordenada. Este proyecto me permitió profundizar en estructuras de datos como pilas, optimización algorítmica y diseño de herramientas de validación.
 
-### 8. **Philosophers** (70 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
+### 8. **Philosophers** (70 horas) ✅
+- **Progreso**: 100%
+- **Fecha de finalización**: 20/02/2025  
 - **Descripción**: Resolución del clásico problema de los filósofos, en el que varios procesos (filósofos) compiten por recursos limitados. Este proyecto me permitió aprender sobre programación multihilo y sincronización.
 
-### 9. **minishell** (210 horas) ❌
+### 9. **minishell** (210 horas) 🟡
 - **Pareja**: @aldferna 
 - **Progreso**: -  
 - **Fecha de finalización**: -  
