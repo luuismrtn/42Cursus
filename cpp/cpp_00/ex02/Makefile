@@ -1,11 +1,11 @@
 C++ = c++
-C++_FLAGS = -Wall -Wextra -Werror -std=c++98
+C++_FLAGS = -Wall -Wextra -Werror #-std=c++98 -pedantic
 INFILES = 	Account.cpp \
 			tests.cpp
 
 OBJFILES = $(INFILES:.cpp=.o)
 
-NAME = tests
+NAME = job
 
 all: $(NAME)
 

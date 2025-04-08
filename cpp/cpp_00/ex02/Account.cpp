@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 17:22:53 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/07 17:57:34 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/04/08 20:41:05 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ Account::~Account()
               << ";closed" << std::endl;
 }
 
-void Account::_displayTimestamp()
+void Account::_displayTimestamp(void)
 {
-    std::time_t now = std::time(0);
-    std::tm *ltm = std::localtime(&now);
-    std::cout << "[" << 1900 + ltm->tm_year << 1 + ltm->tm_mon
-              << ltm->tm_mday << "_" << 5 + ltm->tm_hour
-              << ltm->tm_min << ltm->tm_sec << "] ";
+    char timestamp[20];
+    std::time_t now;
+
+    std::time(&now);
+    std::strftime(timestamp, sizeof(timestamp), "%Y%m%d_%H%M%S", std::localtime(&now));
+    std::cout << "[" << timestamp << "] ";
 }
 
 int Account::getNbAccounts()

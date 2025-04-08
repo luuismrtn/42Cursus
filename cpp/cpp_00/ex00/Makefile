@@ -1,5 +1,5 @@
 C++ = c++
-C++_FLAGS = -Wall -Wextra -Werror -std=c++98
+C++_FLAGS = -Wall -Wextra -Werror #-std=c++98 -pedantic
 INFILES = 	megaphone.cpp\
 
 OBJFILES = $(INFILES:.cpp=.o)
