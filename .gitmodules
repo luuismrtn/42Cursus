@@ -1,0 +1,3 @@
+[submodule "MiniShell"]
+	path = MiniShell
+	url = https://github.com/luuismrtn/MiniShell.git
