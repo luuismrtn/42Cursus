@@ -7,9 +7,11 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 490 horas
+- Horas trabajadas: 700 horas
 
-<img src="https://github.com/user-attachments/assets/9253be02-a781-44fb-aa3d-34d12cfcfa9a" width="600"/>
+<img src="https://github.com/user-attachments/assets/7e66aeb4-d584-4e2e-b855-f34bb0daa565" width="600"/>
+
+
 
 
 
@@ -60,13 +62,13 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 20/02/2025  
 - **Descripción**: Resolución del clásico problema de los filósofos, en el que varios procesos (filósofos) compiten por recursos limitados. Este proyecto me permitió aprender sobre programación multihilo y sincronización.
 
-### 9. **minishell** (210 horas) 🟡
+### 9. **minishell** (210 horas) ✅
 - **Pareja**: @aldferna 
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: Creación de un "mini shell", similar a la terminal de un sistema operativo, con soporte para ejecutar comandos, gestionar variables de entorno y redirigir entradas/salidas. Un proyecto clave para aprender sobre procesos y la interacción con el sistema operativo.
+- **Progreso**: 101%  
+- **Fecha de finalización**: 09/04/2025  
+- **Descripción**: Creación de un "mini shell", similar a la terminal de un sistema operativo, con soporte para ejecutar comandos, gestionar variables de entorno y redirigir entradas/salidas. Este proyecto me permitió conocer casi a la perfección bash y controlar mucho mejor el lenguaje C.
 
-### 10. **NetPractice** (50 horas) ❌
+### 10. **NetPractice** (50 horas) 🟡
 - **Progreso**: -  
 - **Fecha de finalización**: -  
 - **Descripción**: Implementación de un sistema de redes básico utilizando sockets en C, con el envío de paquetes y gestión de direcciones IP. Este proyecto es fundamental para aprender sobre redes y comunicación entre procesos en C.
@@ -76,7 +78,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Desarrollo de un motor gráfico 3D, con el uso de **cub3d** (Raycasting) o **miniRT** (Ray Tracing). Este proyecto me permitió aprender sobre matemáticas 3D, iluminación y renderizado gráfico en C.
 
-### 12. **CPP Modules 00-04** (70 horas) ❌
+### 12. **CPP Modules 00-04** (70 horas) 🟡
 - **CPP Module 00**: Fundamentos de programación en C++, incluyendo estructuras de datos básicas y manejo de memoria.  
 - **CPP Module 01**: Programación orientada a objetos (OOP), clases, objetos, constructores y destructores.  
 - **CPP Module 02**: Manejo de excepciones y sobrecarga de operadores.  
@@ -109,13 +111,6 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Descripción**: Desarrollo de un sistema de alta disponibilidad utilizando múltiples tecnologías, enfocándose en resiliencia y recuperación ante desastres.
 
 ---
-
-## Proyectos en Proceso
-
-Aquí estarán los proyectos que estoy trabajando actualmente:
-
-- **Philosophers**
-- **Minishell**
 
 ## Exámenes
 
