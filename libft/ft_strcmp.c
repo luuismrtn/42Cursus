@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 19:40:07 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/26 15:12:50 by aldferna         ###   ########.fr       */
+/*   Created: 2025/03/04 14:36:05 by aldferna          #+#    #+#             */
+/*   Updated: 2025/03/27 01:37:47 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *src)
+int	ft_strcmp(char *str1, char *str2)
 {
-	char	*cpy;
-	int		i;
-	int		size;
+	int	i;
 
-	size = 0;
-	while (src[size])
-		++size;
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
-		return (NULL);
 	i = 0;
-	while (src[i] != '\0')
+	if (!str1 || !str2)
+		return (1);
+	while (str1[i] != '\0' && str2[i] != '\0')
 	{
-		cpy[i] = src[i];
+		if (str1[i] != str2[i])
+			return (1);
 		i++;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	return (0);
 }

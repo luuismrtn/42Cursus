@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:34:11 by lumartin          #+#    #+#             */
-/*   Updated: 2024/12/11 21:06:50 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/03/04 14:36:58 by aldferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int					ft_isalpha(int c);
 int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
+int					ft_isspace(int c);
 char				*ft_itoa(int n);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
@@ -59,11 +60,13 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *src);
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_sep(char const *s1, char const *s2, char sep);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlen(const char *str);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strncmp(char *s1, char *s2, size_t n);
+int					ft_strcmp(char *str1, char *str2);
 char				*ft_strnstr(const char *str, const char *to_find, size_t n);
 char				*ft_strrchr(const char *str, int c);
 char				*ft_strtrim(char const *s1, char const *set);

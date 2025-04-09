@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aldferna <aldferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 19:40:07 by lumartin          #+#    #+#             */
-/*   Updated: 2025/02/26 15:12:50 by aldferna         ###   ########.fr       */
+/*   Created: 2025/02/21 20:23:55 by aldferna          #+#    #+#             */
+/*   Updated: 2025/02/21 20:26:19 by aldferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *src)
+int	ft_isspace(int c)
 {
-	char	*cpy;
-	int		i;
-	int		size;
-
-	size = 0;
-	while (src[size])
-		++size;
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	while (src[i] != '\0')
-	{
-		cpy[i] = src[i];
-		i++;
-	}
-	cpy[i] = '\0';
-	return (cpy);
+	if (c == ' ' || (c >= 8 && c <= 13))
+		return (1);
+	else
+		return (0);
 }
