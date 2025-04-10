@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:11:26 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/07 18:43:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:20:18 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void PhoneBook::displayContact(int index)
 {
     Contact contact = getContact(index);
     std::cout << contact.toString() << std::endl;
-};
+}
 
 void PhoneBook::displayContacts()
 {
