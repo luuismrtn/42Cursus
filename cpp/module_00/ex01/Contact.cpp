@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:11:22 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/07 18:15:50 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:20:52 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Contact::Contact(std::string firstName, std::string lastName, std::string nickna
     this->nickname = nickname;
     this->phoneNumber = phoneNumber;
     this->darkestSecret = darkestSecret;
-};
+}
 
 Contact::Contact()
 {
@@ -28,7 +28,7 @@ Contact::Contact()
     this->nickname = "";
     this->phoneNumber = "";
     this->darkestSecret = "";
-};
+}
 
 std::string Contact::formatField(const std::string field)
 {
