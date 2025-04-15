@@ -1,10 +1,12 @@
 C++ = c++
 C++_FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INFILES = 	main.cpp \
+			Fixed.cpp \
+			Point.cpp \
 
 OBJFILES = $(INFILES:.cpp=.o)
 
-NAME = test
+NAME = bsp
 
 all: $(NAME)
 

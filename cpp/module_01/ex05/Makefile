@@ -3,7 +3,6 @@ C++_FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 INFILES = 	main.cpp \
 			Harl.cpp \
 
-
 OBJFILES = $(INFILES:.cpp=.o)
 
 NAME = harl

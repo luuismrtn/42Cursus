@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 16:38:00 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/15 16:59:09 by lumartin         ###   ########.fr       */
+/*   Created: 2025/04/15 18:04:07 by lumartin          #+#    #+#             */
+/*   Updated: 2025/04/15 18:17:12 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-#define HARL_HPP
+#ifndef POINT_HPP
+#define POINT_HPP
 
 #include <iostream>
+#include "Fixed.hpp"
 
-class Harl
+class Point
 {
-private:
-    std::string level;
-    void debug();
-    void info();
-    void warning();
-    void error();
+    private:
+        const Fixed _x;
+        const Fixed _y;
 
-public:
-    Harl();
-    ~Harl();
-    void complain(std::string level);
-};
+    public:
+        Point();
+        Point(const Point &src);
+        Point(const Fixed &x, const Fixed &y);
+        
+        Point &operator=(const Point &src);
+        ~Point();
+        
+        Fixed getX( void ) const;
+        Fixed getY( void ) const;
+    };
+
 
 #endif
