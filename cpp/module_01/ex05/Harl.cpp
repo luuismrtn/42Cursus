@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:40:21 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/18 14:00:24 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/04/29 16:00:42 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,5 @@ void Harl::complain(std::string level)
             return;
         }
     }
-    std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+    std::cout << "[ INVALID COMMAND, SORRY :( ]" << std::endl;
 }
