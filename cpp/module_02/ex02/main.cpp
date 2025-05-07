@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:54:27 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/15 17:45:30 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:44:27 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int main(void)
 
     std::cout << a << std::endl;
     std::cout << b << std::endl;
+
+    std::cout << b - a << std::endl;
     
+    std::cout << Fixed::min(a, b) << std::endl;
     std::cout << Fixed::max(a, b) << std::endl;
     return 0;
 }
+

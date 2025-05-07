@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 16:54:27 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/15 16:58:31 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:02:59 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(void)
     Fixed b(a);
     Fixed c;
     c = b;
+    std::cout << a.getRawBits() << std::endl;
+    a.setRawBits(42);
     std::cout << a.getRawBits() << std::endl;
     std::cout << b.getRawBits() << std::endl;
     std::cout << c.getRawBits() << std::endl;
