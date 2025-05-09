@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:44:15 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/16 18:13:02 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/09 14:00:42 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ class ClapTrap
 {
     protected:
         std::string _name;
-        int _hitPoints;
-        int _energyPoints;
-        int _attackDamage;
+        int         _hitPoints;
+        int         _energyPoints;
+        int         _attackDamage;
 
     public:
         ClapTrap();

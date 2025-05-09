@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:09:58 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/16 18:23:30 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:40:50 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,4 @@ void ScavTrap::guardGate()
         std::cout << "ScavTrap " << _name << " cannot enter Gate Keeper mode because it has been destroyed!" << std::endl;
     }
 }
+

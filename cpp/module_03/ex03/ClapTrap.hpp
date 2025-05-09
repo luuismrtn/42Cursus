@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:44:15 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/16 18:13:02 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:40:34 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ class ClapTrap
         void setAttackDamage(int attackDamage);
 
 };
-
 
 #endif

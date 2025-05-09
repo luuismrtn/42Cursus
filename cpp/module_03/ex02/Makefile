@@ -1,5 +1,5 @@
 C++ = c++
-C++_FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+C++_FLAGS = -Wall -Wextra -Werror #-std=c++98
 INFILES = 	main.cpp \
 			ClapTrap.cpp \
 			ScavTrap.cpp \
@@ -7,7 +7,7 @@ INFILES = 	main.cpp \
 
 OBJFILES = $(INFILES:.cpp=.o)
 
-NAME = claptrap
+NAME = fragtrap
 
 all: $(NAME)
 
