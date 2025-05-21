@@ -9,7 +9,8 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - Horas totales de trabajo: 1870 horas
 - Horas trabajadas: 700 horas
 
-<img src="https://github.com/user-attachments/assets/7e66aeb4-d584-4e2e-b855-f34bb0daa565" width="600"/>
+<img src="https://github.com/user-attachments/assets/7b00a5a0-d18f-4e63-a6dc-426a4a44ae41" width="600"/>
+
 
 
 
@@ -73,17 +74,20 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Implementación de un sistema de redes básico utilizando sockets en C, con el envío de paquetes y gestión de direcciones IP. Este proyecto es fundamental para aprender sobre redes y comunicación entre procesos en C.
 
-### 11. **cub3d or miniRT** (280 horas) ❌
+### 11. **cub3d** (280 horas) 🟡
+- **Pareja**: @aldferna
 - **Progreso**: -  
 - **Fecha de finalización**: -  
-- **Descripción**: Desarrollo de un motor gráfico 3D, con el uso de **cub3d** (Raycasting) o **miniRT** (Ray Tracing). Este proyecto me permitió aprender sobre matemáticas 3D, iluminación y renderizado gráfico en C.
+- **Descripción**: Desarrollo de un motor gráfico 3D, con el uso de **cub3d** (Raycasting). Este proyecto me permitió aprender sobre matemáticas 3D, iluminación y renderizado gráfico en C.
 
-### 12. **CPP Modules 00-04** (70 horas) 🟡
-- **CPP Module 00**: Fundamentos de programación en C++, incluyendo estructuras de datos básicas y manejo de memoria.  
-- **CPP Module 01**: Programación orientada a objetos (OOP), clases, objetos, constructores y destructores.  
-- **CPP Module 02**: Manejo de excepciones y sobrecarga de operadores.  
-- **CPP Module 03**: Herencia, polimorfismo y clases derivadas.  
-- **CPP Module 04**: Plantillas (templates) y contenedores estándar en C++.
+### 12. **CPP Modules 00-04** (70 horas) ✅
+- **CPP Module 00**: Fundamentos de programación en C++, incluyendo estructuras de datos básicas y manejo de memoria. (100%)  
+- **CPP Module 01**: Programación orientada a objetos (OOP), clases, objetos, constructores y destructores. (100%)   
+- **CPP Module 02**: Polimorfismo ad-hoc, sobrecarga de operadores y la forma de clase canónica ortodoxa. (100%)   
+- **CPP Module 03**: Herencia, polimorfismo y clases derivadas. (100%)   
+- **CPP Module 04**: Polimorfismo de subtipos, clases abstractas e interfaces. (100%)
+  
+- **Fecha de finalización**: 21/05/2025 
 
 ### 13. **webserv or ft_irc** (175 horas) ❌
 - **Parejas**: -  
