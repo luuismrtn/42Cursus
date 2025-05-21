@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:08:11 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/18 13:11:09 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:18:19 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,6 @@ int main()
     delete copyCat;
     
     std::cout << "\n----- End of program -----\n" << std::endl;
-    
-    // Memory leak verification (run with valgrind)
-    // valgrind --leak-check=full ./animal
     
     return 0;
 }

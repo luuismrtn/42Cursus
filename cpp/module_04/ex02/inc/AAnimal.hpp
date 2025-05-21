@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 12:08:56 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/18 13:07:05 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:16:27 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class AAnimal
         std::string type;
 
     public:
-
         AAnimal();
         AAnimal(const AAnimal &src);
         virtual ~AAnimal();
