@@ -7,9 +7,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 980 horas
+- Horas trabajadas: 1030 horas
 
-<img src="https://github.com/user-attachments/assets/da62c8b5-63c2-4bec-baed-a9ef3a4be350" width="600"/>
+<img src="https://github.com/user-attachments/assets/0af014b9-ad2a-4ffc-9ed8-856acc1d76cb" width="600"/>
+
 
 
 
@@ -69,10 +70,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 09/04/2025  
 - **Descripción**: Creación de un "mini shell", similar a la terminal de un sistema operativo, con soporte para ejecutar comandos, gestionar variables de entorno y redirigir entradas/salidas. Este proyecto me permitió conocer casi a la perfección bash y controlar mucho mejor el lenguaje C.
 
-### 10. **NetPractice** (50 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: -
+### 10. **NetPractice** (50 horas) ✅
+- **Progreso**: 100%  
+- **Fecha de finalización**: 18/06/1025  
+- **Descripción**: Proyecto en el que he podido entender la comunicación entre dispositivos TCP/IP con IPv4, en el que he tenido que entender y crear máscaras e IPs para poder conectar routers, host, switch, host e Internet.
 
 ### 11. **cub3d** (280 horas) ✅
 - **Pareja**: @aldferna
@@ -102,7 +103,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
 
-### 15. **CPP Modules 05-09** (140 horas) ❌
+### 15. **CPP Modules 05-09** (140 horas) 🟡
 - **CPP Module 05**: Manipulación de ficheros y streams en C++.  
 - **CPP Module 06**: Diseño de estructuras de datos avanzadas como listas enlazadas, pilas y colas.  
 - **CPP Module 07**: Uso de contenedores de la STL como **std::vector**, **std::list** y **std::deque**.  
