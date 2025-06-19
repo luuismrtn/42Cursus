@@ -122,5 +122,5 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Exam Rank 02** ✅ (28/11/2024)
 - **Exam Rank 03** ✅ (13/02/2025)
 - **Exam Rank 04** ✅ (10/04/2025)
-- **Exam Rank 05** ❌
+- **Exam Rank 05** ✅ (19/06/2025)
 - **Exam Rank 06** ❌
