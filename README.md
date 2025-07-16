@@ -7,9 +7,11 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 700 horas
+- Horas trabajadas: 1030 horas
 
-<img src="https://github.com/user-attachments/assets/7e66aeb4-d584-4e2e-b855-f34bb0daa565" width="600"/>
+<img src="https://github.com/user-attachments/assets/0af014b9-ad2a-4ffc-9ed8-856acc1d76cb" width="600"/>
+
+
 
 
 
@@ -68,22 +70,25 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 09/04/2025  
 - **Descripción**: Creación de un "mini shell", similar a la terminal de un sistema operativo, con soporte para ejecutar comandos, gestionar variables de entorno y redirigir entradas/salidas. Este proyecto me permitió conocer casi a la perfección bash y controlar mucho mejor el lenguaje C.
 
-### 10. **NetPractice** (50 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: Implementación de un sistema de redes básico utilizando sockets en C, con el envío de paquetes y gestión de direcciones IP. Este proyecto es fundamental para aprender sobre redes y comunicación entre procesos en C.
+### 10. **NetPractice** (50 horas) ✅
+- **Progreso**: 100%  
+- **Fecha de finalización**: 18/06/1025  
+- **Descripción**: Proyecto en el que he podido entender la comunicación entre dispositivos TCP/IP con IPv4, en el que he tenido que entender y crear máscaras e IPs para poder conectar routers, host, switch, host e Internet.
 
-### 11. **cub3d or miniRT** (280 horas) ❌
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: Desarrollo de un motor gráfico 3D, con el uso de **cub3d** (Raycasting) o **miniRT** (Ray Tracing). Este proyecto me permitió aprender sobre matemáticas 3D, iluminación y renderizado gráfico en C.
+### 11. **cub3d** (280 horas) ✅
+- **Pareja**: @aldferna
+- **Progreso**: 108%  
+- **Fecha de finalización**: 16/06/2025  
+- **Descripción**: Desarrollo de un motor gráfico 3D, con el uso de **cub3d** (Raycasting). Este proyecto me permitió aprender sobre matemáticas 3D, renderizado en C, utilizar la biblioteca MLX42 y conceptos de Raycasting.
 
-### 12. **CPP Modules 00-04** (70 horas) 🟡
-- **CPP Module 00**: Fundamentos de programación en C++, incluyendo estructuras de datos básicas y manejo de memoria.  
-- **CPP Module 01**: Programación orientada a objetos (OOP), clases, objetos, constructores y destructores.  
-- **CPP Module 02**: Manejo de excepciones y sobrecarga de operadores.  
-- **CPP Module 03**: Herencia, polimorfismo y clases derivadas.  
-- **CPP Module 04**: Plantillas (templates) y contenedores estándar en C++.
+### 12. **CPP Modules 00-04** (70 horas) ✅
+- **CPP Module 00**: Fundamentos de programación en C++, incluyendo estructuras de datos básicas y manejo de memoria. (100%)  
+- **CPP Module 01**: Programación orientada a objetos (OOP), clases, objetos, constructores y destructores. (100%)   
+- **CPP Module 02**: Polimorfismo ad-hoc, sobrecarga de operadores y la forma de clase canónica ortodoxa. (100%)   
+- **CPP Module 03**: Herencia, polimorfismo y clases derivadas. (100%)   
+- **CPP Module 04**: Polimorfismo de subtipos, clases abstractas e interfaces. (100%)
+  
+- **Fecha de finalización**: 21/05/2025 
 
 ### 13. **webserv or ft_irc** (175 horas) ❌
 - **Parejas**: -  
@@ -98,7 +103,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
 
-### 15. **CPP Modules 05-09** (140 horas) ❌
+### 15. **CPP Modules 05-09** (140 horas) 🟡
 - **CPP Module 05**: Manipulación de ficheros y streams en C++.  
 - **CPP Module 06**: Diseño de estructuras de datos avanzadas como listas enlazadas, pilas y colas.  
 - **CPP Module 07**: Uso de contenedores de la STL como **std::vector**, **std::list** y **std::deque**.  
@@ -117,5 +122,5 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Exam Rank 02** ✅ (28/11/2024)
 - **Exam Rank 03** ✅ (13/02/2025)
 - **Exam Rank 04** ✅ (10/04/2025)
-- **Exam Rank 05** ❌
+- **Exam Rank 05** ✅ (19/06/2025)
 - **Exam Rank 06** ❌

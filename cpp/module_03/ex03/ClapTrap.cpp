@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:46:22 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/16 18:19:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:40:45 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,3 +125,4 @@ void ClapTrap::setAttackDamage(int attackDamage)
 {
     _attackDamage = attackDamage;
 }
+

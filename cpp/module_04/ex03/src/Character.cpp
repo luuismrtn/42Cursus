@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 13:34:52 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/18 13:49:06 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/21 14:31:39 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
+    if (this->_inventory[idx] == NULL)
+    {
+        std::cout << "No materia equipped in slot " << idx << std::endl;
+        return;
+    }
     if (idx >= 0 && idx < 4 && this->_inventory[idx])
         this->_inventory[idx]->use(target);
 }

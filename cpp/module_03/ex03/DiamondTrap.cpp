@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 18:38:50 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/16 18:49:34 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:40:56 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,4 @@ void DiamondTrap::whoAmI(void)
 {
     std::cout << "DiamondTrap name: " << this->_name << ", ClapTrap name: " << ClapTrap::_name << std::endl;
 }
+

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:37:30 by lumartin          #+#    #+#             */
-/*   Updated: 2025/04/14 16:29:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:53:59 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 void replace(std::string &line, const std::string &s1, const std::string &s2)
 {
     size_t pos = 0;
+    if (s1.empty())
+        return;
     while ((pos = line.find(s1, pos)) != std::string::npos)
     {
         line.erase(pos, s1.length());
