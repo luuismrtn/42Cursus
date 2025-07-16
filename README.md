@@ -98,7 +98,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
   - **webserv**: Desarrollo de un servidor HTTP con soporte para servir páginas web y manejar múltiples solicitudes.  
   - **ft_irc**: Creación de un sistema de mensajería en tiempo real basado en IRC, utilizando redes y programación concurrente.
 
-### 14. **Inception** (210 horas) ❌
+### 14. **Inception** (210 horas) 🟡
 - **Progreso**: -  
 - **Fecha de finalización**: -  
 - **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
