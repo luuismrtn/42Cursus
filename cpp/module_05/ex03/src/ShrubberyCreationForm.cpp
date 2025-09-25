@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 13:04:25 by lumartin          #+#    #+#             */
-/*   Updated: 2025/08/17 13:31:27 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:28:54 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,4 @@ const char *ShrubberyCreationForm::FileOpenException::what() const throw()
 {
     return "Could not open file for writing!";
 }
+

@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 13:04:25 by lumartin          #+#    #+#             */
-/*   Updated: 2025/08/17 13:38:20 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:29:02 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,4 @@ const char *RobotomyRequestForm::RobotizationFailed::what() const throw()
 {
     return "Robotization failed exception occurred.";
 }
+
