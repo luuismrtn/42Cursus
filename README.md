@@ -104,10 +104,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
 
 ### 15. **CPP Modules 05-09** (140 horas) 🟡
-- **CPP Module 05**: Repeticiones y excepciones en C++.
-- **CPP Module 06**: Castings en C++ y uso de RTTI (Run-Time Type Information). 
-- **CPP Module 07**: Plantillas (Templates) y programación genérica en C++.
-- **CPP Module 08**: Contenedores de la STL (Standard Template Library) y algoritmos asociados.
+- **CPP Module 05**: Repeticiones y excepciones en C++. (100%) 
+- **CPP Module 06**: Castings en C++ y uso de RTTI (Run-Time Type Information).  (100%) 
+- **CPP Module 07**: Plantillas (Templates) y programación genérica en C++. (100%) 
+- **CPP Module 08**: Contenedores de la STL (Standard Template Library) y algoritmos asociados. (100%) 
 - **CPP Module 09**: Aplicación avanzada de la POO y manejo de excepciones.
 
 ### 16. **ft_transcendence** (245 horas) ❌
