@@ -1,10 +1,17 @@
+FROM debian:bullseye
 
-FROM debian:latest
+RUN apt-get update && apt-get install -y \
+    nginx \
+    openssl \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y nginx
+RUN mkdir -p /etc/nginx/ssl /var/run/nginx
 
-COPY conf /etc/nginx/sites-available/.
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY tools/setup.sh /usr/local/bin/setup.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN chmod +x /usr/local/bin/setup.sh
+
+EXPOSE 443
+
+CMD ["/usr/local/bin/setup.sh"]
