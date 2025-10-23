@@ -20,7 +20,7 @@ $(NAME):$(OBJFILES)
 	$(C++) $(C++_FLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJFILES)
+	rm -rf $(OBJFILES)
 
 fclean: clean
 	rm -f $(NAME)
