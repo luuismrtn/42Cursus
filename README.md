@@ -9,7 +9,8 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - Horas totales de trabajo: 1870 horas
 - Horas trabajadas: 1205 horas
 
-<img src="https://github.com/user-attachments/assets/0af014b9-ad2a-4ffc-9ed8-856acc1d76cb" width="600"/>
+<img src="https://github.com/user-attachments/assets/7124dc6f-8b19-421e-83ac-b90f321cc3bd" width="600"/>
+
 
 
 
