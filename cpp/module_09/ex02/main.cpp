@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2025/12/03 16:29:29 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:05:45 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ int main(int argc, char **argv)
     {
         sorter.parseInput(argc, argv);
         sorter.sortAndTime();
-        std::cout << "Before: ";
-        for (int i = 1; i < argc; ++i)
-        {
-            std::istringstream iss(argv[i]);
-            int number;
-            iss >> number;
-            std::cout << number << " ";
-        }
-        std::cout << std::endl;
-        sorter.printContainers();
     }
     catch (const std::exception &e)
     {

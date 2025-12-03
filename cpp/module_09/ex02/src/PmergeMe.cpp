@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 17:41:48 by lumartin          #+#    #+#             */
-/*   Updated: 2025/12/03 16:29:25 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/03 17:11:58 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,40 @@ void PmergeMe::parseInput(int argc, char **argv)
     }
 }
 
+void PmergeMe::printContainers() const
+{
+    for (size_t i = 0; i < vec.size(); ++i)
+    {
+        std::cout << vec[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 void PmergeMe::sortAndTime()
 {
     struct timespec start, end;
+    
+    std::cout << "Before: ";
+    printContainers();
 
+    // --- VECTOR ---
     clock_gettime(CLOCK_MONOTONIC, &start);
-    mergeInsertVector(0, vec.size() - 1);
+    vec = fordJohnsonVector(vec);
     clock_gettime(CLOCK_MONOTONIC, &end);
+
     double vectorTime = (end.tv_sec - start.tv_sec) * 1000000.0 +
-                        (end.tv_nsec - start.tv_nsec) / 100000.0;
+                        (end.tv_nsec - start.tv_nsec) / 1000000.0;
 
+    // --- DEQUE ---
     clock_gettime(CLOCK_MONOTONIC, &start);
-    mergeInsertDeque(0, deq.size() - 1);
+    deq = fordJohnsonDeque(deq);
     clock_gettime(CLOCK_MONOTONIC, &end);
+
     double dequeTime = (end.tv_sec - start.tv_sec) * 1000000.0 +
-                       (end.tv_nsec - start.tv_nsec) / 100000.0;
+                       (end.tv_nsec - start.tv_nsec) / 1000000.0;
+
+    std::cout << "After:  ";
+    printContainers();
 
     std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : "
               << std::fixed << std::setprecision(5) << vectorTime << " us" << std::endl;
@@ -65,127 +84,190 @@ void PmergeMe::sortAndTime()
               << std::fixed << std::setprecision(5) << dequeTime << " us" << std::endl;
 }
 
-void PmergeMe::printContainers() const
-{
-    std::cout << "Vector: ";
-    for (size_t i = 0; i < vec.size(); ++i)
-    {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
+// ------------------------------------------------------------------------- //
+// ------------------------- IMPLEMENTACIÓN VECTOR ------------------------- //
+// ------------------------------------------------------------------------- //
 
-    std::cout << "Deque: ";
-    for (size_t i = 0; i < deq.size(); ++i)
-    {
-        std::cout << deq[i] << " ";
-    }
-    std::cout << std::endl;
+unsigned int PmergeMe::jacobsthal(unsigned int n)
+{
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
 }
 
-void PmergeMe::insertionSortVector(int left, int right)
+std::vector<int> PmergeMe::fordJohnsonVector(std::vector<int> &input)
 {
-    for (int i = left + 1; i <= right; ++i)
+    if (input.size() <= 1)
+        return input;
+
+    bool hasStraggler = (input.size() % 2 != 0);
+    int straggler = 0;
+    if (hasStraggler)
     {
-        int key = vec[i];
-        int j = i - 1;
-        while (j >= left && vec[j] > key)
-        {
-            vec[j + 1] = vec[j];
-            --j;
-        }
-        vec[j + 1] = key;
+        straggler = input.back();
+        input.pop_back();
     }
-}
 
-void PmergeMe::insertionSortDeque(int left, int right)
-{
-    for (int i = left + 1; i <= right; ++i)
+    std::vector<std::pair<int, int> > pairs;
+    for (size_t i = 0; i < input.size(); i += 2)
     {
-        int key = deq[i];
-        int j = i - 1;
-        while (j >= left && deq[j] > key)
-        {
-            deq[j + 1] = deq[j];
-            --j;
-        }
-        deq[j + 1] = key;
-    }
-}
-
-void PmergeMe::mergeInsertVector(int left, int right)
-{
-    if (right - left <= 10)
-    {
-        insertionSortVector(left, right);
-        return;
-    }
-    int mid = left + (right - left) / 2;
-    mergeInsertVector(left, mid);
-    mergeInsertVector(mid + 1, right);
-
-    std::vector<int> temp(right - left + 1);
-    int i = left, j = mid + 1, k = 0;
-
-    while (i <= mid && j <= right)
-    {
-        if (vec[i] <= vec[j])
-        {
-            temp[k++] = vec[i++];
-        }
+        if (input[i] > input[i + 1])
+            pairs.push_back(std::make_pair(input[i + 1], input[i]));
         else
+            pairs.push_back(std::make_pair(input[i], input[i + 1]));
+    }
+
+    std::vector<int> largerElements;
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        largerElements.push_back(pairs[i].second);
+    }
+
+    std::vector<int> mainChain = fordJohnsonVector(largerElements);
+
+    std::vector<int> pend;
+
+    pend.resize(mainChain.size());
+    for (size_t i = 0; i < mainChain.size(); ++i)
+    {
+        for (size_t j = 0; j < pairs.size(); ++j)
         {
-            temp[k++] = vec[j++];
+            if (pairs[j].second == mainChain[i])
+            {
+                pend[i] = pairs[j].first;
+                pairs[j].second = -1;
+                break;
+            }
         }
     }
-    while (i <= mid)
+
+    mainChain.insert(mainChain.begin(), pend[0]);
+
+    size_t nPend = pend.size();
+    size_t insertedCount = 1;
+
+    int jacobIndex = 3;
+
+    while (insertedCount < nPend)
     {
-        temp[k++] = vec[i++];
+        unsigned int nextJacob = jacobsthal(jacobIndex);
+
+        unsigned int limit = nextJacob;
+        if (limit > nPend)
+            limit = nPend;
+
+        for (unsigned int i = limit; i > 0; --i)
+        {
+            int currentPendIdx = i - 1;
+            unsigned int prevJacob = jacobsthal(jacobIndex - 1);
+            if (i <= prevJacob)
+                continue;
+
+            int valToInsert = pend[currentPendIdx];
+
+            std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), valToInsert);
+            mainChain.insert(pos, valToInsert);
+
+            insertedCount++;
+        }
+        jacobIndex++;
     }
-    while (j <= right)
+
+    if (hasStraggler)
     {
-        temp[k++] = vec[j++];
+        std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), straggler);
+        mainChain.insert(pos, straggler);
     }
-    for (i = left, k = 0; i <= right; ++i, ++k)
-    {
-        vec[i] = temp[k];
-    }
+
+    return mainChain;
 }
 
-void PmergeMe::mergeInsertDeque(int left, int right)
+// ------------------------------------------------------------------------- //
+// ------------------------- IMPLEMENTACIÓN DEQUE -------------------------- //
+// ------------------------------------------------------------------------- //
+
+std::deque<int> PmergeMe::fordJohnsonDeque(std::deque<int> &input)
 {
-    if (right - left <= 10)
+    if (input.size() <= 1)
+        return input;
+
+    bool hasStraggler = (input.size() % 2 != 0);
+    int straggler = 0;
+    if (hasStraggler)
     {
-        insertionSortDeque(left, right);
-        return;
+        straggler = input.back();
+        input.pop_back();
     }
-    int mid = left + (right - left) / 2;
-    mergeInsertDeque(left, mid);
-    mergeInsertDeque(mid + 1, right);
 
-    std::deque<int> temp(right - left + 1);
-    int i = left, j = mid + 1, k = 0;
-
-    while (i <= mid && j <= right)
+    std::vector<std::pair<int, int> > pairs;
+    for (size_t i = 0; i < input.size(); i += 2)
     {
-        if (deq[i] <= deq[j])
-        {
-            temp[k++] = deq[i++];
-        }
+        if (input[i] > input[i + 1])
+            pairs.push_back(std::make_pair(input[i + 1], input[i]));
         else
+            pairs.push_back(std::make_pair(input[i], input[i + 1]));
+    }
+
+    std::deque<int> largerElements;
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        largerElements.push_back(pairs[i].second);
+    }
+
+    std::deque<int> mainChain = fordJohnsonDeque(largerElements);
+
+    std::deque<int> pend;
+    pend.resize(mainChain.size());
+
+    for (size_t i = 0; i < mainChain.size(); ++i)
+    {
+        for (size_t j = 0; j < pairs.size(); ++j)
         {
-            temp[k++] = deq[j++];
+            if (pairs[j].second == mainChain[i])
+            {
+                pend[i] = pairs[j].first;
+                pairs[j].second = -1;
+                break;
+            }
         }
     }
-    while (i <= mid)
+
+    mainChain.push_front(pend[0]);
+
+    size_t nPend = pend.size();
+    size_t insertedCount = 1;
+    int jacobIndex = 3;
+
+    while (insertedCount < nPend)
     {
-        temp[k++] = deq[i++];
+        unsigned int nextJacob = jacobsthal(jacobIndex);
+        unsigned int limit = nextJacob;
+        if (limit > nPend)
+            limit = nPend;
+        unsigned int prevJacob = jacobsthal(jacobIndex - 1);
+
+        for (unsigned int i = limit; i > 0; --i)
+        {
+            if (i <= prevJacob)
+                continue;
+
+            int currentPendIdx = i - 1;
+            int valToInsert = pend[currentPendIdx];
+
+            std::deque<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), valToInsert);
+            mainChain.insert(pos, valToInsert);
+            insertedCount++;
+        }
+        jacobIndex++;
     }
-    while (j <= right)
+
+    if (hasStraggler)
     {
-        temp[k++] = deq[j++];
+        std::deque<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), straggler);
+        mainChain.insert(pos, straggler);
     }
-    for (i = left, k = 0; i <= right; ++i, ++k)
-    {
-        deq[i] = temp[k];
-    }
+
+    return mainChain;
 }
