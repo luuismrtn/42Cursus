@@ -91,7 +91,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
   
 - **Fecha de finalización**: 21/05/2025 
 
-### 13. **webserv or ft_irc** (175 horas) ✅
+### 13. **webserv** (175 horas) ✅
 - **Grupo**: @ana-pper, @jramos-a 
 - **Progreso**: 100%
 - **Fecha de finalización**: 31/10/2025 🎃  
