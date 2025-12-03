@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:39:04 by lumartin          #+#    #+#             */
-/*   Updated: 2025/10/23 17:23:25 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:21:55 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ RPN &RPN::operator=(const RPN &other)
     return *this;
 }
 
-int RPN::evaluate(const std::string &expression)
+long RPN::evaluate(const std::string &expression)
 {
     std::istringstream iss(expression);
     std::string token;
@@ -46,11 +46,11 @@ int RPN::evaluate(const std::string &expression)
             if (_operands.size() < 2)
                 throw wrongOperands();
 
-            int right = _operands.top();
+            long right = _operands.top();
             _operands.pop();
-            int left = _operands.top();
+            long left = _operands.top();
             _operands.pop();
-            int result;
+            long result;
 
             if (token == "+")
                 result = left + right;
@@ -76,10 +76,13 @@ int RPN::evaluate(const std::string &expression)
     if (_operands.size() != 1)
         throw invalidExpression();
 
+    if (_operands.top() > INT_MAX || _operands.top() < INT_MIN)
+        throw outInteger();
+
     return _operands.top();
 }
 
-int RPN::myAtoi(std::string str)
+long RPN::myAtoi(std::string str)
 {
     int result = 0;
     bool negative = false;
@@ -136,4 +139,9 @@ const char *RPN::divisionZero::what() const throw()
 const char *RPN::invalidToken::what() const throw()
 {
     return "Invalid token in expression.";
+}
+
+const char *RPN::outInteger::what() const throw()
+{
+    return "Result out of integer range.";
 }

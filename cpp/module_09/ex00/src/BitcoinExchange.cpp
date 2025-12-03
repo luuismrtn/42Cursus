@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:21:07 by lumartin          #+#    #+#             */
-/*   Updated: 2025/12/03 19:55:02 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:14:03 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ void BitcoinExchange::loadExchangeRates(const std::string &filename)
         std::istringstream iss(exchangeRateStr);
         iss >> rate;
 
+        if (date.empty() || exchangeRateStr.empty() || iss.fail() || date.find_first_not_of("0123456789-") != std::string::npos)
+            throw dataBaseException();
+
         this->exchangeRates[date] = rate;
     }
     file.close();
@@ -112,6 +115,12 @@ void BitcoinExchange::fileReader(const std::string &filename)
         if (valueStr.empty())
         {
             std::cout << "Error: value have to exist" << std::endl;
+            continue;
+        }
+
+        if (valueStr.find_first_not_of("0123456789.-") != std::string::npos || iss.fail())
+        {
+            std::cout << "Error: bad value input => " << valueStr << std::endl;
             continue;
         }
 

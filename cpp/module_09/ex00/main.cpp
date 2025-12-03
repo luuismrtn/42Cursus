@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 16:20:20 by lumartin          #+#    #+#             */
-/*   Updated: 2025/12/03 16:33:48 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:12:23 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    BitcoinExchange btcExchange;
 
     try
     {
+        BitcoinExchange btcExchange;
         btcExchange.fileReader(argv[1]);
     }
     catch (const std::exception &e)

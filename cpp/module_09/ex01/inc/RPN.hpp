@@ -6,7 +6,7 @@
 /*   By: lumartin <lumartin@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 12:38:55 by lumartin          #+#    #+#             */
-/*   Updated: 2025/12/03 16:36:24 by lumartin         ###   ########.fr       */
+/*   Updated: 2025/12/04 00:21:20 by lumartin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 #include <sstream>
 #include <stdexcept>
 #include <cctype>
+#include <climits>
 
 class RPN
 {
 private:
-    std::stack<int> _operands;
-    int myAtoi(std::string str);
+    std::stack<long> _operands;
+    long myAtoi(std::string str);
 
 public:
     RPN();
@@ -31,7 +32,7 @@ public:
     RPN(const RPN &other);
     RPN &operator=(const RPN &other);
 
-    int evaluate(const std::string &expression);
+    long evaluate(const std::string &expression);
 
     class invalidOperand : public std::exception
     {
@@ -58,6 +59,12 @@ public:
     };
 
     class invalidToken : public std::exception
+    {
+        public:
+            const char *what() const throw();
+    };
+
+    class outInteger : public std::exception
     {
         public:
             const char *what() const throw();
