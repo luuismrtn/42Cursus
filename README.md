@@ -7,9 +7,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 1030 horas
+- Horas trabajadas: 1205 horas
 
-<img src="https://github.com/user-attachments/assets/0af014b9-ad2a-4ffc-9ed8-856acc1d76cb" width="600"/>
+<img src="https://github.com/user-attachments/assets/7124dc6f-8b19-421e-83ac-b90f321cc3bd" width="600"/>
+
 
 
 
@@ -90,13 +91,12 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
   
 - **Fecha de finalización**: 21/05/2025 
 
-### 13. **webserv or ft_irc** (175 horas) ❌
-- **Parejas**: -  
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**:  
-  - **webserv**: Desarrollo de un servidor HTTP con soporte para servir páginas web y manejar múltiples solicitudes.  
-  - **ft_irc**: Creación de un sistema de mensajería en tiempo real basado en IRC, utilizando redes y programación concurrente.
+### 13. **webserv or ft_irc** (175 horas) ✅
+- **Grupo**: @ana-pper, @jramos-a 
+- **Progreso**: 100%
+- **Fecha de finalización**: 31/10/2025 🎃  
+- **Descripción**: Desarrollo de un servidor web básico que maneja solicitudes HTTP y sirve contenido estático y dinámico. Este proyecto me permitió aprender sobre protocolos de red, manejo de sockets y la arquitectura cliente-servidor.
+
 
 ### 14. **Inception** (210 horas) 🟡
 - **Progreso**: -  
