@@ -7,9 +7,11 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 1205 horas
+- Horas trabajadas: 1345 horas
 
-<img src="https://github.com/user-attachments/assets/7124dc6f-8b19-421e-83ac-b90f321cc3bd" width="600"/>
+<img src="https://github.com/user-attachments/assets/a8ec45f2-3cb6-481b-9cf0-9553b8461f9f" width="600"/>
+
+
 
 
 
@@ -103,12 +105,14 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: -  
 - **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
 
-### 15. **CPP Modules 05-09** (140 horas) 🟡
+### 15. **CPP Modules 05-09** (140 horas) ✅
 - **CPP Module 05**: Repeticiones y excepciones en C++. (100%) 
 - **CPP Module 06**: Castings en C++ y uso de RTTI (Run-Time Type Information).  (100%) 
 - **CPP Module 07**: Plantillas (Templates) y programación genérica en C++. (100%) 
 - **CPP Module 08**: Contenedores de la STL (Standard Template Library) y algoritmos asociados. (100%) 
-- **CPP Module 09**: Aplicación avanzada de la POO y manejo de excepciones.
+- **CPP Module 09**: Aplicación avanzada de la POO y manejo de excepciones. (100%)
+
+- **Fecha de finalización**: 03/12/2025 
 
 ### 16. **ft_transcendence** (245 horas) ❌
 - **Progreso**: -  
