@@ -1,6 +1,6 @@
 NAME = inception
 
-DOCKER_COMPOSE = docker-compose -f srcs/docker-compose.yml
+DOCKER_COMPOSE = docker compose -f srcs/docker-compose.yml
 VOLUMES_PATH = /home/$(USER)/data
 
 all: hosts volumes up
