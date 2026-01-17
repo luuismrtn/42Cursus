@@ -6,10 +6,11 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 
 ## Proceso
 
-- Horas totales de trabajo: 1870 horas
-- Horas trabajadas: 1345 horas
+- Horas totales de trabajo: 1795 horas
+- Horas trabajadas: 1535 horas
 
-<img src="https://github.com/user-attachments/assets/a8ec45f2-3cb6-481b-9cf0-9553b8461f9f" width="600"/>
+<img src="https://github.com/user-attachments/assets/713a9ad9-b7f5-4462-8fb5-5b2157de86ee" width="600"/>
+
 
 
 
@@ -32,17 +33,17 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 26/09/2024  
 - **Descripción**: En este proyecto creas tu primera librería en C, esta librería incluye de las funciones básicas de la biblioteca estándar de C replicadas por tí mismo. Este proyecto tiene una gran similitud con los ejercicios y proyectos de la piscina. Además, también incluí la parte bonus, que está relacionada con el manejo de listas anidadas.
 
-### 2. **ft_printf** (70 horas) ✅
+### 2. **ft_printf** (55 horas) ✅
 - **Progreso**: 100%  
 - **Fecha de finalización**: 30/09/2024  
 - **Descripción**: Reccreación de la función printf de C desde cero, con soporte para varios especificadores de formato como %d, %s, %c, %x, %X, %p, entre otros. Este proyecto incluye la gestión de argumentos variables usando va_list y profundiza en el manejo de cadenas y memoria dinámica. 
 
-### 3. **get_next_line** (70 horas) ✅
+### 3. **get_next_line** (55 horas) ✅
 - **Progreso**: 125%  
 - **Fecha de finalización**: 03/10/2024  
 - **Descripción**: Implementación de una función que permite leer una línea completa desde un archivo o entrada estándar. Este proyecto se centra en la lectura controlada de buffers y en la gestión precisa de la memoria dinámica, asegurando que no haya fugas. Además, permite manejar archivos de gran tamaño y flujos de datos continuos, mejorando la comprensión de operaciones de E/S en bajo nivel en C. En este proyecto incluí la parte bonus, en la que es posible tratar con varios archivos o entradas estándar a la vez.
 
-### 4. **Born2beroot** (40 horas) ✅
+### 4. **Born2beroot** (50 horas) ✅
 - **Progreso**: 100%  
 - **Fecha de finalización**: 11/10/2024  
 - **Descripción**: Configuración de un servidor Linux (Debian en este caso) desde cero, incluyendo la creación de particiones, configuración de redes y gestión de usuarios con sus respectivos permisos. Este proyecto es una introducción a la administración de sistemas, cubriendo conceptos esenciales como firewalls, servicios básicos y herramientas de monitorización.
@@ -57,7 +58,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 20/11/2024  
 - **Descripción**: Implementación de una simulación del comportamiento de las tuberías en Unix, donde se redirige la salida de un comando como entrada de otro. Este proyecto se centra en la creación de procesos con fork, comunicación interprocesos con pipe y manejo de descriptores de archivo, fortaleciendo el conocimiento en sistemas operativos y programación en bajo nivel.
 
-### 7. **push_swap** (60 horas) ✅
+### 7. **push_swap** (50 horas) ✅
 - **Progreso**: 121%  
 - **Fecha de finalización**: 30/01/2025  
 - **Descripción**: Desarrollo de un algoritmo para ordenar una lista de números utilizando dos pilas y un conjunto limitado de operaciones. Para este proyecto, implementé el algoritmo Turkish Sort, que se centra en encontrar el movimiento óptimo jugando con las rotaciones de las pilas para reducir el número total de operaciones. Además, completé la parte bonus, que consiste en crear un checker personalizado. Este programa recibe una pila inicial y una lista de instrucciones, verificando si al aplicar dichas instrucciones la pila queda correctamente ordenada. Este proyecto me permitió profundizar en estructuras de datos como pilas, optimización algorítmica y diseño de herramientas de validación.
@@ -99,11 +100,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Fecha de finalización**: 31/10/2025 🎃  
 - **Descripción**: Desarrollo de un servidor web básico que maneja solicitudes HTTP y sirve contenido estático y dinámico. Este proyecto me permitió aprender sobre protocolos de red, manejo de sockets y la arquitectura cliente-servidor.
 
-
-### 14. **Inception** (210 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: Creación de una infraestructura de virtualización utilizando Docker, incluyendo contenedores para aplicaciones específicas y orquestación con Docker Compose.
+### 14. **Inception** (150 horas) ✅
+- **Progreso**: 100%
+- **Fecha de finalización**: 17/01/2026 
+- **Descripción**: Diseño e implementación de una infraestructura de virtualización robusta utilizando Docker y Docker Compose. El proyecto consiste en la orquestación de una arquitectura de microservicios aislados, configurando manualmente cada contenedor (Nginx, WordPress, MariaDB) mediante Dockerfiles personalizados.
 
 ### 15. **CPP Modules 05-09** (140 horas) ✅
 - **CPP Module 05**: Repeticiones y excepciones en C++. (100%) 
@@ -114,11 +114,15 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 
 - **Fecha de finalización**: 03/12/2025 
 
-### 16. **ft_transcendence** (245 horas) ❌
+### 16. **ft_transcendence** (245 horas) 🟡
 - **Progreso**: -  
 - **Fecha de finalización**: -  
 - **Descripción**: Desarrollo de un sistema de alta disponibilidad utilizando múltiples tecnologías, enfocándose en resiliencia y recuperación ante desastres.
 
+### 17. **42_Collaborative_resume** (15 horas) ❌
+- **Progreso**: -  
+- **Fecha de finalización**: -  
+- **Descripción**: Desarrollo de un sistema de alta disponibilidad utilizando múltiples tecnologías, enfocándose en resiliencia y recuperación ante desastres.
 ---
 
 ## Exámenes
