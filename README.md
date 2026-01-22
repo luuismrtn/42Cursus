@@ -122,7 +122,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ### 17. **42_Collaborative_resume** (15 horas) ❌
 - **Progreso**: -  
 - **Fecha de finalización**: -  
-- **Descripción**: Desarrollo de un sistema de alta disponibilidad utilizando múltiples tecnologías, enfocándose en resiliencia y recuperación ante desastres.
+- **Descripción**: .
 ---
 
 ## Exámenes
@@ -131,4 +131,4 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Exam Rank 03** ✅ (13/02/2025)
 - **Exam Rank 04** ✅ (10/04/2025)
 - **Exam Rank 05** ✅ (19/06/2025)
-- **Exam Rank 06** ❌
+- **Exam Rank 06** ✅ (23/01/2026)
