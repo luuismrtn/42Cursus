@@ -7,9 +7,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 ## Proceso
 
 - Horas totales de trabajo: 1795 horas
-- Horas trabajadas: 1535 horas
+- Horas trabajadas: 1780 horas
 
-<img src="https://github.com/user-attachments/assets/713a9ad9-b7f5-4462-8fb5-5b2157de86ee" width="600"/>
+<img src="https://github.com/user-attachments/assets/eff17a9f-e16f-4667-94b1-c3ef9e0e84ec" width="600"/>
+
 
 
 
@@ -114,10 +115,10 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 
 - **Fecha de finalización**: 03/12/2025 
 
-### 16. **ft_transcendence** (245 horas) 🟡
-- **Progreso**: -  
-- **Fecha de finalización**: -  
-- **Descripción**: Desarrollo de un sistema de alta disponibilidad utilizando múltiples tecnologías, enfocándose en resiliencia y recuperación ante desastres.
+### 16. **ft_transcendence** (245 horas) ✅
+- **Progreso**: 125%  
+- **Fecha de finalización**: 24/02/2026  
+- **Descripción**: Videojuego web multijugador dockerizada basado en el videojuego PONG. Su backend en Node.js gestiona usuarios, partidas y torneos, registrando resultados inmutablemente mediante contratos inteligentes en Blockchain (Solidity/Hardhat). El frontend usa TypeScript y WebSockets para juego en tiempo real. Incluye base de datos SQL, Nginx, monitorización (Prometheus/Grafana) y gestión de logs (ELK).
 
 ### 17. **42_Collaborative_resume** (15 horas) ❌
 - **Progreso**: -  
