@@ -7,6 +7,6 @@
 [submodule "webserv"]
 	path = webserv
 	url = https://github.com/luuismrtn/webserv.git
-[submodule "ft_transcendence"]
-	path = ft_transcendence
+[submodule "ft_transcendencer"]
+	path = ft_transcendencer
 	url = https://github.com/T-D-A-H/ft_transcendencer.git
