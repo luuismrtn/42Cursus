@@ -126,7 +126,7 @@ Este repositorio contiene todos los proyectos completados y en proceso en el pro
 - **Grupo**: @mpeterso
 - **Progreso**: 100%
 - **Fecha de finalización**: 26/03/2026
-- **Descripción**: -
+- **Descripción**: Entrevistas mutuas y redactar de forma colaborativa el currículum profesional del compañero. El objetivo es fortalecer habilidades de comunicación, autoevaluación y escritura técnica orientada al mercado laboral.
   
 ---
 
